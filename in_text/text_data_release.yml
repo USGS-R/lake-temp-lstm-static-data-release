@@ -5,8 +5,8 @@ title: >-
 abstract: >-
   [a description of this data release]
       
-authors: ["[NAME 1]", "[NAME 2]"]
-pubdate: 2020 # replace with actual year, e.g., 2020
+authors: ["Lindsay Platt", "Hayley Corson-Dosch", "Wallace (Andy) Mcaliley", "Julie A Padilla", "Jordan S Read"]
+pubdate: 2022-01-31
 doi: https://doi.org/YY.XXXXX/XXXXXX # replace with actual DOI
 
 build-environment: Multiple computer systems were used to generate these data, including linux, OSX. The open source languages R and Python were used on all systems.
@@ -98,24 +98,24 @@ latitude-res: 0.00001
 longitude-res: 0.00001
 
 # ----contacts----
-contact-person: Jordan S. Read
-contact-phone: 608-821-3922
-contact-email: jread@usgs.gov
-contact-position: Research Civil Engineer
-contact-address: "8505 Research Way"
-contact-city: Middleton
+contact-person: Lindsay R.C. Platt
+contact-phone: 608-821-9901
+contact-email: lplatt@usgs.gov
+contact-position: Civil Engineer
+contact-address: "1 Gifford Pinchot Dr"
+contact-city: Madison
 contact-state: WI
-contact-zip: 53562
+contact-zip: 53726
 
-metadata-person: Jordan S. Read
-metadata-position: Research Civil Engineer
-metadata-phone: 608-821-3921
+metadata-person: Julie A Padilla
+metadata-position: Physical Scientist (Data Scientist)
+metadata-phone: 608-821-9901
 metadata-fax: 608-821-3817
-metadata-email: jread@usgs.gov
-metadata-address: "8505 Research Way"
-metadata-city: Middleton
+metadata-email: jpadilla@usgs.gov
+metadata-address: "1 Gifford Pinchot Dr"
+metadata-city: Madison
 metadata-state: WI
-metadata-zip: 53562
+metadata-zip: 53726
 metadata-date: !expr format(Sys.time(),'%Y%m%d')
 
 accur-test: No formal attribute accuracy tests were conducted.
@@ -126,7 +126,7 @@ funding-credits: >-
 process-description: >-
   [A description of processing]
 
-distro-person: Jordan S. Read
+distro-person: Joseph P. Nielsen
 liability-statement: >-
   Unless otherwise stated, all data, metadata and related materials are considered to satisfy the quality standards relative to the purpose for which the data were collected.
   Although these data and associated metadata have been reviewed for accuracy and completeness and approved for release by the U.S. Geological Survey (USGS),
