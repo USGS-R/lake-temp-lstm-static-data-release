@@ -1,9 +1,9 @@
 title: >-
-  Data release: [your title here]
-
+  Daily water column temperature predictions for 12,000 lakes in the Midwest U.S. between 1980-2000 and under future climate scenarios
 
 abstract: >-
   [a description of this data release]
+  note for later: GLM-NLDAS = 12,688 lakes; GLM-GCM = 11,715 lakes; LSTM = ??? lakes
       
 authors: ["Lindsay Platt", "Hayley Corson-Dosch", "Wallace (Andy) Mcaliley", "Julie A Padilla", "Jordan S Read"]
 pubdate: 2022-01-31
@@ -87,7 +87,7 @@ start-date: 19800401
 end-date: 20191231
 
 update: none planned
-themekeywords: ["machine learning", "deep learning", "hybrid modeling", "water","temperature", "temperate lakes","reservoirs","modeling","climate change","thermal profiles"]
+themekeywords: ["machine learning", "deep learning", "water","temperature", "temperate lakes","lakes","reservoirs","modeling","climate change","thermal profiles"]
 
 usage-rules: >-
   These data are open access usable via creative commons as long as original data providers are acknowledged
