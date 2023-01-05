@@ -125,12 +125,22 @@ funding-credits: >-
 
 process-description: >-
   This dataset was generated using two modeling frameworks: 1) a lake hydrodynamic model that uses inputs of lake-specific properties and local 
-  meteorology to estimate water temperature, and 2) [LSTM description from Andy].
+  meteorology to estimate water temperature, and 2) [LSTM description from Andy]. Lake-specific properties and temperature obvservations were 
+  aggregated from a variety of sources and cooperators for lakes across the US Midwest. Meteorological inputs for the contemporary period (1981-
+  2000) used by both modeling frameworks were downloaded from the North American Land Data Assimilation System (NLDAS). Meteorological inputs for 
+  future climate scenarios used only by the hydrodynamic model were downloaded from the USGS Geo Data Portal dataset "Dynamical Downscaling for   
+  the Midwest and Great Lakes Basin" (https://www.sciencebase.gov/catalog/item/5b2d6121e4b040769c124c0c). This input data covers three different 
+  time periods (1980-1999, 2040-2059, and 2080-2099) and is referred to as "GCM" throughout this data release. 
   
-  Our chosen process-based model is the open source, General Lake Model (GLM) version 3. GLM is a one-dimensional dynamical model which simplifies 
+  The GCM windspeeds were abnormally low compared to the NLDAS windspeed for the same date and location. As windspeed is an important factor in 
+  lake temperature modeling due to its impact on mixing, the GCM windspeeds between 1980-1999 were statistically transformed, such that they 
+  aligned with the distribution of windspeed from NLDAS. The same statistical transform was applied to the GCM windspeeds for future dates. 
+  
+  Our chosen hydrodynamic model is the open source, General Lake Model (GLM) version 3. GLM is a one-dimensional dynamical model which simplifies 
   lakes using a vertical approximation, where horizontal variability is ignored. GLM uses a Lagrangian approach to layer structure where layers can 
   split and combine based on changing vertical gradients. GLM is a modern, implementation of other one-dimensional models. We used GLM to run individual 
-  lake simulations according to the processes described in Winslow et al. 2017. Outputs for water temperature were extracted at various depths and 
+  lake simulations according to the processes described in Winslow et al. 2017 for both the contemporary period (using NLDAS as the meteorological
+  inputs) and future climate scenarios (using GCM as the meteorological inputs). Outputs for water temperature were extracted at various depths and 
   written or summarized to the files included in this set of data. In addition, a set of 172 annual metrics summarizing different thermal properties
   of interest were derived from the daily temperature outputs for each lake.
   
