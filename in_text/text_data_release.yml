@@ -3,7 +3,6 @@ title: >-
 
 abstract: >-
   [a description of this data release]
-  note for later: GLM-NLDAS = 12,688 lakes; GLM-GCM = 11,715 lakes; LSTM = ??? lakes
       
 authors: ["Lindsay Platt", "Hayley Corson-Dosch", "Wallace (Andy) Mcaliley", "Julie A Padilla", "Jordan S Read"]
 pubdate: 2022-01-31
