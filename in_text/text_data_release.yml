@@ -21,6 +21,12 @@ larger-cites:
 
 # ----supporting publications----    
 cross-cites:
+    authors: ['Kenneth E. Mitchell','Dag Lohmann','Paul R. Houser','Eric F. Wood','John C. Schaake','Alan Robock','Brian A. Cosgrove','Justin Sheffield','Qingyun Duan','Lifeng Luo','R. Wayne Higgins','Rachel T. Pinker','J. Dan Tarpley','Dennis P. Lettenmaier','Curtis H. Marshall','Jared K. Entin','Ming Pan','Wei Shi','Victor Koren','Jesse Meng','Bruce H. Ramsay','Andrew A. Bailey']
+    title: >-
+      The multi-institution North American Land Data Assimilation System (NLDAS): Utilizing multiple GCIP products and partners in a continental distributed hydrological modeling system
+    pubdate: 2004
+    form: publication
+    link: http://dx.doi.org/10.1029/2003JD003823
   -
     authors: ['Luke A. Winslow','Gretchen J.A. Hansen','Jordan S. Read','Michael Notaro']
     title: >-
@@ -40,6 +46,12 @@ cross-cites:
       Adam: A Method for Stochastic Optimization,
     pubdate: 2014
     link: https://doi.org/10.48550/arXiv.1412.6980
+  -
+    authors: ['Jared D. Willard', 'Jordan S. Read', 'Simon S. Topp', 'Gretchen J.A. Hansen', 'Vipin Kumar']
+    title: >-
+      Daily surface temperature predictions for 185,549 U.S. lakes with associated observations and meteorological conditions (1980-2020)
+    pubdate: 2022
+    link: https://doi.org/10.1002/lol2.10249
 
 process-date: !expr format(Sys.time(),'%Y%m%d')
 file-format: a single comma-delimited file and a single zipped shapefile
@@ -158,17 +170,25 @@ process-description: >-
   written or summarized to the files included in this set of data. In addition, a set of 172 annual metrics summarizing different thermal properties
   of interest were derived from the daily temperature outputs for each lake.
   
-  Lake temperature estimates were generated using an Entity-Aware Long Short-Term Memory network (EA-LSTM), as described by Kratzert et al., 2019. The
-  EA-LSTM network was trained on daily temperature observations from 15512 lakes. Temperature observations were organized into 400 day long sequences.
-  Successive sequences overlapped by 200 days. The mean squared error of the temperature predictions was used as a loss function. Predictions made
-  during the first 100 days were not included in the loss function. Inputs to the model were seven meteorological drivers derived from NLDAS and four
-  static lake attributes: latitude, longitude, surface area, and lake elevation above sea level.
+  Lake temperature estimates were generated using an Entity-Aware Long Short-Term Memory network (EA-LSTM), as described by Kratzert et al., 2019.
+  The EA-LSTM network was trained on daily temperature observations from 15512 lakes. Inputs to the model were seven meteorological drivers derived
+  from NLDAS and four static lake attributes: latitude, longitude, surface area, and lake elevation above sea level. The data aggregation methods used
+  to assemble the temperature profile data and the lake attributes are described in Willard et al. 2022. This data release used these methods to
+  aggregate additional cooperator data. This data release also used full temperature profiles for each sampling date rather than only using surface
+  temperatures.
+  
+  To train the EA-LSTM, temperature observations were organized into 400 day long sequences. Successive sequences overlapped by 200 days. The mean
+  squared error of the temperature predictions was used as a loss function. Predictions made during the first 100 days were not included in the loss
+  function. Sixty percent of the available observational data were used to train the EA-LSTM, twenty percent were used for validation during training
+  and hyperparameter selection, and twenty percent were used to evaluate the final model's performance. Data were split by lake to avoid data leakage.
   
   Lakes were discretized into a series of depth intervals. The top 10 meters of the lake were discretized into 0.5 m intervals. From 10 to 20 m, 1 m
   intervals were used. From 20 to 40 m, 2 m intervals were used. From 40 to 80 m, 5 m intervals were used. Observations were binned based on the
   discretized depth interval into which the depth of the observation fell. The EA-LSTM was trained to predict one temperature per depth interval at
   each time step. To allow temperature predictions at multiple depths, the number of outputs of the final fully connected layer was changed to equal
-  the number of depth intervals. The hidden layer size was 256. No dropout was used. The Adam optimizer (Kingma et al., 2015) was used with a learning
+  the number of depth intervals.
+  
+  The hidden layer size was 256. No dropout was used. The Adam optimizer (Kingma et al., 2015) was used with a learning
   rate of 0.005. Early stopping was used to determine the optimal number of training epochs with a stopping patience of 50 epochs.
   
   Modeling environment information for both modeling frameworks are captured below.
@@ -274,9 +294,6 @@ process-description: >-
   widgetsnbextension=4.0.3=pyhd8ed1ab_0; wrapt=1.14.1=py310h6c45266_0; wsproto=1.2.0=pyhd8ed1ab_0; xarray=2022.6.0=pyhd8ed1ab_1;
   xorg-libxau=1.0.9=h35c211d_0; xorg-libxdmcp=1.1.3=h35c211d_0; xz=5.2.6=h775f41a_0; yaml=0.2.5=h0d85af4_2; yarl=1.7.2=py310h1961e1f_2;
   yte=1.5.1=py310h2ec42d9_0; zeromq=4.3.4=he49afe7_1; zipp=3.8.1=pyhd8ed1ab_0; zlib=1.2.12=hfe4f2af_2; zstd=1.5.2=hfa58983_4;
-
-  Sixty percent of the available observational data were used to train the EA-LSTM, twenty percent were used for validation during training and
-  hyperparameter selection, and twenty percent were used to evaluate the final model's performance. Data were split by lake to avoid data leakage.
 
 distro-person: Joseph P. Nielsen
 liability-statement: >-
