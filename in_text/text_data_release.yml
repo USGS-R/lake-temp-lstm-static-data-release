@@ -1,6 +1,5 @@
 title: >-
-  Data release: [your title here]
-
+  Daily water column temperature predictions for thousands of Midwest U.S. lakes between 1980-2000 and under future climate scenarios
 
 abstract: >-
   [a description of this data release]
@@ -112,7 +111,7 @@ start-date: 19800401
 end-date: 20191231
 
 update: none planned
-themekeywords: ["machine learning", "deep learning", "hybrid modeling", "water","temperature", "temperate lakes","reservoirs","modeling","climate change","thermal profiles"]
+themekeywords: ["machine learning", "deep learning", "water","temperature", "temperate lakes","lakes","reservoirs","modeling","climate change","thermal profiles"]
 
 usage-rules: >-
   These data are open access usable via creative commons as long as original data providers are acknowledged
