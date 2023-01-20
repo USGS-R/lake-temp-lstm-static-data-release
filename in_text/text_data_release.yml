@@ -6,7 +6,7 @@ abstract: >-
   Lake temperature is an important environmental metric for understanding habitat suitability for many 
   freshwater species and is especially useful when temperatures are predicted throughout the water 
   column (known as temperature profiles). In this data release, multiple modeling approaches were used
-  to generate daily temperature predictions for thousands of lakes in the Midwest.
+  to generate predictions of daily temperature profiles for thousands of lakes in the Midwest.
   
   This data release includes predictions generated from two modeling frameworks: a machine learning model 
   (specifically an entity-aware long short-term memory or EA-LSTM model; Kratzert et al., 2019) and a 
