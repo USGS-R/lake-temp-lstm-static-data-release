@@ -102,8 +102,15 @@ targets:
       "out_data/lake_metadata.csv",
       "out_data/lake_id_crosswalk.csv",
       "out_data/lake_temperature_observations.zip",
+      #"out_data/meteorological_inputs_NLDAS.zip",
+      #"out_data/meteorological_inputs_GCM.zip",
+      #"out_data/lake_temp_preds_EALSTM_NLDAS.zip",
+      #"out_data/lake_temp_preds_GLM_NLDAS.zip",
+      #"out_data/lake_temp_preds_GLM_GCM.zip",
       "out_data/lake_temperature_metrics_GLM_NLDAS.csv",
       "out_data/lake_temperature_metrics_GLM_GCM.csv",
+      #"out_data/lake_temp_preds_extraction_example.R",
+      #"out_data/lake_temp_preds_extraction_example.py",
       "out_xml/fgdc_metadata.xml",
       sources = "src/sb_utils.R")
       
