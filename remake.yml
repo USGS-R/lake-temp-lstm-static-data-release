@@ -36,6 +36,14 @@ targets:
   out_data/lake_locations.zip:
     command: sf_to_zip(zip_filename = target_name, 
       sf_object = lake_locations_sf, layer_name = I('lake_centroids'))
+  
+  # Note that there are 8,670 lakes with at least one observation
+  out_data/lake_temperature_observations.zip:
+    command: prep_lake_temp_obs(
+      out_file = target_name,
+      data_file = '../lake-temperature-model-prep/7b_temp_merge/out/temp_data_with_sources.feather',
+      lakes_in_release = lstm_site_ids,
+      earliest_prediction = I('1979-01-02'))
 
   out_xml/fgdc_metadata.xml:
     command: render(filename = target_name,
@@ -47,6 +55,7 @@ targets:
       sb_id = I('5faaac68d34eb413d5df1f22'),
       "out_data/lake_hypsography.csv"
       "out_data/lake_locations.zip",
+      "out_data/lake_temperature_observations.zip",
       "out_xml/fgdc_metadata.xml",
       sources = "src/sb_utils.R")
       
