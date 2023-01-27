@@ -37,3 +37,9 @@ sf_to_zip <- function(zip_filename, sf_object, layer_name){
   zip::zip(file.path(cdir, zip_filename), files = files_to_zip)
   setwd(cdir)
 }
+
+# Copy files but ensure they are the most up-to-date versions
+scipiper_copy <- function(out_file, data_file, repo_path = '../lake-temperature-model-prep/') {
+  scipiper_freshen_files(data_file, repo_path)
+  file.copy(from = data_file, to = out_file, overwrite = TRUE)
+}

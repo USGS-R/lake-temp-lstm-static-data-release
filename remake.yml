@@ -44,6 +44,18 @@ targets:
       data_file = '../lake-temperature-model-prep/7b_temp_merge/out/temp_data_with_sources.feather',
       lakes_in_release = lstm_site_ids,
       earliest_prediction = I('1979-01-02'))
+  
+  out_data/lake_temperature_metrics_GLM_NLDAS.csv:
+    command: scipiper_copy(
+      out_file = target_name,
+      data_file = '../lake-temperature-out/3_summarize/out/annual_metrics_glm3_pb0nldas.csv',
+      repo_path = I('..lake-temperature-out'))
+      
+  out_data/lake_temperature_metrics_GLM_GCM.csv:
+    command: scipiper_copy(
+      out_file = target_name,
+      data_file = '../lake-temperature-out/3_summarize/out/annual_metrics_glm3_pb0gcm.csv',
+      repo_path = I('..lake-temperature-out'))
 
   out_xml/fgdc_metadata.xml:
     command: render(filename = target_name,
@@ -56,6 +68,8 @@ targets:
       "out_data/lake_hypsography.csv"
       "out_data/lake_locations.zip",
       "out_data/lake_temperature_observations.zip",
+      "out_data/lake_temperature_metrics_GLM_NLDAS.csv",
+      "out_data/lake_temperature_metrics_GLM_GCM.csv",
       "out_xml/fgdc_metadata.xml",
       sources = "src/sb_utils.R")
       
