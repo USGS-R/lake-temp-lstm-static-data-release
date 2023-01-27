@@ -51,6 +51,7 @@ targets:
       glm_gcm_sites = glm_gcm_site_ids,
       lake_gnis_names_file = '../../lake-temp/lake-temperature-model-prep/2_crosswalk_munge/out/gnisname_nhdhr_xwalk.rds',
       lake_depths_file = '../../lake-temp/lake-temperature-model-prep/7_config_merge/out/nml_lake_depth_values.rds',
+      lake_clarity_file = '../../lake-temp/lake-temperature-model-prep/7_config_merge/out/nml_Kw_values.rds',
       nldas_driver_info = nldas_files_to_site_xwalk)
   
   crosswalk_files:

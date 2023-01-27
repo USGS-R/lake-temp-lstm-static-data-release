@@ -25,9 +25,9 @@ prep_nldas_driver_info <- function(data_file, lakes_in_release) {
 }
 
 prep_lake_metadata <- function(out_file, lake_centroids_sf, lstm_metadata_file, glm_nldas_sites, glm_gcm_sites,
-                               lake_gnis_names_file, lake_depths_file, nldas_driver_info, repo_path = '../../lake-temp/lake-temperature-model-prep/') {
+                               lake_gnis_names_file, lake_depths_file, lake_clarity_file, nldas_driver_info, repo_path = '../../lake-temp/lake-temperature-model-prep/') {
   
-  scipiper_freshen_files(data_files = c(lake_gnis_names_file, lake_depths_file), repo_path = repo_path)
+  scipiper_freshen_files(data_files = c(lake_gnis_names_file, lake_depths_file, lake_clarity_file), repo_path = repo_path)
   
   lake_metadata <- lake_centroids_sf %>% 
     st_coordinates() %>% 
@@ -35,6 +35,7 @@ prep_lake_metadata <- function(out_file, lake_centroids_sf, lstm_metadata_file, 
     mutate(site_id = lake_centroids_sf$site_id) %>% 
     left_join(readRDS(lake_gnis_names_file), by = "site_id") %>% 
     left_join(ungroup(readRDS(lake_depths_file)), by = "site_id") %>% 
+    left_join(ungroup(readRDS(lake_clarity_file)), by = "site_id") %>% 
     # ADD LSTM-specific metadata
     left_join(read_csv(lstm_metadata_file), by = "site_id") %>% 
     # Remove sites that don't have any LSTM predictions (those are outside of our scope)
@@ -55,7 +56,7 @@ prep_lake_metadata <- function(out_file, lake_centroids_sf, lstm_metadata_file, 
            depth = lake_depth,
            area,
            elevation,
-           # TODO: add clarity
+           clarity = Kw,
            driver_nldas_filepath = meteo_fl,
            model_preds_ealstm_nldas,
            model_preds_glm_nldas,
