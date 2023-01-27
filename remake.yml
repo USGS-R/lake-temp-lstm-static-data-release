@@ -16,11 +16,13 @@ targets:
     depends:
       - log/sb_posted_files.csv
     
-
+  lstm_site_ids:
+    command: prep_site_ids('in_data/lake_metadata_lstm.csv')
+  
   lake_locations_sf:
     command: prep_lake_locations(
       data_file = '../lake-temperature-model-prep/2_crosswalk_munge/out/centroid_lakes_sf.rds',
-      lstm_metadata_file = 'in_data/lake_metadata_lstm.csv')
+      lakes_in_release = lstm_site_ids)
   
   lake_locations_metadata:
     command: extract_feature(lake_locations_sf)
