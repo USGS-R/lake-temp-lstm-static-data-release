@@ -92,3 +92,64 @@ prep_lake_temp_obs <- function(out_file, data_file, lakes_in_release, earliest_p
   # Compress the CSV into a single zip file in this directory
   zip::zip(out_file, files = obs_csv)
 }
+
+prep_lake_id_crosswalk <- function(out_file, all_crosswalk_files, lakes_in_release, repo_path = '../lake-temperature-model-prep/') {
+  
+  # Get all crosswalk RDS files locally (takes a long time if you don't have them):
+  crosswalk_inds <- all_crosswalk_files[grepl('.ind', all_crosswalk_files)]
+  scipiper_freshen_files(ind_files = crosswalk_inds, repo_path = repo_path)
+  
+  # Now that all inds have a corresponding data file, we can reset the list 
+  # of crosswalk RDS files then filter to just the crosswalks we want to use
+  crosswalk_files <- gsub('.ind', '', crosswalk_inds)
+  crosswalk_files <- crosswalk_files[!grepl('gnis|Iowa|isro|lake_to_state|navico|norfork|univ_mo|wqp', crosswalk_files)]
+  
+  # Load in the crosswalks
+  crosswalks_raw <-purrr::map(crosswalk_files, readRDS) %>% setNames(basename(crosswalk_files))
+  
+  # Select only the site_id and xwalk id columns + harmonize some of the xwalks naming patterns
+  crosswalks <- purrr::map2(crosswalks_raw, names(crosswalks_raw), function(xwalk, xwalk_nm) {
+    
+    # Special fixes to harmonize crosswalk IDs to follow our patterns
+    if(grepl('micorps', xwalk_nm, ignore.case=T)) {
+      names(xwalk) <- c('MICORPS_ID', 'site_id')
+      xwalk[['MICORPS_ID']] <- sprintf('MICORPS_%s', xwalk[['MICORPS_ID']])
+    }
+    
+    if(grepl('winslow', xwalk_nm, ignore.case=T)) {
+      xwalk[['WINSLOW_ID']] <- as.character(xwalk[['WINSLOW_ID']])
+    }
+    
+    # Edit lagos xwalk_nm before it gets used to match the id_col (need to change lagosus to lagos)
+    if(grepl('lagosus', xwalk_nm)) {
+      xwalk_nm <- 'lagos_nhdhr_xwalk.rds'
+    }
+    
+    # Select only the organization ID and site_id columns
+    id_col <- names(xwalk)[grepl(gsub('_nhdhr_xwalk.rds', '', xwalk_nm), names(xwalk), ignore.case = TRUE)]
+    xwalk_updated <- xwalk[,c('site_id', id_col)]
+    
+    # Capitalize some of the actual site id prefixes that are not currently capitalized
+    need_capitalization_regex <- 'iadnr|lagos|mndow|mo_usace|ndgf'
+    if(grepl(need_capitalization_regex, id_col, ignore.case=T)) {
+      # All column names should be capitalized, except `site_id`
+      cap_id_col <- toupper(id_col)
+      names(xwalk_updated) <- c('site_id', cap_id_col)
+      
+      # Now replace prefixes with uppercase versions
+      xwalk_updated[[cap_id_col]] <- gsub(need_capitalization_regex, gsub("_ID", "", cap_id_col), xwalk_updated[[cap_id_col]])
+    }
+    
+    return(xwalk_updated)
+  })
+  
+  # Join them all together into a single crosswalk
+  crosswalks_all <- purrr::reduce(crosswalks, full_join, by="site_id") %>% 
+    select(site_id, order(colnames(.))) %>% 
+    # Filter to site_ids that appear in our models but use `right_join()` to
+    # keep the modeled sites that don't appear in any of the crosswalks
+    right_join(tibble(site_id = lakes_in_release), by = "site_id")
+  
+  write_csv(crosswalks_all, out_file)
+  
+}

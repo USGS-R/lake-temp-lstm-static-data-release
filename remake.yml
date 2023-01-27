@@ -6,6 +6,7 @@ packages:
   - sbtools
   - sf
   - arrow
+  - purrr
 
 sources:
   - src/sb_utils.R
@@ -52,6 +53,14 @@ targets:
       lake_gnis_names_file = '../lake-temperature-model-prep/2_crosswalk_munge/out/gnisname_nhdhr_xwalk.rds',
       lake_depths_file = '../lake-temperature-model-prep/7_config_merge/out/nml_lake_depth_values.rds')
   
+  crosswalk_files:
+    command: list.files(I('../lake-temperature-model-prep/2_crosswalk_munge/out'), pattern = I("xwalk|crosswalk"), full.names = TRUE)
+  out_data/lake_id_crosswalk.csv:
+    command: prep_lake_id_crosswalk(
+      out_file = target_name,
+      all_crosswalk_files = crosswalk_files,
+      lakes_in_release = lstm_site_ids)
+  
   # Note that there are 8,670 lakes with at least one observation
   out_data/lake_temperature_observations.zip:
     command: prep_lake_temp_obs(
@@ -83,6 +92,7 @@ targets:
       "out_data/lake_hypsography.csv"
       "out_data/lake_locations.zip",
       "out_data/lake_metadata.csv",
+      "out_data/lake_id_crosswalk.csv",
       "out_data/lake_temperature_observations.zip",
       "out_data/lake_temperature_metrics_GLM_NLDAS.csv",
       "out_data/lake_temperature_metrics_GLM_GCM.csv",
