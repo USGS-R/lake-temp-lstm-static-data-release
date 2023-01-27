@@ -17,7 +17,11 @@ targets:
       - log/sb_posted_files.csv
     
   lstm_site_ids:
-    command: prep_site_ids('in_data/lake_metadata_lstm.csv')
+    command: prep_site_ids('in_data/lake_metadata_lstm.csv', is_lstm = I(TRUE))
+  glm_nldas_site_ids:
+    command: prep_site_ids('out_data/lake_temperature_metrics_GLM_NLDAS.csv')
+  glm_gcm_site_ids:
+    command: prep_site_ids('out_data/lake_temperature_metrics_GLM_GCM.csv')
   
   lake_locations_sf:
     command: prep_lake_locations(
@@ -36,6 +40,16 @@ targets:
   out_data/lake_locations.zip:
     command: sf_to_zip(zip_filename = target_name, 
       sf_object = lake_locations_sf, layer_name = I('lake_centroids'))
+  
+  out_data/lake_metadata.csv:
+    command: prep_lake_metadata(
+      out_file = target_name,
+      lake_centroids_sf = lake_locations_sf,
+      lstm_metadata_file = 'in_data/lake_metadata_lstm.csv',
+      glm_nldas_sites = glm_nldas_site_ids,
+      glm_gcm_sites = glm_gcm_site_ids,
+      lake_gnis_names_file = '../lake-temperature-model-prep/2_crosswalk_munge/out/gnisname_nhdhr_xwalk.rds',
+      lake_depths_file = '../lake-temperature-model-prep/7_config_merge/out/nml_lake_depth_values.rds')
   
   # Note that there are 8,670 lakes with at least one observation
   out_data/lake_temperature_observations.zip:
@@ -67,6 +81,7 @@ targets:
       sb_id = I('5faaac68d34eb413d5df1f22'),
       "out_data/lake_hypsography.csv"
       "out_data/lake_locations.zip",
+      "out_data/lake_metadata.csv",
       "out_data/lake_temperature_observations.zip",
       "out_data/lake_temperature_metrics_GLM_NLDAS.csv",
       "out_data/lake_temperature_metrics_GLM_GCM.csv",
