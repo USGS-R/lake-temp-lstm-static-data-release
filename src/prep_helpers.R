@@ -9,7 +9,7 @@ prep_site_ids <- function(in_file, is_lstm = FALSE) {
   return(site_ids)
 }
 
-prep_lake_locations <- function(data_file, lakes_in_release, repo_path = '../lake-temperature-model-prep') {
+prep_lake_locations <- function(data_file, lakes_in_release, repo_path = '../lake-temperature-model-prep/') {
   scipiper_freshen_files(data_files = data_file, repo_path = repo_path)
   
   # Load lake centroids and filter to those included in this release
@@ -18,7 +18,7 @@ prep_lake_locations <- function(data_file, lakes_in_release, repo_path = '../lak
 }
 
 prep_lake_metadata <- function(out_file, lake_centroids_sf, lstm_metadata_file, glm_nldas_sites, glm_gcm_sites,
-                               lake_gnis_names_file, lake_depths_file, repo_path = '../lake-temperature-model-prep') {
+                               lake_gnis_names_file, lake_depths_file, repo_path = '../lake-temperature-model-prep/') {
   
   scipiper_freshen_files(data_files = c(lake_gnis_names_file, lake_depths_file), repo_path = repo_path)
   
@@ -57,7 +57,7 @@ prep_lake_metadata <- function(out_file, lake_centroids_sf, lstm_metadata_file, 
   # GCM filepath (NA if none)
 }
 
-prep_lake_hypsography <- function(out_file, data_file, lakes_in_release, repo_path = '../lake-temperature-model-prep') {
+prep_lake_hypsography <- function(out_file, data_file, lakes_in_release, repo_path = '../lake-temperature-model-prep/') {
   scipiper_freshen_files(data_files = data_file, repo_path = repo_path)
   
   # Load the full list of hypsography available and then  
@@ -75,7 +75,7 @@ prep_lake_hypsography <- function(out_file, data_file, lakes_in_release, repo_pa
   write_csv(hypso_df, out_file)
 }
 
-prep_lake_temp_obs <- function(out_file, data_file, lakes_in_release, earliest_prediction, repo_path = '../lake-temperature-model-prep') {
+prep_lake_temp_obs <- function(out_file, data_file, lakes_in_release, earliest_prediction, repo_path = '../lake-temperature-model-prep/') {
   scipiper_freshen_files(data_files = data_file, repo_path = repo_path)
   
   # Load temperature observations and filter to the appropriate lakes and dates
