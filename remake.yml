@@ -26,10 +26,12 @@ targets:
   
   lake_locations_metadata:
     command: extract_feature(lake_locations_sf)
-    
-  out_data/cars.csv:
-    command: file.copy(from = "example_data/example_cars.csv", 
-      to = target_name, overwrite = TRUE)
+  
+  out_data/lake_hypsography.csv:
+    command: prep_lake_hypsography(
+      out_file = target_name,
+      data_file = '../lake-temperature-model-prep/7_config_merge/out/nml_H_A_values.rds',
+      lakes_in_release = lstm_site_ids)
   
   out_data/lake_locations.zip:
     command: sf_to_zip(zip_filename = target_name, 
@@ -43,8 +45,8 @@ targets:
   log/sb_posted_files.csv:
     command: sb_replace_files_log(filename = target_name, 
       sb_id = I('5faaac68d34eb413d5df1f22'),
+      "out_data/lake_hypsography.csv"
       "out_data/lake_locations.zip",
-      "out_data/cars.csv",
       "out_xml/fgdc_metadata.xml",
       sources = "src/sb_utils.R")
       
