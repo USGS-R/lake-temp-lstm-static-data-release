@@ -74,6 +74,8 @@ targets:
   # TODO: lake_temp_preds_EALSTM_NLDAS.zip
   # TODO: lake_temp_preds_GLM_NLDAS.zip
   # TODO: lake_temp_preds_GLM_GCM.zip
+  # TODO: lake_temp_preds_extraction_example.R
+  # TODO: lake_temp_preds_extraction_example.py
   
   out_data/lake_temperature_metrics_GLM_NLDAS.csv:
     command: scipiper_copy(
