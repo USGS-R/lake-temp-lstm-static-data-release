@@ -7,6 +7,7 @@ scipiper_freshen_files <- function(ind_files = NULL, data_files = NULL, repo_pat
   
   # Prep files
   if(is.null(ind_files)) ind_files <- sprintf('%s.ind', data_files) 
+  stopifnot(all(grepl(repo_path, ind_files))) # Stop here if we don't have the correct repo for the files
   ind_files <- gsub(repo_path, '', ind_files) # Drop repo path since we switched working dirs
   
   message('Freshening...')
