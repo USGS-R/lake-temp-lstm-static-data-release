@@ -33,12 +33,6 @@ targets:
   lake_locations_metadata:
     command: extract_feature(lake_locations_sf)
   
-  out_data/lake_hypsography.csv:
-    command: prep_lake_hypsography(
-      out_file = target_name,
-      data_file = '../lake-temperature-model-prep/7_config_merge/out/nml_H_A_values.rds',
-      lakes_in_release = lstm_site_ids)
-  
   out_data/lake_locations.zip:
     command: sf_to_zip(zip_filename = target_name, 
       sf_object = lake_locations_sf, layer_name = I('lake_centroids'))
@@ -61,6 +55,12 @@ targets:
       all_crosswalk_files = crosswalk_files,
       lakes_in_release = lstm_site_ids)
   
+  out_data/lake_hypsography.csv:
+    command: prep_lake_hypsography(
+      out_file = target_name,
+      data_file = '../lake-temperature-model-prep/7_config_merge/out/nml_H_A_values.rds',
+      lakes_in_release = lstm_site_ids)
+  
   # Note that there are 8,670 lakes with at least one observation
   out_data/lake_temperature_observations.zip:
     command: prep_lake_temp_obs(
@@ -74,8 +74,6 @@ targets:
   # TODO: lake_temp_preds_EALSTM_NLDAS.zip
   # TODO: lake_temp_preds_GLM_NLDAS.zip
   # TODO: lake_temp_preds_GLM_GCM.zip
-  # TODO: lake_temp_preds_extraction_example.R
-  # TODO: lake_temp_preds_extraction_example.py
   
   out_data/lake_temperature_metrics_GLM_NLDAS.csv:
     command: scipiper_copy(
@@ -88,6 +86,9 @@ targets:
       out_file = target_name,
       data_file = '../lake-temperature-out/3_summarize/out/annual_metrics_glm3_pb0gcm.csv',
       repo_path = I('..lake-temperature-out'))
+  
+  # TODO: lake_temp_preds_extraction_example.R
+  # TODO: lake_temp_preds_extraction_example.py
 
   out_xml/fgdc_metadata.xml:
     command: render(filename = target_name,
@@ -96,11 +97,11 @@ targets:
     
   log/sb_posted_files.csv:
     command: sb_replace_files_log(filename = target_name, 
-      sb_id = I('5faaac68d34eb413d5df1f22'),
-      "out_data/lake_hypsography.csv"
+      sb_id = I('5faaac68d34eb413d5df1f22')
       "out_data/lake_locations.zip",
       "out_data/lake_metadata.csv",
       "out_data/lake_id_crosswalk.csv",
+      "out_data/lake_hypsography.csv",
       "out_data/lake_temperature_observations.zip",
       #"out_data/meteorological_inputs_NLDAS.zip",
       #"out_data/meteorological_inputs_GCM.zip",
