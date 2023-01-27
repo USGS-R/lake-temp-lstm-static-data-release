@@ -8,7 +8,7 @@ prep_site_ids <- function(lstm_metadata_file) {
 }
 
 prep_lake_locations <- function(data_file, lakes_in_release, repo_path = '../lake-temperature-model-prep') {
-  scipiper_freshen_files(data_file)
+  scipiper_freshen_files(data_file, repo_path)
   
   # Load lake centroids and filter to those included in this release
   readRDS(data_file) %>% 
@@ -16,7 +16,7 @@ prep_lake_locations <- function(data_file, lakes_in_release, repo_path = '../lak
 }
 
 prep_lake_hypsography <- function(out_file, data_file, lakes_in_release, repo_path = '../lake-temperature-model-prep') {
-  scipiper_freshen_files(data_file)
+  scipiper_freshen_files(data_file, repo_path)
   
   # Load the full list of hypsography available and then  
   # filter out lakes that are not included in this release
@@ -34,7 +34,7 @@ prep_lake_hypsography <- function(out_file, data_file, lakes_in_release, repo_pa
 }
 
 prep_lake_temp_obs <- function(out_file, data_file, lakes_in_release, earliest_prediction, repo_path = '../lake-temperature-model-prep') {
-  scipiper_freshen_files(data_file)
+  scipiper_freshen_files(data_file, repo_path)
   
   # Load temperature observations and filter to the appropriate lakes and dates
   temp_obs_all <- arrow::read_feather(data_file) %>% 
