@@ -69,6 +69,12 @@ targets:
       lakes_in_release = lstm_site_ids,
       earliest_prediction = I('1979-01-02'))
   
+  # TODO: meteorological_inputs_NLDAS.zip
+  # TODO: meteorological_inputs_GCM.zip
+  # TODO: lake_temp_preds_EALSTM_NLDAS.zip
+  # TODO: lake_temp_preds_GLM_NLDAS.zip
+  # TODO: lake_temp_preds_GLM_GCM.zip
+  
   out_data/lake_temperature_metrics_GLM_NLDAS.csv:
     command: scipiper_copy(
       out_file = target_name,
