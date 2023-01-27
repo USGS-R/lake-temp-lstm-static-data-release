@@ -27,7 +27,7 @@ targets:
   
   nldas_files_to_site_xwalk:
     command: prep_nldas_driver_info(
-      data_file = '../lake-temperature-model-prep/7_config_merge/out/nml_meteo_fl_values.rds', 
+      data_file = '../lake-temperature-lstm-static/6_predict/out/all_meteo_fl_values.csv', 
       lakes_in_release = lstm_site_ids)
   
   lake_locations_sf:

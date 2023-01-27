@@ -19,10 +19,8 @@ prep_lake_locations <- function(data_file, lakes_in_release, repo_path = '../lak
 
 # Load crosswalk between NLDAS driver meteo files and site ids. Filter to only those covering lakes in the data release
 # Use this in lake_metadata.csv and also to prep for the zip of all the files.
-prep_nldas_driver_info <- function(data_file, lakes_in_release, repo_path = '../lake-temperature-model-prep/') {
-  scipiper_freshen_files(data_files = data_file, repo_path = repo_path)
-  
-  readRDS(data_file) %>% 
+prep_nldas_driver_info <- function(data_file, lakes_in_release) {
+  read_csv(data_file) %>% 
     filter(site_id %in% lakes_in_release)
 }
 
