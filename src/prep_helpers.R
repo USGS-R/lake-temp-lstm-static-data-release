@@ -17,8 +17,17 @@ prep_lake_locations <- function(data_file, lakes_in_release, repo_path = '../lak
     filter(site_id %in% lakes_in_release) 
 }
 
+# Load crosswalk between NLDAS driver meteo files and site ids. Filter to only those covering lakes in the data release
+# Use this in lake_metadata.csv and also to prep for the zip of all the files.
+prep_nldas_driver_info <- function(data_file, lakes_in_release, repo_path = '../lake-temperature-model-prep/') {
+  scipiper_freshen_files(data_files = data_file, repo_path = repo_path)
+  
+  readRDS(data_file) %>% 
+    filter(site_id %in% lakes_in_release)
+}
+
 prep_lake_metadata <- function(out_file, lake_centroids_sf, lstm_metadata_file, glm_nldas_sites, glm_gcm_sites,
-                               lake_gnis_names_file, lake_depths_file, repo_path = '../lake-temperature-model-prep/') {
+                               lake_gnis_names_file, lake_depths_file, nldas_driver_info, repo_path = '../lake-temperature-model-prep/') {
   
   scipiper_freshen_files(data_files = c(lake_gnis_names_file, lake_depths_file), repo_path = repo_path)
   
@@ -36,6 +45,9 @@ prep_lake_metadata <- function(out_file, lake_centroids_sf, lstm_metadata_file, 
     mutate(model_preds_ealstm_nldas = TRUE, # All sites here have EA-LSTM available (we used that to filter)
            model_preds_glm_nldas = site_id %in% glm_nldas_sites,
            model_preds_glm_gcm = site_id %in% glm_gcm_sites) %>% 
+    # Add driver data locations:
+    left_join(nldas_driver_info, by = "site_id") %>% 
+    # TODO: add GCM
     # Rename and organize final columns
     select(site_id, 
            lake_name = GNIS_Name,
@@ -45,6 +57,8 @@ prep_lake_metadata <- function(out_file, lake_centroids_sf, lstm_metadata_file, 
            depth = lake_depth,
            area,
            elevation,
+           # TODO: add clarity
+           driver_nldas_filepath = meteo_fl,
            model_preds_ealstm_nldas,
            model_preds_glm_nldas,
            model_preds_glm_gcm,
@@ -53,7 +67,6 @@ prep_lake_metadata <- function(out_file, lake_centroids_sf, lstm_metadata_file, 
   write_csv(lake_metadata, out_file)
   
   # TODO: Still need to add these columns:
-  # NLDAS filepath (e.g. `readRDS('../lake-temperature-model-prep/7_config_merge/out/nml_meteo_fl_values.rds')`)
   # GCM filepath (NA if none)
 }
 
@@ -152,4 +165,12 @@ prep_lake_temp_obs <- function(out_file, data_file, lakes_in_release, earliest_p
   
   # Compress the CSV into a single zip file in this directory
   zip::zip(out_file, files = obs_csv)
+}
+
+# Zip up NLDAS csvs
+prep_NLDAS_drivers <- function(out_file, nldas_driver_info, driver_file_dir) {
+  # The NLDAS drivers are coming from a targets repo, not scipiper so no need for `scipiper_freshen_files()`
+  # This will need to be run on Tallgrass in order to have the most up-to-date data, though.
+  files_to_zip <- file.path(driver_file_dir, nldas_driver_info$meteo_fl)
+  zip::zip(out_file, files = files_to_zip)
 }

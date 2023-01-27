@@ -25,6 +25,11 @@ targets:
   glm_gcm_site_ids:
     command: prep_site_ids('out_data/lake_temperature_metrics_GLM_GCM.csv')
   
+  nldas_files_to_site_xwalk:
+    command: prep_nldas_driver_info(
+      data_file = '../lake-temperature-model-prep/7_config_merge/out/nml_meteo_fl_values.rds', 
+      lakes_in_release = lstm_site_ids)
+  
   lake_locations_sf:
     command: prep_lake_locations(
       data_file = '../lake-temperature-model-prep/2_crosswalk_munge/out/centroid_lakes_sf.rds',
@@ -45,7 +50,8 @@ targets:
       glm_nldas_sites = glm_nldas_site_ids,
       glm_gcm_sites = glm_gcm_site_ids,
       lake_gnis_names_file = '../lake-temperature-model-prep/2_crosswalk_munge/out/gnisname_nhdhr_xwalk.rds',
-      lake_depths_file = '../lake-temperature-model-prep/7_config_merge/out/nml_lake_depth_values.rds')
+      lake_depths_file = '../lake-temperature-model-prep/7_config_merge/out/nml_lake_depth_values.rds',
+      nldas_driver_info = nldas_files_to_site_xwalk)
   
   crosswalk_files:
     command: list.files(I('../lake-temperature-model-prep/2_crosswalk_munge/out'), pattern = I("xwalk|crosswalk"), full.names = TRUE)
@@ -69,7 +75,12 @@ targets:
       lakes_in_release = lstm_site_ids,
       earliest_prediction = I('1979-01-02'))
   
-  # TODO: meteorological_inputs_NLDAS.zip
+  out_data/meteorological_inputs_NLDAS.zip:
+    command: prep_NLDAS_drivers(
+      out_file = target_name, 
+      nldas_driver_info = nldas_files_to_site_xwalk,
+      driver_file_dir = I('../lake-temperature-process-models/1_prep/in/NLDAS_GLM_csvs'))
+  
   # TODO: meteorological_inputs_GCM.zip
   # TODO: lake_temp_preds_EALSTM_NLDAS.zip
   # TODO: lake_temp_preds_GLM_NLDAS.zip
