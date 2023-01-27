@@ -27,12 +27,12 @@ targets:
   
   nldas_files_to_site_xwalk:
     command: prep_nldas_driver_info(
-      data_file = '../lake-temperature-lstm-static/6_predict/out/all_meteo_fl_values.csv', 
+      data_file = '../../lake-temp/lake-temperature-lstm-static/6_predict/out/all_meteo_fl_values.csv', 
       lakes_in_release = lstm_site_ids)
   
   lake_locations_sf:
     command: prep_lake_locations(
-      data_file = '../lake-temperature-model-prep/2_crosswalk_munge/out/centroid_lakes_sf.rds',
+      data_file = '../../lake-temp/lake-temperature-model-prep/2_crosswalk_munge/out/centroid_lakes_sf.rds',
       lakes_in_release = lstm_site_ids)
   
   lake_locations_metadata:
@@ -49,12 +49,12 @@ targets:
       lstm_metadata_file = 'in_data/lake_metadata_lstm.csv',
       glm_nldas_sites = glm_nldas_site_ids,
       glm_gcm_sites = glm_gcm_site_ids,
-      lake_gnis_names_file = '../lake-temperature-model-prep/2_crosswalk_munge/out/gnisname_nhdhr_xwalk.rds',
-      lake_depths_file = '../lake-temperature-model-prep/7_config_merge/out/nml_lake_depth_values.rds',
+      lake_gnis_names_file = '../../lake-temp/lake-temperature-model-prep/2_crosswalk_munge/out/gnisname_nhdhr_xwalk.rds',
+      lake_depths_file = '../../lake-temp/lake-temperature-model-prep/7_config_merge/out/nml_lake_depth_values.rds',
       nldas_driver_info = nldas_files_to_site_xwalk)
   
   crosswalk_files:
-    command: list.files(I('../lake-temperature-model-prep/2_crosswalk_munge/out'), pattern = I("xwalk|crosswalk"), full.names = TRUE)
+    command: list.files(I('../../lake-temp/lake-temperature-model-prep/2_crosswalk_munge/out'), pattern = I("xwalk|crosswalk"), full.names = TRUE)
   out_data/lake_id_crosswalk.csv:
     command: prep_lake_id_crosswalk(
       out_file = target_name,
@@ -64,14 +64,14 @@ targets:
   out_data/lake_hypsography.csv:
     command: prep_lake_hypsography(
       out_file = target_name,
-      data_file = '../lake-temperature-model-prep/7_config_merge/out/nml_H_A_values.rds',
+      data_file = '../../lake-temp/lake-temperature-model-prep/7_config_merge/out/nml_H_A_values.rds',
       lakes_in_release = lstm_site_ids)
   
   # Note that there are 8,670 lakes with at least one observation
   out_data/lake_temperature_observations.zip:
     command: prep_lake_temp_obs(
       out_file = target_name,
-      data_file = '../lake-temperature-model-prep/7b_temp_merge/out/temp_data_with_sources.feather',
+      data_file = '../../lake-temp/lake-temperature-model-prep/7b_temp_merge/out/temp_data_with_sources.feather',
       lakes_in_release = lstm_site_ids,
       earliest_prediction = I('1979-01-02'))
   
@@ -79,7 +79,7 @@ targets:
     command: prep_NLDAS_drivers(
       out_file = target_name, 
       nldas_driver_info = nldas_files_to_site_xwalk,
-      driver_file_dir = I('../lake-temperature-process-models/1_prep/in/NLDAS_GLM_csvs'))
+      driver_file_dir = I('../../lake-temp/lake-temperature-process-models/1_prep/in/NLDAS_GLM_csvs'))
   
   # TODO: meteorological_inputs_GCM.zip
   # TODO: lake_temp_preds_EALSTM_NLDAS.zip
@@ -89,14 +89,14 @@ targets:
   out_data/lake_temperature_metrics_GLM_NLDAS.csv:
     command: scipiper_copy(
       out_file = target_name,
-      data_file = '../lake-temperature-out/3_summarize/out/annual_metrics_glm3_pb0nldas.csv',
-      repo_path = I('..lake-temperature-out'))
+      data_file = '../../lake-temp/lake-temperature-out/3_summarize/out/annual_metrics_glm3_pb0nldas.csv',
+      repo_path = I('../../lake-temp/lake-temperature-out'))
       
   out_data/lake_temperature_metrics_GLM_GCM.csv:
     command: scipiper_copy(
       out_file = target_name,
       data_file = '../lake-temperature-out/3_summarize/out/annual_metrics_glm3_pb0gcm.csv',
-      repo_path = I('..lake-temperature-out'))
+      repo_path = I('../../lake-temp/lake-temperature-out'))
   
   # TODO: lake_temp_preds_extraction_example.R
   # TODO: lake_temp_preds_extraction_example.py

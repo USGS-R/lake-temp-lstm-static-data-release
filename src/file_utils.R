@@ -1,6 +1,6 @@
 
 # Make sure that the data file from `lake-temperature-model-prep` is downloaded and up-to-date
-scipiper_freshen_files <- function(ind_files = NULL, data_files = NULL, repo_path = '../lake-temperature-model-prep/') {
+scipiper_freshen_files <- function(ind_files = NULL, data_files = NULL, repo_path = '../../lake-temp/lake-temperature-model-prep/') {
   message(sprintf('Temporarily setting working directory to > %s', repo_path))
   cwd <- getwd()
   setwd(repo_path)
@@ -39,7 +39,7 @@ sf_to_zip <- function(zip_filename, sf_object, layer_name){
 }
 
 # Copy files but ensure they are the most up-to-date versions
-scipiper_copy <- function(out_file, data_file, repo_path = '../lake-temperature-model-prep/') {
+scipiper_copy <- function(out_file, data_file, repo_path = '../../lake-temp/lake-temperature-model-prep/') {
   scipiper_freshen_files(data_file, repo_path)
   file.copy(from = data_file, to = out_file, overwrite = TRUE)
 }
