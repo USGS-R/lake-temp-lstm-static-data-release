@@ -57,10 +57,24 @@ prep_netcdfs <- function(out_file, tar_nm, tar_dir = '../lake-temperature-proces
   uncompressed_ncs <- list_uncompressed_ncs(tar_nm, tar_dir, group_regex)
   
   # Compress the files
-  compressed_ncs <- do_compression(uncompressed_ncs, shell_fn, allow_skip = TRUE)
-  message(paste(compressed_ncs, collapse='\n'))
-  # Then zip them up
-  zip::zip(out_file, files = compressed_ncs[-6])
+  compressed_ncs <- do_compression(uncompressed_ncs, shell_fn)
+  
+  # Then zip them up (do this part with error handling)
+  tryCatch({
+    zip::zip(out_file, files = compressed_ncs)
+  }, error = function(e) {
+    error_to_catch <- sprintf('zip error: `Could not create zip archive `%s`` in file `zip.c:364`', out_file)
+    time_since_mod <- difftime(Sys.time(), file.info(out_file)$mtime, units = 'mins')
+    file_was_updated <- file.exists(out_file) & time_since_mod < 1
+    if(file_was_updated & grepl(error_to_catch, e)) {
+      # This error seems to pop up every time the GCM - Minnesota NetCDF file is included
+      # and I think it has to do with how large it is. The zip is still created, though,
+      # so we are just going to catch the error and keep going.
+      message('Caught known error, but file was still created. Continuing on.')
+    } else {
+      stop(sprintf('Tried to catch the error, but couldnt:\n\n%s', e))
+    }
+  })
   
   # Clean up the intermediate file that we won't need outside of this function
   file.remove(shell_fn)
