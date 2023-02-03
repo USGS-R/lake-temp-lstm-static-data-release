@@ -20,11 +20,13 @@ list_uncompressed_ncs <- function(tar_nm, tar_dir = '../../lake-temp/lake-temper
 }
 
 do_compression <- function(uncompressed_ncs, shell_fn, allow_skip = FALSE) {
+  temp_dir_for_compression <- 'compress_tmp'
+  if(!dir.exists(temp_dir_for_compression)) dir.create(temp_dir_for_compression)
+  
   # Prep new file names
-  uncompressed_ncs_dir <- dirname(uncompressed_ncs)
   uncompressed_ncs_fn <- basename(uncompressed_ncs)
   compressed_ncs_fn <- gsub('_gcm_', '_GCM_', gsub('_glm_', '_GLM_', gsub('_uncompressed', '', uncompressed_ncs_fn)))
-  compressed_ncs <- file.path(uncompressed_ncs_dir, compressed_ncs_fn)
+  compressed_ncs <- file.path(temp_dir_for_compression, compressed_ncs_fn)
   
   if(allow_skip) {
     # Only compress ones that have not yet been compressed
