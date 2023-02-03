@@ -85,12 +85,26 @@ targets:
       driver_file_dir = I('../../lake-temp/lake-temperature-process-models/1_prep/in/NLDAS_GLM_csvs'))
   
   # TODO: meteorological_inputs_GCM.zip
-  # TODO: lake_temp_preds_EALSTM_NLDAS.zip
   
+  # Split the EALSTM NLDAS predictions into two zips so that we can fit under the SB 10GB limit
+  out_data/lake_temp_preds_EALSTM_NLDAS_AR-MN.zip:
+    command: file.copy(
+      to = target_name, 
+      from = '../lake-temperature-lstm-static/netcdf/midwest/lake_temp_preds_ealstm_NLDAS_AR-MN.zip', 
+      overwrite = TRUE)
+  out_data/lake_temp_preds_EALSTM_NLDAS_MO-WY.zip:
+    command: file.copy(
+      to = target_name, 
+      from = '../lake-temperature-lstm-static/netcdf/midwest/lake_temp_preds_ealstm_NLDAS_MO-WY.zip', 
+      overwrite = TRUE)
+  
+  # Small enough to fit into one file
   out_data/lake_temp_preds_GLM_NLDAS.zip:
     command: prep_netcdfs(out_file = target_name, tar_nm = I('p3_nldas_glm_uncalibrated_nc'))
   
-  # Yes, there is a way to do this where I don't copy/paste/edit each of these targets
+  # The GCM files were too big to include in one zip (~30 GB) & due to how big MN is on its own, we
+  # could not take the approach that EALSTM_NLDAS did with splitting into just two zips.
+  # Note: there is a way to do this where I don't copy/paste/edit each of these targets
   # but I don't remember exactly how to implement and there are only 6, so this is faster!
   out_data/lake_temp_preds_GLM_GCM_ACCESS.zip:
     command: prep_netcdfs(out_file = target_name, tar_nm = I('p3_gcm_glm_uncalibrated_nc'), group_regex = I('ACCESS'))
@@ -135,7 +149,8 @@ targets:
       "out_data/lake_temperature_observations.zip",
       #"out_data/meteorological_inputs_NLDAS.zip",
       #"out_data/meteorological_inputs_GCM.zip",
-      #"out_data/lake_temp_preds_EALSTM_NLDAS.zip",
+      "out_data/lake_temp_preds_EALSTM_NLDAS_AR-MN.zip",
+      "out_data/lake_temp_preds_EALSTM_NLDAS_MO-WY.zip",
       "out_data/lake_temp_preds_GLM_NLDAS.zip",
       "out_data/lake_temp_preds_GLM_GCM_ACCESS.zip",
       "out_data/lake_temp_preds_GLM_GCM_CNRM.zip",
