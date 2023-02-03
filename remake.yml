@@ -7,11 +7,13 @@ packages:
   - sf
   - arrow
   - purrr
+  - targets
 
 sources:
   - src/sb_utils.R
   - src/file_utils.R
   - src/prep_helpers.R
+  - src/prep_netcdfs.R
 
 targets:
   all:
@@ -84,7 +86,25 @@ targets:
   
   # TODO: meteorological_inputs_GCM.zip
   # TODO: lake_temp_preds_EALSTM_NLDAS.zip
-  # TODO: lake_temp_preds_GLM_NLDAS.zip
+  
+  out_data/lake_temp_preds_GLM_NLDAS.zip:
+    command: prep_netcdfs(out_file = target_name, tar_nm = I('p3_nldas_glm_uncalibrated_nc'))
+  
+  # Yes, there is a way to do this where I don't copy/paste/edit each of these targets
+  # but I don't remember exactly how to implement and there are only 6, so this is faster!
+  out_data/lake_temp_preds_GLM_GCM_ACCESS.zip:
+    command: prep_netcdfs(out_file = target_name, tar_nm = I('p3_gcm_glm_uncalibrated_nc'), group_regex = I('ACCESS'))
+  out_data/lake_temp_preds_GLM_GCM_CNRM.zip:
+    command: prep_netcdfs(out_file = target_name, tar_nm = I('p3_gcm_glm_uncalibrated_nc'), group_regex = I('CNRM'))
+  out_data/lake_temp_preds_GLM_GCM_GFDL.zip:
+    command: prep_netcdfs(out_file = target_name, tar_nm = I('p3_gcm_glm_uncalibrated_nc'), group_regex = I('GFDL'))
+  out_data/lake_temp_preds_GLM_GCM_IPSL.zip:
+    command: prep_netcdfs(out_file = target_name, tar_nm = I('p3_gcm_glm_uncalibrated_nc'), group_regex = I('IPSL'))
+  out_data/lake_temp_preds_GLM_GCM_MIROC5.zip:
+    command: prep_netcdfs(out_file = target_name, tar_nm = I('p3_gcm_glm_uncalibrated_nc'), group_regex = I('MIROC5'))
+  out_data/lake_temp_preds_GLM_GCM_MRI.zip:
+    command: prep_netcdfs(out_file = target_name, tar_nm = I('p3_gcm_glm_uncalibrated_nc'), group_regex = I('MRI'))
+  
   # TODO: lake_temp_preds_GLM_GCM.zip
   
   out_data/lake_temperature_metrics_GLM_NLDAS.csv:
@@ -118,8 +138,13 @@ targets:
       #"out_data/meteorological_inputs_NLDAS.zip",
       #"out_data/meteorological_inputs_GCM.zip",
       #"out_data/lake_temp_preds_EALSTM_NLDAS.zip",
-      #"out_data/lake_temp_preds_GLM_NLDAS.zip",
-      #"out_data/lake_temp_preds_GLM_GCM.zip",
+      "out_data/lake_temp_preds_GLM_NLDAS.zip",
+      "out_data/lake_temp_preds_GLM_GCM_ACCESS.zip",
+      "out_data/lake_temp_preds_GLM_GCM_CNRM.zip",
+      "out_data/lake_temp_preds_GLM_GCM_GFDL.zip",
+      "out_data/lake_temp_preds_GLM_GCM_IPSL.zip",
+      "out_data/lake_temp_preds_GLM_GCM_MIROC5.zip",
+      "out_data/lake_temp_preds_GLM_GCM_MRI.zip",
       "out_data/lake_temperature_metrics_GLM_NLDAS.csv",
       "out_data/lake_temperature_metrics_GLM_GCM.csv",
       #"out_data/lake_temp_preds_extraction_example.R",
