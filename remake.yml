@@ -105,8 +105,6 @@ targets:
   out_data/lake_temp_preds_GLM_GCM_MRI.zip:
     command: prep_netcdfs(out_file = target_name, tar_nm = I('p3_gcm_glm_uncalibrated_nc'), group_regex = I('MRI'))
   
-  # TODO: lake_temp_preds_GLM_GCM.zip
-  
   out_data/lake_temperature_metrics_GLM_NLDAS.csv:
     command: scipiper_copy(
       out_file = target_name,
