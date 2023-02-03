@@ -23,9 +23,18 @@ prep_nldas_driver_info <- function(data_file, lakes_in_release) {
   read_csv(data_file) %>% 
     filter(site_id %in% lakes_in_release)
 }
+# Load crosswalk between GCM driver meteo NetCDF files and site ids. Filter to only those covering lakes in the data release
+# Use this in lake_metadata.csv. Each NetCDF has a columns of values per cell number, so people will need to know which cell
+# a particular site is in to extract the data.
+prep_gcm_driver_info <- function(data_file, lakes_in_release) {
+  read_csv(data_file) %>% 
+    filter(site_id %in% lakes_in_release) %>% 
+    select(site_id, cell_no)
+}
 
 prep_lake_metadata <- function(out_file, lake_centroids_sf, lstm_metadata_file, glm_nldas_sites, glm_gcm_sites,
-                               lake_gnis_names_file, lake_depths_file, lake_clarity_file, nldas_driver_info, repo_path = '../../lake-temp/lake-temperature-model-prep/') {
+                               lake_gnis_names_file, lake_depths_file, lake_clarity_file, nldas_driver_info, gcm_driver_info,
+                               repo_path = '../../lake-temp/lake-temperature-model-prep/') {
   
   scipiper_freshen_files(data_files = c(lake_gnis_names_file, lake_depths_file, lake_clarity_file), repo_path = repo_path)
   
@@ -44,9 +53,9 @@ prep_lake_metadata <- function(out_file, lake_centroids_sf, lstm_metadata_file, 
     mutate(model_preds_ealstm_nldas = TRUE, # All sites here have EA-LSTM available (we used that to filter)
            model_preds_glm_nldas = site_id %in% glm_nldas_sites,
            model_preds_glm_gcm = site_id %in% glm_gcm_sites) %>% 
-    # Add driver data locations:
+    # Add driver data mapping info:
     left_join(nldas_driver_info, by = "site_id") %>% 
-    # TODO: add GCM
+    left_join(gcm_driver_info, by = "site_id") %>% 
     # Rename and organize final columns
     select(site_id, 
            lake_name = GNIS_Name,
@@ -58,15 +67,13 @@ prep_lake_metadata <- function(out_file, lake_centroids_sf, lstm_metadata_file, 
            elevation,
            clarity = Kw,
            driver_nldas_filepath = meteo_fl,
+           driver_gcm_cell_no = cell_no,
            model_preds_ealstm_nldas,
            model_preds_glm_nldas,
            model_preds_glm_gcm,
            ea_lstm_group = lstm_group)
   
   write_csv(lake_metadata, out_file)
-  
-  # TODO: Still need to add these columns:
-  # GCM filepath (NA if none)
 }
 
 prep_lake_id_crosswalk <- function(out_file, all_crosswalk_files, lakes_in_release, repo_path = '../../lake-temp/lake-temperature-model-prep/') {
@@ -171,5 +178,13 @@ prep_NLDAS_drivers <- function(out_file, nldas_driver_info, driver_file_dir) {
   # The NLDAS drivers are coming from a targets repo, not scipiper so no need for `scipiper_freshen_files()`
   # This will need to be run on Tallgrass in order to have the most up-to-date data, though.
   files_to_zip <- file.path(driver_file_dir, nldas_driver_info$meteo_fl)
+  zip::zip(out_file, files = files_to_zip)
+}
+
+# Zip up GCM NetCDFs
+prep_GCM_drivers <- function(out_file, driver_file_dir, gcm_driver_regex) {
+  # The GCM drivers are coming from a targets repo, not scipiper so no need for `scipiper_freshen_files()`
+  # This will need to be run on Tallgrass in order to have the most up-to-date data, though.
+  files_to_zip <- list.files(driver_file_dir, pattern = gcm_driver_regex, full.names = TRUE)
   zip::zip(out_file, files = files_to_zip)
 }
