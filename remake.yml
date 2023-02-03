@@ -99,12 +99,12 @@ targets:
   out_data/lake_temp_preds_EALSTM_NLDAS_AR-MN.zip:
     command: file.copy(
       to = target_name, 
-      from = '../lake-temperature-lstm-static/netcdf/midwest/lake_temp_preds_ealstm_NLDAS_AR-MN.zip', 
+      from = '../../lake-temp/lake-temperature-lstm-static/netcdf/midwest/lake_temp_preds_ealstm_NLDAS_AR-MN.zip', 
       overwrite = TRUE)
   out_data/lake_temp_preds_EALSTM_NLDAS_MO-WY.zip:
     command: file.copy(
       to = target_name, 
-      from = '../lake-temperature-lstm-static/netcdf/midwest/lake_temp_preds_ealstm_NLDAS_MO-WY.zip', 
+      from = '../../lake-temp/lake-temperature-lstm-static/netcdf/midwest/lake_temp_preds_ealstm_NLDAS_MO-WY.zip', 
       overwrite = TRUE)
   
   # Small enough to fit into one file

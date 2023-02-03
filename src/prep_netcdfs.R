@@ -3,7 +3,7 @@
 # pipeline and save into one or more zips. It will create a bash script with a line per NetCDF file that 
 # needs to be compressed, execute that bash script, and then zip up the resulting compressed NetCDF files.
 
-list_uncompressed_ncs <- function(tar_nm, tar_dir = '../lake-temperature-process-models', group_regex = '.*') {
+list_uncompressed_ncs <- function(tar_nm, tar_dir = '../../lake-temp/lake-temperature-process-models', group_regex = '.*') {
   # In order to use targets helper functions, you need to be 
   # in the targets pipeline working directory.
   startwd <- getwd()
@@ -51,7 +51,7 @@ do_compression <- function(uncompressed_ncs, shell_fn, allow_skip = FALSE) {
 
 # Use the two functions above to identify the NetCDF files from the other pipeline, compress
 # each NetCDF individually, and then zip them up into a single file.
-prep_netcdfs <- function(out_file, tar_nm, tar_dir = '../lake-temperature-process-models', group_regex = NULL, shell_fn = 'compress_ncs.sh') {
+prep_netcdfs <- function(out_file, tar_nm, tar_dir = '../../lake-temp/lake-temperature-process-models', group_regex = NULL, shell_fn = 'compress_ncs.sh') {
   
   # List out uncompressed NetCDF filepaths
   uncompressed_ncs <- list_uncompressed_ncs(tar_nm, tar_dir, group_regex)
