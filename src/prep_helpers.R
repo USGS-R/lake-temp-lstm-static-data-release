@@ -152,7 +152,15 @@ prep_lake_hypsography <- function(out_file, data_file, lakes_in_release, repo_pa
       select(depths, areas)
   })
   hypso_df <- purrr::map_df(hypso_list, ~as.data.frame(.x), .id="site_id")
-  write_csv(hypso_df, out_file)
+  
+  # Prevent lakes from being included which only have a surface area (I counted 4 when I did this in Feb 2023)
+  hypso_df_valid <- hypso_df %>% 
+    group_by(site_id) %>% 
+    mutate(site_n = n()) %>% 
+    ungroup () %>% 
+    filter(site_n > 1)
+  
+  write_csv(hypso_df_valid, out_file)
 }
 
 prep_lake_temp_obs <- function(out_file, data_file, lakes_in_release, earliest_prediction, repo_path = '../../lake-temp/lake-temperature-model-prep/') {
