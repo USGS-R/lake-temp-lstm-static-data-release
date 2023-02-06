@@ -389,6 +389,41 @@ entities:
       data-min: NA
       data-max: NA
       data-units: NA
+  -
+    data-name: lake_hypsography.csv
+    data-description: >- 
+      Lake-specific depth-area relationships, which form a hypsographic curve. Available for
+      13,785 lakes in this study. A lake must have more than just the surface area to be 
+      included here. The maximum number of depth-area pairs for a single lake is 385, but most
+      have just 2 values (the surface area and one other).
+    attributes:
+    -
+      attr-label: site_id
+      attr-def: >-
+        Lake identification number for this study. It is the Prmnn_I from NHD high-res prefixed
+        with source, as "nhdhr_{Prmnn_I}". The ids have a mix of characters and some can include
+        special characters, such as "{" and "}". These values will be repeated for each known 
+        depth-area value available for a given lake.
+      attr-defs: >-
+        http://nhd.usgs.gov/
+      data-min: NA
+      data-max: NA
+      data-units: NA 
+    -
+      attr-label: depths
+      attr-def: >- 
+        For each lake, values start at the surface (0) and go to the deepest value with a known area.
+      attr-defs: NA
+      data-min: 0
+      data-max: 383.438
+      data-units: meters
+    -
+      attr-label: areas
+      attr-def: Area of the lake at the current depth 
+      attr-defs: NA
+      data-min: 0
+      data-max: 4826438780
+      data-units: square meters
 
 
 purpose: Fisheries biology, limnological research, and climate science.
