@@ -463,6 +463,85 @@ entities:
       data-min: 0
       data-max: 40.00
       data-units: degrees C
+  -
+    data-name: meteorological_inputs_NLDAS.zip
+    data-description: >- 
+      A zip file containing CSVs of the North American Land Data Assimilation System (NLDAS) meteorological
+      drivers. Files within the zip are named "NLDAS_time[0.379366]_x{x}_y{y}.csv" where the {x} and {y}
+      locations are longitude and latitude indices from NLDAS of the individual meteological spatial data 
+      cell (data are from Mitchell et al., 2004). The format of the data is identical for each file. These 
+      meteorological files can be matched to the appropriate lake using the "driver_nldas_filepath" column
+      in the "lake_metadata.csv" file of this data release.
+    attributes:
+    - 
+      attr-label: time
+      attr-def: >-
+        Date of this weather estimate. The min and max dates for this attribute 
+        are greater than the modeled time period to accomodate a model warm-up period.
+      attr-defs: Read et al., 2021
+      data-min: 1979-01-02
+      data-max: 2022-04-11
+      data-units: Date  
+    - 
+      attr-label: ShortWave	
+      attr-def: >- 
+        Incoming radiant energy with wavelengths between ~300 and ~3000 nm, emitted by the 
+        sun and reaching the lake surface after passing through the atmosphere, as a daily average.
+      attr-defs: Read et al., 2021
+      data-min: 16.5142917
+      data-max: 361.2794167
+      data-units: W m^-2
+    - 
+      attr-label: LongWave	
+      attr-def: >-
+        Incoming thermal radiation at wavelengths > 3000 nm directed from the atmosphere to 
+        the lake surface, as a daily average.
+      attr-defs: Read et al., 2021
+      data-min: 132.0970847
+      data-max: 475.9529190
+      data-units: W m^-2	
+    - 
+      attr-label: AirTemp	
+      attr-def: >- 
+        Air temperature above the surface of the lake, as a daily average.
+      attr-defs: Read et al., 2021
+      data-min: -27.2049997
+      data-max: 37.2866735
+      data-units: degrees C		
+    - 
+      attr-label: RelHum	
+      attr-def: Relative humidity of the air above the surface of the lake, as a daily average.
+      attr-defs: Read et al., 2021
+      data-min: 24.7956927
+      data-max: 97.4631846
+      data-units: percent
+    - 
+      attr-label: WindSpeed	
+      attr-def: >- 
+        Speed of the wind above the lake, calculated to a daily number using the methods 
+        described in Winslow et al., 2017.
+      attr-defs: Read et al., 2021
+      data-min: 0.6168285
+      data-max: 12.4093538
+      data-units: m s^-1 	
+    - 
+      attr-label: Rain	
+      attr-def: >-
+        Daily rate of rain reaching the lake surface in a day as described in 
+        Winslow et al. 2017; rate as determined by Hipsey et al. 2019.
+      attr-defs: Read et al., 2021
+      data-min: 0
+      data-max: 0.1619468
+      data-units: m day^-1 	
+    - 
+      attr-label: Snow	
+      attr-def: >-
+        Daily rate of snow reaching the lake surface in a day as described in 
+        Winslow et al. 2017. 
+      attr-defs: Read et al., 2021
+      data-min: 0
+      data-max: 0.7937960
+      data-units: m day^-1
 
 
 purpose: Fisheries biology, limnological research, and climate science.
