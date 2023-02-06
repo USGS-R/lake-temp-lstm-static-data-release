@@ -542,6 +542,19 @@ entities:
       data-min: 0
       data-max: 0.7937960
       data-units: m day^-1
+  -
+    data-name: meteorological_inputs_GCM.zip
+    data-description: >- 
+      TODO
+    attributes:
+    - 
+      attr-label: TODO
+      attr-def: >-
+        TODO
+      attr-defs: TODO
+      data-min: TODO
+      data-max: TODO
+      data-units: TODO
 
 
 purpose: Fisheries biology, limnological research, and climate science.
