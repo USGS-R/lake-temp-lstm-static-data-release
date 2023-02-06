@@ -146,7 +146,7 @@ targets:
   out_xml/fgdc_metadata.xml:
     command: render(filename = target_name,
       "in_text/text_data_release.yml",
-      spatial_metadata)
+      lake_locations_metadata)
     
   log/sb_posted_files.csv:
     command: sb_replace_files_log(filename = target_name, 
