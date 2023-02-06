@@ -62,7 +62,7 @@ prep_lake_metadata <- function(out_file, lake_centroids_sf, lstm_metadata_file, 
            state,
            centroid_lon = X,
            centroid_lat = Y,
-           depth = lake_depth,
+           max_depth = lake_depth,
            area,
            elevation,
            clarity = Kw,
@@ -71,7 +71,7 @@ prep_lake_metadata <- function(out_file, lake_centroids_sf, lstm_metadata_file, 
            model_preds_ealstm_nldas,
            model_preds_glm_nldas,
            model_preds_glm_gcm,
-           ea_lstm_group = lstm_group)
+           ealstm_group = lstm_group)
   
   write_csv(lake_metadata, out_file)
 }
