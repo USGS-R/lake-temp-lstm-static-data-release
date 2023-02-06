@@ -20,18 +20,18 @@ Need to have CRAN package `sbtools` installed
 
 For this pipeline specifically, it is being built on the USGS Tallgrass HPC system. Follow instructions in the DSP manual in order to start an R session on Tallgrass. Since the code uses `scipiper::gd_get()` along with `lake-temperature-model-prep`, you will likely need to setup authorization to the Google Drive folder if you are to build targets the call `scipiper_freshen_files()`. To do so, follow these instructions.
 
-To allow `gd_get()` to actually download files, you need to prep your credentials to avoid the browser-mediated authorization (does not work on the HPC systems). I used the "Project-level OAuth cache" section of [this vignette](https://cran.r-project.org/web/packages/gargle/vignettes/non-interactive-auth.html) to develop this workflow. 
+To allow `gd_get()` to actually download files, you need to prep your credentials to avoid the browser-mediated authorization (does not work on the HPC systems). I used the "Project-level OAuth cache" section of [this vignette](https://cran.r-project.org/web/packages/gargle/vignettes/non-interactive-auth.html) to develop this workflow. You should only need to follow steps 1-3 one time:
 
-*Step 1:* Locally, run the following to authorize GoogleDrive and create a token file. Important: DON'T COMMIT THIS FILE ANYWHERE. You only need to do this the one time. Once you have this setup, you can skip to Step 3.
+* *Step 1:* Locally, run the following to authorize GoogleDrive and create a token file. Important: DON'T COMMIT THIS FILE ANYWHERE. You only need to do this the one time. Once you have this setup, you can skip to Step 4.
 
 ```
 options(gargle_oauth_cache = ".secrets")
 googledrive::drive_auth(cache = ".secrets")
 ```
 
-*Step 2:* Upload the file to the `.secrets/` directory in `lake-temperature-model-prep/` on Caldera. Be sure that `.secrets/*` appears in the gitignore (it already should, but please check!).
+* *Step 2:* Upload the file to the `.secrets/` directory in `lake-temperature-model-prep/` on Caldera. Be sure that `.secrets/*` appears in the gitignore (it already should, but please check!).
 
-*Step 3:* Verify that the authorization will work by running the following code. If it returns at least one file, then you can carry on with the build. The `options()` here will need to be run every time you are building the pipeline (unless everything has been "freshened" already).
+* *Step 3:* Verify that the authorization will work by running the following code. If it returns at least one file, then you can carry on with the build. The `options()` here will need to be run every time you are building the pipeline (unless everything has been "freshened" already).
 
 ```
 options(
@@ -40,3 +40,6 @@ options(
 )
 googledrive::drive_find(n_max = 1)
 ```
+
+* *Step 4:* The `.Rprofile` file in this repo is currently setup to load `scipiper` and set the gargle options described above. Update that file as needed so that these options are automatically set when you start R on Tallgrass.
+
