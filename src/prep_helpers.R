@@ -29,7 +29,7 @@ prep_nldas_driver_info <- function(data_file, lakes_in_release) {
 prep_gcm_driver_info <- function(data_file, lakes_in_release) {
   read_csv(data_file) %>% 
     filter(site_id %in% lakes_in_release) %>% 
-    select(site_id, cell_no)
+    select(site_id, cell_no = data_cell_no)
 }
 
 prep_lake_metadata <- function(out_file, lake_centroids_sf, lstm_metadata_file, glm_nldas_sites, glm_gcm_sites,
