@@ -92,50 +92,150 @@ file-format: a single comma-delimited file and a single zipped shapefile
 
 entities:
   -
-    data-name: example_cars.csv
-    data-description: A csv file containing important information...
+    data-name: lake_locations.zip
+    data-description: GIS polygon data for the 62,966 lakes included in this study
     attributes:
     -
-      attr-label: speed
-      attr-def: definition of column_name_1
+      attr-label: site_id
+      attr-def: >-
+        Lake identification number for this dataset. It is the Prmnn_I from NHD high-res prefixed
+        with source, as "nhdhr_{Prmnn_I}". The ids have a mix of characters and some can include
+        special characters, such as "{" and "}".
       attr-defs: >-
-        citation or URL of column_name_1. If citation, should appear in cross-cites. Can use NA or "This release"
-      data-min: NA
-      data-max: NA
-      data-units: NA
-    -
-      attr-label: dist
-      attr-def: definition of column_name_2
-      attr-defs: >-
-        citation or URL of column_name_2. If citation, should appear in cross-cites. Can use NA or "This release"
+        http://nhd.usgs.gov/
       data-min: NA
       data-max: NA
       data-units: NA
   -
-    data-name: example_shapefile.zip
-    data-description: A zip file containing...
+    data-name: lake_metadata.csv
+    data-description: Select metadata for the 62,966 lakes included in this study
     attributes:
     -
-      attr-label: x
-      attr-def: definition of x
+      attr-label: site_id
+      attr-def: >-
+        Lake identification number for this dataset. It is the Prmnn_I from NHD high-res prefixed
+        with source, as "nhdhr_{Prmnn_I}". The ids have a mix of characters and some can include
+        special characters, such as "{" and "}".
       attr-defs: >-
-        citation or URL of x. If citation, should appear in cross-cites. Can use NA or "This release"
+        http://nhd.usgs.gov/
       data-min: NA
       data-max: NA
-      data-units: NA  
+      data-units: NA 
     -
-      attr-label: y
-      attr-def: definition of y
+      attr-label: lake_name
+      attr-def: GNIS Name for each lake. Usually the common name of the lake. NA when missing. 
       attr-defs: >-
-        citation or URL of y. If citation, should appear in cross-cites. Can use NA or "This release"
+        http://nhd.usgs.gov/
       data-min: NA
       data-max: NA
       data-units: NA
     -
-      attr-label: z
-      attr-def: definition of z
+      attr-label: state
+      attr-def: >-
+        Two letter abbreviated state name for the state this lake's centroid falls into. Note that 
+        the lake surface may cross into other states.
+      attr-defs: NA
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
+      attr-label: centroid_lon 
+      attr-def: Longitude (decimal-degrees) of the centroid of this lake (for purposes of linking meteorological data cells)
+      attr-defs: NA
+      data-min: -104.0117
+      data-max: -83.08698
+      data-units: decimal-degrees
+    -
+      attr-label: centroid_lat
+      attr-def: Latitude (decimal-degrees) of the centroid of this lake (for purposes of linking meteorological data cells)
+      attr-defs: NA
+      data-min: 37.13825
+      data-max: 49.05203
+      data-units: decimal-degrees
+    -
+      attr-label: max_depth
+      attr-def: Maximum known depth of the lake
       attr-defs: >-
-        citation or URL of z. If citation, should appear in cross-cites. Can use NA or "This release"
+        TODO: WHERE DID THESE COME FROM?
+      data-min: TODO
+      data-max: TODO
+      data-units: meters
+    -
+      attr-label: area
+      attr-def: Known surface area of the lake
+      attr-defs: >-
+        TODO: WHERE DID THESE COME FROM?
+      data-min: TODO
+      data-max: TODO
+      data-units: square meters
+    -
+      attr-label: elevation
+      attr-def: TODO
+      attr-defs: >-
+        TODO: WHERE DID THESE COME FROM?
+      data-min: TODO
+      data-max: TODO
+      data-units: TODO
+    -
+      attr-label: clarity
+      attr-def: >- 
+        The lake's clarity represented as the extinction coefficient, k. Single value for each 
+        lake derived from either averaged time-varying predictions of k or calculated from secchi 
+        depth using k=1.7/secchi.
+      attr-defs: >-
+        TODO: WHERE DID THESE COME FROM?
+      data-min: TODO
+      data-max: TODO
+      data-units: meters^-1
+    -
+      attr-label: driver_nldas_filepath
+      attr-def: >- 
+        A filepath corresponding to the CSV file stored in "meteorological_inputs_NLDAS.zip", which  
+        contains the appropriate NLDAS meteorological data used for modeling each lake.
+      attr-defs: NA
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
+      attr-label: driver_gcm_cell_no
+      attr-def: >-
+        Cell number mapping to a grid cell id for each NetCDF file stored in "meteorological_inputs_GCM.zip", 
+        which contains the appropriate GCM meteorological data used for modeling each lake.
+      attr-defs: NA
+      data-min: TODO
+      data-max: TODO
+      data-units: NA
+    -
+      attr-label: model_preds_ealstm_nldas
+      attr-def: >- 
+        TRUE or FALSE values saying whether or not the lake was modeled by the EA-LSTM model. All 62,966
+        lakes included in this study were modeled by EA-LSTM and this column only contains values of TRUE.
+      attr-defs: NA
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
+      attr-label: model_preds_glm_nldas
+      attr-def: >- 
+        TRUE or FALSE values saying whether or not the lake was modeled by GLM with NLDAS drivers. 12,688 of
+        the lakes included in this study were modeled by GLM with NLDAS (aka contemporary period only).
+      attr-defs: NA
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
+      attr-label: model_preds_glm_gcm
+      attr-def: >- 
+        TRUE or FALSE values saying whether or not the lake was modeled by GLM with GCM drivers. 11,715 of
+        the lakes included in this study were modeled by GLM with GCM (aka future climate scenarios).
+      attr-defs: NA
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
+      attr-label: ealstm_group
+      attr-def: TODO (ANDY!)
+      attr-defs: NA
       data-min: NA
       data-max: NA
       data-units: NA
