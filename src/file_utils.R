@@ -3,6 +3,7 @@
 scipiper_freshen_files <- function(ind_files = NULL, data_files = NULL, repo_path = '../../lake-temp/lake-temperature-model-prep/') {
   message(sprintf('Temporarily setting working directory to > %s', repo_path))
   cwd <- getwd()
+  on.exit(setwd(cwd)) # Reset working directory even if this function fails!
   setwd(repo_path)
   
   # Prep files
@@ -18,7 +19,7 @@ scipiper_freshen_files <- function(ind_files = NULL, data_files = NULL, repo_pat
   message('All have been freshened.')
   
   message(sprintf('Resetting working directory to > %s', cwd))
-  setwd(cwd)
+  setwd(cwd) # Reset working directory
   return(ind_files)
 } 
 

@@ -7,6 +7,7 @@ list_uncompressed_ncs <- function(tar_nm, tar_dir = '../../lake-temp/lake-temper
   # In order to use targets helper functions, you need to be 
   # in the targets pipeline working directory.
   startwd <- getwd()
+  on.exit(setwd(startwd)) # Reset working directory even if this function fails!
   setwd(tar_dir)
   
   # List out the files included in that target and filter to only the 
@@ -15,7 +16,7 @@ list_uncompressed_ncs <- function(tar_nm, tar_dir = '../../lake-temp/lake-temper
   ncs_out <- ncs_all[grepl(group_regex, ncs_all)]
   
   names(ncs_out) <- NULL # Drop names attribute
-  on.exit(setwd(startwd)) # Reset working directory
+  setwd(startwd) # Reset working directory
   return(ncs_out)
 }
 
