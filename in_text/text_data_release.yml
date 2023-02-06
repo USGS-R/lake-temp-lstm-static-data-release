@@ -98,7 +98,7 @@ entities:
     -
       attr-label: site_id
       attr-def: >-
-        Lake identification number for this dataset. It is the Prmnn_I from NHD high-res prefixed
+        Lake identification number for this study. It is the Prmnn_I from NHD high-res prefixed
         with source, as "nhdhr_{Prmnn_I}". The ids have a mix of characters and some can include
         special characters, such as "{" and "}".
       attr-defs: >-
@@ -113,7 +113,7 @@ entities:
     -
       attr-label: site_id
       attr-def: >-
-        Lake identification number for this dataset. It is the Prmnn_I from NHD high-res prefixed
+        Lake identification number for this study. It is the Prmnn_I from NHD high-res prefixed
         with source, as "nhdhr_{Prmnn_I}". The ids have a mix of characters and some can include
         special characters, such as "{" and "}".
       attr-defs: >-
@@ -236,6 +236,156 @@ entities:
       attr-label: ealstm_group
       attr-def: TODO (ANDY!)
       attr-defs: NA
+      data-min: NA
+      data-max: NA
+      data-units: NA
+  -
+    data-name: lake_id_crosswalk.csv
+    data-description: >- 
+      Mapping between the identifications for lakes used in this data release ("site_id") to X different 
+      state or other organization identification systems. Note that the mapping is not always a 1:1, m
+      meaning that some lakes in this study's identification system map to more than one lake id from
+      another and vice versa. For this file, "NA" represents no match between the IDs.
+    attributes:
+    -
+      attr-label: site_id
+      attr-def: >-
+        Lake identification number for this study. It is the Prmnn_I from NHD high-res prefixed
+        with source, as "nhdhr_{Prmnn_I}". The ids have a mix of characters and some can include
+        special characters, such as "{" and "}".
+      attr-defs: >-
+        http://nhd.usgs.gov/
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
+      attr-label: IADNR_ID
+      attr-def: >- 
+        Lake identifier as defined by Iowa Department of Natural Resources. 134 "IADNR_ID"
+        values are mapped to one or more "site_id" values.
+      attr-defs: >-
+        https://www.iowadnr.gov/
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
+      attr-label: IN_CLP_ID
+      attr-def: >- 
+        Lake identifier as defined by the Indiana Clean Lakes Program. 344 "IN_CLP_ID" values
+        are mapped to one or more "site_id" values.
+      attr-defs: >-
+        https://clp.indiana.edu/
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
+      attr-label: IN_DNR_ID
+      attr-def: >- 
+        Lake identifier as defined by the Indiana Department of Natural Resources. 342 "IN_DNR_ID"
+        values are mapped to one or more "site_id" values.
+      attr-defs: >-
+        https://www.in.gov/dnr/
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
+      attr-label: LAGOS_ID
+      attr-def: >- 
+        Lake identifier as defined by the LAke multi-scale GeOSpatial and temporal 
+        database (LAGOS). 51,551 "LAGOS_ID" values are mapped to one or more "site_id" values.
+      attr-defs: >-
+        https://lagoslakes.org/
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
+      attr-label: MGLP_ID
+      attr-def: >- 
+        Lake identifier as defined by the Midwest Glacial Lakes Partnership (MGLP). 
+        33,488 "MGLP_ID" values are mapped to one or more "site_id" values.
+      attr-defs: >-
+        https://midwestglaciallakes.org/
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
+      attr-label: MICORPS_ID
+      attr-def: >- 
+        Lake identifier as defined by the Michigan Clean Water Corps. 32 "MICORPS_ID" 
+        values are mapped to one or more "site_id" values.
+      attr-defs: >-
+        https://micorps.net/
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
+      attr-label: MNDOW_ID
+      attr-def: >- 
+        Lake identifier as defined by the Minnesota Department of Natural Resources. 12,630 "MNDOW_ID" 
+        values are mapped to one or more "site_id" values.
+      attr-defs: >-
+        https://www.dnr.state.mn.us/
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
+      attr-label: MO_USACE_ID
+      attr-def: >- 
+        Lake identifier as defined by the Missouri US Army Corps of Engineers. 38 "MO_USACE_ID" 
+        values are mapped to one or more "site_id" values.
+      attr-defs: >-
+        https://www.mvs.usace.army.mil/
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
+      attr-label: NDGF_ID
+      attr-def: >- 
+        Lake identifier as defined by the North Dakota Game and Fish Department. 327 "NDGF_ID" 
+        values are mapped to one or more "site_id" values.
+      attr-defs: >-
+        https://gf.nd.gov/
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
+      attr-label: SD_ID
+      attr-def: >- 
+        Lake identifier as defined by the South Dakota Department of Agriculture and Natural 
+        Resources. 121 "SD_ID" values are mapped to one or more "site_id" values. 
+      attr-defs: >-
+        https://danr.sd.gov/
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
+      attr-label: UNDERC_ID
+      attr-def: >- 
+        Lake identifier as defined by the University of Notre Dame Environmental Research 
+        Center (UNDERC). 140 "UNDERC_ID" values are mapped to one or more "site_id" values.
+      attr-defs: >-
+        https://underc.nd.edu/
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
+      attr-label: WBIC_ID
+      attr-def: >- 
+        Wisconsin Department of Natural Resources' WaterBody Id Code (WBIC). 6,401 "WBIC_ID" 
+        values are mapped to one or more "site_id" values.
+      attr-defs: >-
+        https://dnr.wisconsin.gov/
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
+      attr-label: WINSLOW_ID
+      attr-def: >- 
+        Lake identifier as defined by an earlier lake temperature data release, which may be 
+        referenced by users of this study. 10,126 "WINSLOW_ID" values are mapped to one or 
+        more "site_id" values.
+      attr-defs: >-
+        Winslow et al., 2017
       data-min: NA
       data-max: NA
       data-units: NA
