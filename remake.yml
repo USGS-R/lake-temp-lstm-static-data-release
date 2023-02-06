@@ -150,7 +150,7 @@ targets:
     
   log/sb_posted_files.csv:
     command: sb_replace_files_log(filename = target_name, 
-      sb_id = I('5faaac68d34eb413d5df1f22')
+      sb_id = I('5faaac68d34eb413d5df1f22'),
       "out_data/lake_locations.zip",
       "out_data/lake_metadata.csv",
       "out_data/lake_id_crosswalk.csv",
