@@ -424,6 +424,45 @@ entities:
       data-min: 0
       data-max: 4826438780
       data-units: square meters
+  -
+    data-name: lake_temperature_observations.zip
+    data-description: >- 
+      A zip file containing one csv of temperature observation data for 8,760 lakes. Observations were
+      compiled from a variety of data sources, including local monitoring organizations and state
+      agencies. For a lake to appear in this file, it needs to have at least one observation.
+    attributes:
+    -
+      attr-label: site_id
+      attr-def: >-
+        Lake identification number for this study. It is the Prmnn_I from NHD high-res prefixed
+        with source, as "nhdhr_{Prmnn_I}". The ids have a mix of characters and some can include
+        special characters, such as "{" and "}".
+      attr-defs: >-
+        http://nhd.usgs.gov/
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
+      attr-label: date
+      attr-def: Date of temperature measurement
+      attr-defs: NA
+      data-min: 1979-01-03
+      data-max: 2022-05-23
+      data-units: NA
+    -
+      attr-label: depth
+      attr-def: Depth of temperature measurement below water surface
+      attr-defs: NA
+      data-min: 0
+      data-max: 155.450
+      data-units: meters
+    -
+      attr-label: temp
+      attr-def: Water temperature
+      attr-defs: NA
+      data-min: 0
+      data-max: 40.00
+      data-units: degrees C
 
 
 purpose: Fisheries biology, limnological research, and climate science.
