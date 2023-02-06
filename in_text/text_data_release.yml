@@ -555,6 +555,37 @@ entities:
       data-min: TODO
       data-max: TODO
       data-units: TODO
+  -
+    data-name: lake_temp_preds_{MODEL}_{DRIVERS}_{STATE SUBSET OR GCM TYPE}.zip
+    data-description: >- 
+      This data release includes 9 zip files of lake temperature predictions. Each zip file contains NetCDF
+      files of the lake temperature predictions, one NetCDF file per state. All the NetCDF files are organized
+      in almost the exact same way (any differences are noted in the attributes below).
+      
+      Each zip contains NetCDF files with predictions for the same model-driver combination (there are three), 
+      and further subsets of those main combinations were made in order to keep each zip file under 10 GB. The 
+      `{MODEL}` field noted in the filename pattern above will be either "EALSTM" for the Entity-Aware Long 
+      Short-Term Memory model or "GLM" for the General Lake Model. The `{DRIVERS}` field in the filename will 
+      be either "NLDAS" for the North American Land Data Assimilation System drivers covering the contemporary 
+      period or "GCM" for the Global Climate Models which includes meteorological data under future climate scenarios. 
+      
+      The {STATE SUBSET OR GCM TYPE} field (if present) further groups the NetCDFs in order for the zip files to
+      remain under 10 GB. The "EALSTM_NLDAS" predictions were grouped into subsets alphabetically by state: the 
+      "AR-MN" file contains NetCDFs for AR, IA, IL, IN, KS, KY, LA, MI, and MN, while the "MO-WY" file contains
+      NetCDFs for MO, MS, MT, ND, NE, OH, OK, SD, TN, TX, WI, and WY. The "GLM_NLDAS" predictions fit into a 
+      single zip file with NetCDFs for 11 states: AR, IA, IL, IN, MI, MN, MO, ND, OH, SD, and WI. Lastly, the 
+      "GLM_GCM" predictions had to be grouped into separate CSVs based on the 6 different climate models used
+      (ACCESS, CNRM, GFDL, IPSL, MIROC5, and MRI), each of those zips contains one NetCDF per state (same 11
+      states as "GLM_NLDAS").
+    attributes:
+    - 
+      attr-label: TODO
+      attr-def: >-
+        TODO
+      attr-defs: TODO
+      data-min: TODO
+      data-max: TODO
+      data-units: TODO
 
 
 purpose: Fisheries biology, limnological research, and climate science.
