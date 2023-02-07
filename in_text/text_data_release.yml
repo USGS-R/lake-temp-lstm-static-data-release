@@ -86,6 +86,80 @@ cross-cites:
       Daily surface temperature predictions for 185,549 U.S. lakes with associated observations and meteorological conditions (1980-2020)
     pubdate: 2022
     link: https://doi.org/10.1002/lol2.10249
+  -
+    authors: ['Donald A. Wismer', 'Alan E. Christie']
+    title: >-
+      Temperature Relationships of Great Lakes Fishes: A Data Compilation
+    pubdate: 1987
+    form: publication
+    link: http://www.glfc.org/pubs/SpecialPubs/Sp87_3.pdf
+  -
+    authors: ['Wolf-Dieter N. Busch', 'Russell L. Scholl', 'Wilbur L. Hartman']
+    title: >-
+      Environmental factors affecting the strength of walleye (Stizostedion
+      vitreum vitreum) year-classes in western Lake Erie, 1960-70
+    pubdate: 1975
+    form: publication
+    link: https://doi.org/10.1139/f75-207
+  -
+    authors: ['Charles P. Madenjian', 'Jeffrey T. Tyson', 'Roger L. Knight', 'Mark W. Kershner', 'Michael J. Hansen']
+    title: >-
+      First-year growth, recruitment, and maturity of walleyes in western Lake Erie
+    pubdate: 1996
+    form: publication
+    link: https://doi.org/10.1577/1548-8659(1996)125<0821:FYGRAM>2.3.CO;2
+  -
+    authors: ['Xing Fang', 'Heinz G, Stefan', 'John G. Eaton', 'J. Howard McCormick', 'Shoeb R. Alam']
+    title: >-
+      Simulation of thermal/dissolved oxygen habitat for fishes in lakes under different
+      climate scenarios: Part 1. Cool-water fish in the contiguous US
+    pubdate: 2004
+    form: publication
+    link: https://doi.org/10.1016/S0304-3800(03)00282-5
+  -
+    authors: ['Gavin C. Christie', 'Henry A. Regier']
+    title: >-
+      Measures of optimal thermal habitat and their relationship to yields for four commercial fish species
+    pubdate: 1988
+    form: publication
+    link: https://doi.org/10.1139/f88-036
+  -
+    authors: ['Timothy J. Cline', 'Val Bennington', 'James F. Kitchell']
+    title: >-
+      Climate change expands the spatial extent and duration of preferred thermal habitat for Lake Superior fishes
+    pubdate: 2013
+    form: publication
+    link: https://doi.org/10.1371/journal.pone.0062279
+  -
+    authors: ['J.M. Casselman']
+    title: >-
+      Effects of temperature, global extremes, and climate change on year-class production
+      of warmwater, coolwater, and coldwater fishes in the Great Lakes Basin
+    pubdate: 2002
+    form: publication
+    # Behind paywall in symposium proceedings, so not including in final metadata
+    # link: https://fisheries.org/bookstore/all-titles/afs-symposia/x54032xm/
+  -
+    authors: ['Charles C. Coutant']
+    title: >-
+      Compilation of temperature preference data
+    pubdate: 1977
+    form: publication
+    link: https://doi.org/10.1139/f77-115
+  -
+    authors: ['John G. Eaton', 'J. Howard McCormick', 'B.E. Goodno', "D.G. O'Brien", 'Heinz G. Stefan', 'M. Hondzo', 'Robert M. Scheller']
+    title: >-
+      A field information-based system for estimating fish temperature tolerances
+    pubdate: 1995
+    form: publication
+    link: https://doi.org/10.1577/1548-8446(1995)020<0010:AFISFE>2.0.CO;2
+  -
+    authors: ['Jordan S. Read', 'David P. Hamilton', 'Ian D. Jones', 'Kohji Muraoka', 'Luke A. Winslow', 'Ryan Kroiss', 'Chin H. Wu', 'Evelyn Gaiser']
+    title: >-
+      Derivation of lake mixing and stratification indices from high-resolution lake buoy data
+    pubdate: 2011
+    form: publication
+    link: https://doi.org/10.1016/j.envsoft.2011.05.006
 
 process-date: !expr format(Sys.time(),'%Y%m%d')
 file-format: a single comma-delimited file and a single zipped shapefile
