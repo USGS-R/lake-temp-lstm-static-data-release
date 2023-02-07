@@ -173,8 +173,7 @@ prep_lake_temp_obs <- function(out_file, data_file, lakes_in_release, earliest_p
     select(-source_id)
   
   # Save the CSV in a temporary location
-  tmp_space <- tempdir()
-  obs_csv <- file.path(tmp_space, 'lake_temperature_observations.csv')
+  obs_csv <- file.path('tmp_data', 'lake_temperature_observations.csv')
   write_csv(temp_obs_all, obs_csv)
   
   # Compress the CSV into a single zip file in this directory
