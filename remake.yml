@@ -129,16 +129,16 @@ targets:
     command: prep_netcdfs(out_file = target_name, tar_nm = I('p3_gcm_glm_uncalibrated_nc'), group_regex = I('MRI'))
   
   out_data/lake_temperature_metrics_GLM_NLDAS.csv:
-    command: scipiper_copy(
-      out_file = target_name,
-      data_file = '../../lake-temp/lake-temperature-out/3_summarize/out/annual_metrics_glm3_pb0nldas.csv',
-      repo_path = I('../../lake-temp/lake-temperature-out'))
+    command: file.copy(
+      to = target_name,
+      from = '../../lake-temp/lake-temperature-out/3_summarize/out/annual_metrics_glm3_pb0nldas.csv',
+      overwrite = TRUE)
       
   out_data/lake_temperature_metrics_GLM_GCM.csv:
-    command: scipiper_copy(
-      out_file = target_name,
-      data_file = '../../lake-temp/lake-temperature-out/3_summarize/out/annual_metrics_glm3_pb0gcm.csv',
-      repo_path = I('../../lake-temp/lake-temperature-out'))
+    command: file.copy(
+      to = target_name,
+      from = '../../lake-temp/lake-temperature-out/3_summarize/out/annual_metrics_glm3_pb0gcm.csv',
+      overwrite = TRUE)
   
   # TODO: lake_temp_preds_extraction_example.R
   # TODO: lake_temp_preds_extraction_example.py
