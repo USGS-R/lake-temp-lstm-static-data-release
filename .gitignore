@@ -10,3 +10,6 @@ out_data/*.zip
 out_xml/*.xml
 in_data/*
 !in_data/.empty
+tmp_data/*
+!tmp_data/EMPTY
+
