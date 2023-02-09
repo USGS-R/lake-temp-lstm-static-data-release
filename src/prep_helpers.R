@@ -181,7 +181,7 @@ prep_lake_temp_obs <- function(out_file, data_file, lakes_in_release, earliest_p
 }
 
 # Zip up NLDAS csvs
-prep_NLDAS_drivers <- function(out_file, nldas_driver_info, driver_file_dir) {
+prep_NLDAS_drivers <- function(out_file, nldas_driver_info, driver_file_dir, tmp_dir) {
   # The NLDAS drivers are coming from a targets repo, not scipiper so no need for `scipiper_freshen_files()`
   # This will need to be run on Tallgrass in order to have the most up-to-date data, though.
   files_to_zip <- file.path(driver_file_dir, nldas_driver_info$meteo_fl)
@@ -189,7 +189,8 @@ prep_NLDAS_drivers <- function(out_file, nldas_driver_info, driver_file_dir) {
   # Before zipping, move the files to the current directory (I got scared by a warning when I was testing
   # this on Tallgrass that said `Some paths reference parent directory, creating non-portable zip file`,
   # so I created this solution, which definitely costs more time but gets rid of that warning).
-  files_moved <- file.path(dirname(out_file), basename(files_to_zip))
+  if(!dir.exists(tmp_dir)) dir.create(tmp_dir)
+  files_moved <- file.path(tmp_dir, basename(files_to_zip))
   file.copy(from = files_to_zip, to = files_moved)
   
   # Zip the files!
@@ -200,7 +201,7 @@ prep_NLDAS_drivers <- function(out_file, nldas_driver_info, driver_file_dir) {
 }
 
 # Zip up GCM NetCDFs
-prep_GCM_drivers <- function(out_file, driver_file_dir, gcm_driver_regex) {
+prep_GCM_drivers <- function(out_file, driver_file_dir, tmp_dir, gcm_driver_regex) {
   # The GCM drivers are coming from a targets repo, not scipiper so no need for `scipiper_freshen_files()`
   # This will need to be run on Tallgrass in order to have the most up-to-date data, though.
   files_to_zip <- list.files(driver_file_dir, pattern = gcm_driver_regex, full.names = TRUE)
@@ -208,7 +209,8 @@ prep_GCM_drivers <- function(out_file, driver_file_dir, gcm_driver_regex) {
   # Before zipping, move the files to the current directory (I got scared by a warning when I was testing
   # this on Tallgrass that said `Some paths reference parent directory, creating non-portable zip file`,
   # so I created this solution, which definitely costs more time but gets rid of that warning).
-  files_moved <- file.path(dirname(out_file), basename(files_to_zip))
+  if(!dir.exists(tmp_dir)) dir.create(tmp_dir)
+  files_moved <- file.path(tmp_dir, basename(files_to_zip))
   file.copy(from = files_to_zip, to = files_moved)
   
   # Zip the files!
