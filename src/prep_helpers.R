@@ -46,7 +46,7 @@ prep_lake_metadata <- function(out_file, lake_centroids_sf, lstm_metadata_file, 
     left_join(ungroup(readRDS(lake_depths_file)), by = "site_id") %>% 
     left_join(ungroup(readRDS(lake_clarity_file)), by = "site_id") %>% 
     # ADD LSTM-specific metadata
-    left_join(read_csv(lstm_metadata_file), by = "site_id") %>% 
+    left_join(read_csv(lstm_metadata_file), by = c("site_id", "GNIS_Name")) %>% 
     # Remove sites that don't have any LSTM predictions (those are outside of our scope)
     filter(lstm_predictions) %>% 
     # Add three additional columns indicating whether a particular model is available for that site
