@@ -2,7 +2,6 @@ library(RNetCDF)
 library(ncmeta) # need version 0.3.5 or higher - devtools::install_github("https://github.com/hypertidy/ncmeta.git")
 library(tidyverse)
 library(ncdfgeom) # need version >= v1.1.2
-source('src/netCDF_extract_utils.R')
 
 # Before you can run this script, make sure that you have also downloaded
 # the `netCDF_extract_utils.R` script from ScienceBase 
