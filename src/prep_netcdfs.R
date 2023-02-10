@@ -36,7 +36,7 @@ do_compression <- function(uncompressed_ncs, shell_fn, allow_skip = FALSE) {
   # Prep compression command strings
   compress_cmds <- sprintf("ncks --overwrite -h --fl_fmt=netcdf4 --cnk_plc=g3d --cnk_dmn time,10 --ppc temp=.2#ice=1 %s %s",
                            uncompressed_ncs_to_compress, compressed_ncs_to_compress)
-  full_cmds <- c('#!/bin/bash', 'module load nco', 'module load netcdf', compress_cmds)
+  full_cmds <- c('#!/bin/bash', compress_cmds)
   write_lines(full_cmds, shell_fn)
   
   # Actually do the compression
