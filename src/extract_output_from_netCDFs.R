@@ -32,7 +32,8 @@ lake_sites <- c(nc_info$timeseries_id[3:13], nc_info$timeseries_id[1], nc_info$t
 # if wide format, columns are named {site_id}_{depth}
 temp_data <- pull_data_for_sites(nc_file, nc_info, var = 'temp', sites = lake_sites, long_format = TRUE)
 
-# Pull boolean ice predictions (for all dates) for those lakes
+# Pull boolean ice predictions (for all dates) for those lakes. Note that `ice` is not available
+# for the EA-LSTM predictions and the following line will not work if you are working with those.
 # Ice units: 1 = ice is present; 0 = no ice is present
 # can specify wide (long_format = FALSE) or long format (long_format = TRUE)
 # if wide format, columns are named {site_id}
