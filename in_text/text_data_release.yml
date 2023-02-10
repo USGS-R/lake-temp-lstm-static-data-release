@@ -785,7 +785,7 @@ entities:
       attr-label: time
       attr-def: Date of the temperature prediction, formatted as `YYYY-MM-DD`
       attr-defs: NA
-      data-min: 1980-01-01
+      data-min: 1979-04-12
       data-max: 2099-12-31
       data-units: NA
     -
@@ -820,7 +820,7 @@ entities:
       data-units: degrees Celcius
     -
       attr-label: ice
-      attr-def: Boolean indicating presence of ice
+      attr-def: Boolean indicating presence of ice; not available for EA-LSTM predictions
       attr-defs: NA
       data-min: 0
       data-max: 1
