@@ -114,7 +114,7 @@ pull_data_for_sites <- function(nc_file, nc_info, var, sites, long_format = FALS
     }
     return(var_data)
   }) %>%
-    mutate(time = nc_info$time, .before = 1)
+    mutate(time = as.Date(nc_info$time), .before = 1)
   
   # If requested, transform into long format
   if (long_format && var == 'temp') {
