@@ -1,8 +1,10 @@
 library(RNetCDF)
 library(ncmeta) # need version 0.3.5 or higher - devtools::install_github("https://github.com/hypertidy/ncmeta.git")
 library(tidyverse)
+library(ncdfgeom) # need version >= v1.1.2
 source('src/netCDF_extract_utils.R')
 
+##### Read in temperature and ice predictions from a netCDF for a set of lakes #####
 nc_file <- 'lake_temp_preds_GLM_GCM_MIROC5_IA.nc'
 
 # Read in information about netCDF (variables, dates, etc.)
@@ -27,3 +29,24 @@ temp_data <- pull_data_for_sites(nc_file, nc_info, var = 'temp', sites = lake_si
 # can specify wide (long_format = FALSE) or long format (long_format = TRUE)
 # if wide format, columns are named {site_id}
 ice_data <- pull_data_for_sites(nc_file, nc_info, var = 'ice', sites = lake_sites, long_format = TRUE)
+
+##### Read in GCM driver data from a netCDF for a set of lakes #####
+
+# Define lake sites of interest
+lake_metadata <- readr::read_csv('lake_metadata.csv')
+
+# Define gcm driver file of interest
+gcm_nc_file <- 'GCM_MIROC5.nc'
+
+# use lake metadata and vector of lake sites to identify
+# which cells the lakes fall within
+gcm_cell_nos <- lake_metadata %>%
+  filter(site_id %in% lake_sites) %>%
+  pull(driver_gcm_cell_no) %>%
+  unique()
+
+# Pull gcm data for those cells
+# Returned dataframe includes gcm Shortwave, Longwave, AirTemp, 
+# RelHum, WindSpeed, Rain, and Snow variables for all dates
+# Warning 'no altitude coordinate found' is expected
+gcm_data <- pull_gcm_data_for_cells(gcm_nc_file, gcm_cell_nos)

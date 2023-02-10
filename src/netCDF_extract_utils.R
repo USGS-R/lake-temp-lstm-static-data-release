@@ -1,3 +1,35 @@
+#' @title pull gcm data for cells
+#' @description for the specified `cell_nos`, pull gcm data from the
+#' specified `nc_file`. The data will be pulled for all dates
+#' @param nc_file the filepath for the netCDF
+#' @param cell_nos a vector of cell numbers for which data will be pulled
+#' @returns a dataframe containing the gcm data for the specified cells,
+#' with columns for cell number and time
+pull_gcm_data_for_cells <- function(nc_file, cell_nos) {
+  # Read in nc file
+  nc <- ncdfgeom::read_timeseries_dsg(nc_file)
+  driver <- str_split(nc_file, "\\.|\\_")[[1]][2]
+  # Pull the vectors of dates
+  nc_dates <- lubridate::as_date(nc$time)
+  
+  time_period_cell_files <- purrr::map_df(cell_nos, function(cell_no) {
+    # For each variable stored in the netCDF...
+    cell_data <- purrr::map2_dfc(nc$data_frames, names(nc$data_frames), function(var_df, var_name) {
+      # Pull the column pertaining to the current cell and rename it to the variable name
+      var_cell_long <- var_df %>%
+        select(as.character(cell_no)) %>%
+        rename(!!var_name := as.character(cell_no))
+    }) %>%
+      # Once all variables have been compiled for each cell, add columns for the cell number and times
+      mutate(gcm_driver = driver,
+             cell_no = cell_no,
+             time = nc_dates) %>%
+      # Reorder the columns to match the standard order
+      select(gcm_driver, cell_no, time, Shortwave, Longwave, AirTemp, RelHum, WindSpeed, Rain, Snow)
+  })
+}
+
+
 #' @title read timeseries profile discrete sampling geometry netCDF
 #' @description read in information about the coordinates and variables in
 #' a discrete sampling geometry formatted netCDF file, and optionally
