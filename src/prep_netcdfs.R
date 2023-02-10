@@ -3,20 +3,14 @@
 # pipeline and save into one or more zips. It will create a bash script with a line per NetCDF file that 
 # needs to be compressed, execute that bash script, and then zip up the resulting compressed NetCDF files.
 
-list_uncompressed_ncs <- function(tar_nm, tar_dir = '../../lake-temp/lake-temperature-process-models', group_regex = '.*') {
-  # In order to use targets helper functions, you need to be 
-  # in the targets pipeline working directory.
-  startwd <- getwd()
-  on.exit(setwd(startwd)) # Reset working directory even if this function fails!
-  setwd(tar_dir)
+list_uncompressed_ncs <- function(tar_dir, group_regex = '.*') {
   
-  # List out the files included in that target and filter to only the 
+  # List out the files included in that directory and filter to only the 
   # ones match the `group_regex` (default is to match everything)
-  ncs_all <- targets::tar_read_raw(tar_nm)
+  ncs_all <- list.files(tar_dir, full.names=TRUE)
   ncs_out <- ncs_all[grepl(group_regex, ncs_all)]
   
   names(ncs_out) <- NULL # Drop names attribute
-  setwd(startwd) # Reset working directory
   return(ncs_out)
 }
 
@@ -54,10 +48,12 @@ do_compression <- function(uncompressed_ncs, shell_fn, allow_skip = FALSE) {
 
 # Use the two functions above to identify the NetCDF files from the other pipeline, compress
 # each NetCDF individually, and then zip them up into a single file.
-prep_netcdfs <- function(out_file, tar_nm, tar_dir = '../../lake-temp/lake-temperature-process-models', group_regex = NULL, shell_fn = 'compress_ncs.sh') {
+# `tar_dir` defaults to the GCM directory just so that the remake.yml file instructions can
+# be shorter since the call to `prep_netcdfs` is repeated 6 times.
+prep_netcdfs <- function(out_file, tar_dir = '../../lake-temp/lake-temperature-process-models/3_extract/out/lake_temp_preds_glm_gcm', group_regex = NULL, shell_fn = 'compress_ncs.sh') {
   
   # List out uncompressed NetCDF filepaths
-  uncompressed_ncs <- list_uncompressed_ncs(tar_nm, tar_dir, group_regex)
+  uncompressed_ncs <- list_uncompressed_ncs(tar_dir, group_regex)
   
   # Compress the files
   compressed_ncs <- do_compression(uncompressed_ncs, shell_fn)

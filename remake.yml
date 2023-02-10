@@ -111,24 +111,27 @@ targets:
   
   # Small enough to fit into one file
   out_data/lake_temp_preds_GLM_NLDAS.zip:
-    command: prep_netcdfs(out_file = target_name, tar_nm = I('p3_nldas_glm_uncalibrated_nc'))
+    command: prep_netcdfs(
+      out_file = target_name, 
+      tar_dir = I('../../lake-temp/lake-temperature-process-models/3_extract/out/lake_temp_preds_glm_NLDAS'),
+      group_regex = I('lake_temp_preds_glm_NLDAS_([A-Z]{2})_uncompressed.nc'))
   
   # The GCM files were too big to include in one zip (~30 GB) & due to how big MN is on its own, we
   # could not take the approach that EALSTM_NLDAS did with splitting into just two zips.
   # Note: there is a way to do this where I don't copy/paste/edit each of these targets
   # but I don't remember exactly how to implement and there are only 6, so this is faster!
   out_data/lake_temp_preds_GLM_GCM_ACCESS.zip:
-    command: prep_netcdfs(out_file = target_name, tar_nm = I('p3_gcm_glm_uncalibrated_nc'), group_regex = I('ACCESS'))
+    command: prep_netcdfs(out_file = target_name, group_regex = I('lake_temp_preds_glm_gcm_ACCESS_([A-Z]{2})_uncompressed.nc'))
   out_data/lake_temp_preds_GLM_GCM_CNRM.zip:
-    command: prep_netcdfs(out_file = target_name, tar_nm = I('p3_gcm_glm_uncalibrated_nc'), group_regex = I('CNRM'))
+    command: prep_netcdfs(out_file = target_name, group_regex = I('lake_temp_preds_glm_gcm_CNRM_([A-Z]{2})_uncompressed.nc'))
   out_data/lake_temp_preds_GLM_GCM_GFDL.zip:
-    command: prep_netcdfs(out_file = target_name, tar_nm = I('p3_gcm_glm_uncalibrated_nc'), group_regex = I('GFDL'))
+    command: prep_netcdfs(out_file = target_name, group_regex = I('lake_temp_preds_glm_gcm_GFDL_([A-Z]{2})_uncompressed.nc'))
   out_data/lake_temp_preds_GLM_GCM_IPSL.zip:
-    command: prep_netcdfs(out_file = target_name, tar_nm = I('p3_gcm_glm_uncalibrated_nc'), group_regex = I('IPSL'))
+    command: prep_netcdfs(out_file = target_name, group_regex = I('lake_temp_preds_glm_gcm_IPSL_([A-Z]{2})_uncompressed.nc'))
   out_data/lake_temp_preds_GLM_GCM_MIROC5.zip:
-    command: prep_netcdfs(out_file = target_name, tar_nm = I('p3_gcm_glm_uncalibrated_nc'), group_regex = I('MIROC5'))
+    command: prep_netcdfs(out_file = target_name, group_regex = I('lake_temp_preds_glm_gcm_MIROC5_([A-Z]{2})_uncompressed.nc'))
   out_data/lake_temp_preds_GLM_GCM_MRI.zip:
-    command: prep_netcdfs(out_file = target_name, tar_nm = I('p3_gcm_glm_uncalibrated_nc'), group_regex = I('MRI'))
+    command: prep_netcdfs(out_file = target_name, group_regex = I('lake_temp_preds_glm_gcm_MRI_([A-Z]{2})_uncompressed.nc'))
   
   out_data/lake_temperature_metrics_GLM_NLDAS.csv:
     command: file.copy(
@@ -175,4 +178,3 @@ targets:
       #"out_data/lake_temp_preds_extraction_example.py",
       "out_xml/fgdc_metadata.xml",
       sources = "src/sb_utils.R")
-      
