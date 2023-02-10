@@ -27,3 +27,9 @@ temp_data <- pull_data_for_sites(nc_file, nc_info, var = 'temp', sites = lake_si
 # can specify wide (long_format = FALSE) or long format (long_format = TRUE)
 # if wide format, columns are named {site_id}
 ice_data <- pull_data_for_sites(nc_file, nc_info, var = 'ice', sites = lake_sites, long_format = TRUE)
+
+# If you chose long format for the ice data, it is easy to add the ice flag 
+#  column to the associated temperature data with a quick join:
+temp_ice_data <- temp_data %>% 
+  left_join(ice_data, by = c("site_id", "time"))
+
