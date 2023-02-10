@@ -55,7 +55,7 @@ gcm_nc_file <- 'GCM_MIROC5.nc'
 # script assumes that you have already downloaded it from ScienceBase (item 6206d3c2d34ec05caca53071)
 lake_metadata <- readr::read_csv('lake_metadata.csv')
 
-# Use the lake metadata and the previously-define vector of lake site ids to identify
+# Use the lake metadata and the previously-defined vector of lake site ids to identify
 # which GCM cells the lakes fall within
 gcm_cell_nos <- lake_metadata %>%
   filter(site_id %in% lake_sites) %>%
