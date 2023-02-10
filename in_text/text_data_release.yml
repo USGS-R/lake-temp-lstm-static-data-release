@@ -559,6 +559,13 @@ entities:
       data-min: 0
       data-max: 40.00
       data-units: degrees C
+    -
+      attr-label: source_id
+      attr-def: The source of these data; a monitoring entity or the name of a file sent by a state agency
+      attr-defs: NA
+      data-min: NA
+      data-max: NA
+      data-units: NA
   -
     data-name: meteorological_inputs_NLDAS.zip
     data-description: >- 
