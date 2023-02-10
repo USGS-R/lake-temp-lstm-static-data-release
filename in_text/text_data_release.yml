@@ -648,16 +648,103 @@ entities:
   -
     data-name: meteorological_inputs_GCM.zip
     data-description: >- 
-      TODO
+      A zip file containing NetCDF files of the Global Climate Model (GCM) meteorological drivers. Files 
+      within the zip are named "GCM_{CLIMATE MODEL}.nc" where the {CLIMATE MODEL} field is one of ACCESS, 
+      CNRM, GFDL, IPSL, MIROC5, and MRI representing the six dynamically downscaled glibal climate models
+      used (Notaro et al., 2018). The format of the data is identical for each file. These meteorological 
+      files can be matched to the appropriate lake using the "driver_gcm_cell_no" column in the 
+      "lake_metadata.csv" file of this data release.
     attributes:
     - 
-      attr-label: TODO
+      attr-label: gcm_driver
       attr-def: >-
-        TODO
-      attr-defs: TODO
-      data-min: TODO
-      data-max: TODO
-      data-units: TODO
+        Field representing one of the six dynamically downscaled global climate models. Can
+        be ACCESS, CNRM, GFDL, IPSL, MIROC5, or MRI.
+      attr-defs: NA
+      data-min: NA
+      data-max: NA
+      data-units: Date
+    - 
+      attr-label: cell_no
+      attr-def: >-
+        Number corresponding a grid cell id. Lakes can be mapped to this value using the 
+        "driver_gcm_cell_no" field in the "lake_metadata.csv" file.
+      attr-defs: NA
+      data-min: NA
+      data-max: NA
+      data-units: NA  
+    - 
+      attr-label: time
+      attr-def: >-
+        Date of this weather estimate. The min and max dates for this attribute 
+        are greater than the modeled time period to accomodate a model warm-up period.
+      attr-defs: NA
+      data-min: 1981-01-01
+      data-max: 2099-12-31
+      data-units: Date 
+    - 
+      attr-label: ShortWave	
+      attr-def: >- 
+        Incoming radiant energy with wavelengths between ~300 and ~3000 nm, emitted by the 
+        sun and reaching the lake surface after passing through the atmosphere, as a daily average.
+      attr-defs: Notaro et al., 2018
+      data-min: NA
+      data-max: NA
+      data-units: W m^-2
+    - 
+      attr-label: LongWave	
+      attr-def: >-
+        Incoming thermal radiation at wavelengths > 3000 nm directed from the atmosphere to 
+        the lake surface, as a daily average.
+      attr-defs: Notaro et al., 2018
+      data-min: NA
+      data-max: NA
+      data-units: W m^-2	
+    - 
+      attr-label: AirTemp	
+      attr-def: >- 
+        Air temperature above the surface of the lake, as a daily average.
+      attr-defs: Notaro et al., 2018
+      data-min: NA
+      data-max: NA
+      data-units: degrees C		
+    - 
+      attr-label: RelHum	
+      attr-def: Relative humidity of the air above the surface of the lake, as a daily average.
+      attr-defs: Notaro et al., 2018
+      data-min: NA
+      data-max: NA
+      data-units: percent
+    - 
+      attr-label: WindSpeed	
+      attr-def: >- 
+        Speed of the wind above the lake, calculated to a daily number using the methods 
+        described in Winslow et al., 2017. 
+        TODO: FILL INFO ABOUT ADJUSTMENTS
+      attr-defs: Notaro et al., 2018
+      data-min: NA
+      data-max: NA
+      data-units: m s^-1 	
+    - 
+      attr-label: Rain	
+      attr-def: >-
+        Daily rate of rain reaching the lake surface in a day as described in 
+        Winslow et al. 2017; rate as determined by Hipsey et al. 2019. 
+        TODO: IS THIS DEFINITION CORRECT??
+      attr-defs: Notaro et al., 2018
+      data-min: NA
+      data-max: NA
+      data-units: m day^-1 	
+    - 
+      attr-label: Snow	
+      attr-def: >-
+        Daily rate of snow reaching the lake surface in a day as described in 
+        Winslow et al. 2017. 
+        TODO: IS THIS DEFINITION CORRECT?
+      attr-defs: Notaro et al., 2018
+      data-min: NA
+      data-max: NA
+      data-units: m day^-1
   -
     data-name: lake_temp_preds_{MODEL}_{DRIVERS}_{STATE SUBSET OR GCM TYPE}.zip
     data-description: >-
