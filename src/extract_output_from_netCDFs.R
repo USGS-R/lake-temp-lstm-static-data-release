@@ -1,8 +1,14 @@
 library(RNetCDF)
 library(ncmeta) # need version 0.3.5 or higher - devtools::install_github("https://github.com/hypertidy/ncmeta.git")
 library(tidyverse)
-source('src/netCDF_extract_utils.R')
+# Before you can run this script, make sure that you have also downloaded
+# the `netCDF_extract_utils.R` script from ScienceBase 
+# It contains all the functions required for this code to work. Edit the filepath
+# below depending on where you saved it relative to this file.
+source('src/netCDF_extract_utils.R') 
 
+# Update the filepath for the NetCDF file you are extracting data from This example 
+# script assumes that you have already downloaded it from ScienceBase (item 6206d3c2d34ec05caca53071)
 nc_file <- 'lake_temp_preds_GLM_GCM_MIROC5_IA.nc'
 
 # Read in information about netCDF (variables, dates, etc.)
