@@ -9,8 +9,9 @@ pull_gcm_data_for_cells <- function(nc_file, cell_nos) {
   # Read in nc file
   nc <- ncdfgeom::read_timeseries_dsg(nc_file)
   driver <- str_split(nc_file, "\\.|\\_")[[1]][2]
-  # Pull the vectors of dates
-  nc_dates <- lubridate::as_date(nc$time)
+  
+  # Pull the vector of dates
+  nc_dates <- as.Date(nc$time)
   
   time_period_cell_files <- purrr::map_df(cell_nos, function(cell_no) {
     # For each variable stored in the netCDF...
