@@ -276,7 +276,7 @@ entities:
         Variety of secchi depths and k values were synthesized in this data release, including from LAGOS, 
         Landsat, and the Water Quality Portal.
       data-min: 0.1574074
-      data-max: TODO
+      data-max: 112.4285
       data-units: meters^-1
     -
       attr-label: driver_nldas_filepath
