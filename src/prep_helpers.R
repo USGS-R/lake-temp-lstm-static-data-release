@@ -169,8 +169,7 @@ prep_lake_temp_obs <- function(out_file, data_file, lakes_in_release, earliest_p
   # Load temperature observations and filter to the appropriate lakes and dates
   temp_obs_all <- arrow::read_feather(data_file) %>% 
     filter(date >= as.Date(earliest_prediction)) %>% # Filter to the earliest date available
-    filter(site_id %in% lakes_in_release) %>% # Filter to only sites included in the data release
-    select(-source_id)
+    filter(site_id %in% lakes_in_release) # Filter to only sites included in the data release
   
   # Save the CSV in a temporary location
   obs_csv <- file.path('tmp_data', 'lake_temperature_observations.csv')
