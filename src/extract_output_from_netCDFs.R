@@ -45,7 +45,7 @@ temp_ice_data <- temp_data %>%
   left_join(ice_data, by = c("site_id", "time"))
 
 
-##### Read in GCM driver data from a netCDF for a set of lakes #####
+##### Read in GCM driver data from a GCM netCDF for a set of lakes #####
 
 # Update the filepath for the GCM NetCDF file you are extracting data from. This example 
 # script assumes that you have already downloaded it from ScienceBase (item 6206d3c2d34ec05caca53071)
