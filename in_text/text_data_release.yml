@@ -160,6 +160,20 @@ cross-cites:
     pubdate: 2011
     form: publication
     link: https://doi.org/10.1016/j.envsoft.2011.05.006
+  -
+    authors: ['Jeffrey Hollister', 'Tarak Shah', 'Alec L. Robitaille', 'Marcus W. Beck', 'Mike Johnson']
+    title: >-
+      elevatr: Access Elevation Data from Various APIs
+    pubdate: 2021
+    form: R package
+    link: https://doi.org/10.5281/zenodo.5809645
+  -
+    authors: ['U.S. Geological Survey']
+    title: >-
+      National Hydrography Dataset Plus High Resolution (NHDPlus HR) - USGS National Map Downloadable Data Collection
+    pubdate: 2017
+    form: data release
+    link: https://www.sciencebase.gov/catalog/item/57645ff2e4b07657d19ba8e8
 
 process-date: !expr format(Sys.time(),'%Y%m%d')
 file-format: a single comma-delimited file and a single zipped shapefile
@@ -229,36 +243,39 @@ entities:
     -
       attr-label: max_depth
       attr-def: Maximum known depth of the lake
-      attr-defs: >-
-        TODO: WHERE DID THESE COME FROM?
-      data-min: TODO
-      data-max: TODO
+      attr-defs: Variety of bathymetry and depth data sources synthesized in this data release
+      data-min: 0
+      data-max: 148
       data-units: meters
     -
       attr-label: area
-      attr-def: Known surface area of the lake
-      attr-defs: >-
-        TODO: WHERE DID THESE COME FROM?
-      data-min: TODO
-      data-max: TODO
+      attr-def: >- 
+        Calculated surface area of the lake from National Hydrography Dataset High Resolution (NHDPlus HR; USGS, 2017) waterbodies.
+      attr-defs: USGS, 2017
+      data-min: 39988.15
+      data-max: 1233885948
       data-units: square meters
     -
       attr-label: elevation
-      attr-def: TODO
+      attr-def: The elevation of the lake centroid
       attr-defs: >-
-        TODO: WHERE DID THESE COME FROM?
-      data-min: TODO
-      data-max: TODO
-      data-units: TODO
+        Downloaded from the USGS Elevation Point Query Service using the `elevatr` R package (Hollister et al., 2021)
+      data-min: 12
+      data-max: 1875
+      data-units: meters
     -
       attr-label: clarity
       attr-def: >- 
         The lake's clarity represented as the extinction coefficient, k. Single value for each 
         lake derived from either averaged time-varying predictions of k or calculated from secchi 
-        depth using k=1.7/secchi.
+        depth using k=1.7/secchi. Note that the clarity value for site "nhdhr_86282143" is `Inf`  
+        (likely due to a `0` value for secchi depth) and this site only has EA-LSTM predictions
+        available. Since the EA-LSTM model used in this study did not use clarity as an input, 
+        this `Inf` clarity value was deemed inconsequential for the modeling results.
       attr-defs: >-
-        TODO: WHERE DID THESE COME FROM?
-      data-min: TODO
+        Variety of secchi depths and k values were synthesized in this data release, including from LAGOS, 
+        Landsat, and the Water Quality Portal.
+      data-min: 0.1574074
       data-max: TODO
       data-units: meters^-1
     -
@@ -276,8 +293,8 @@ entities:
         Cell number mapping to a grid cell id for each NetCDF file stored in "meteorological_inputs_GCM.zip", 
         which contains the appropriate GCM meteorological data used for modeling each lake.
       attr-defs: NA
-      data-min: TODO
-      data-max: TODO
+      data-min: NA
+      data-max: NA
       data-units: NA
     -
       attr-label: model_preds_ealstm_nldas
@@ -308,7 +325,12 @@ entities:
       data-units: NA
     -
       attr-label: ealstm_group
-      attr-def: TODO (ANDY!)
+      attr-def: >-
+        Which EA-LSTM modeling partition the lake belongs to. Options are "Training", "Validation", "Testing", 
+        or "None". Lakes in the "Training" partition were used to optimize neural network parameters. "Validation" 
+        lakes were used to choose hyperparameters. "Testing" lakes were used to evaluate final EA-LSTM model 
+        performance. Lakes in the "None" partition were not used for any of these purposes, usually because they 
+        lack sufficient temperature observations.
       attr-defs: NA
       data-min: NA
       data-max: NA
