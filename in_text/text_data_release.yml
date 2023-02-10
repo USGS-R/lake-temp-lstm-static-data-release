@@ -720,7 +720,10 @@ entities:
       attr-def: >- 
         Speed of the wind above the lake, calculated to a daily number using the methods 
         described in Winslow et al., 2017. 
-        TODO: FILL INFO ABOUT ADJUSTMENTS
+        TODO: IS THE ABOVE DEFINITION CORRECT??
+        The GCM windspeeds were abnormally low compared to the NLDAS windspeed for the same date and location. As windspeed is an important factor in 
+        lake temperature modeling due to its impact on mixing, the GCM windspeeds between 1980-1999 were statistically transformed, such that they 
+        aligned with the distribution of windspeed from NLDAS. The same statistical transform was applied to the GCM windspeeds for future dates. 
       attr-defs: Notaro et al., 2018
       data-min: NA
       data-max: NA
