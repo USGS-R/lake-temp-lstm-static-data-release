@@ -5,12 +5,15 @@
 .DS_Store
 .remake
 
+build/*
 out_data/*.csv
 out_data/*.zip
 out_data/*.R
+out_data/*.ind
 out_xml/*.xml
 in_data/*
 !in_data/.empty
 tmp_data/*
 !tmp_data/EMPTY
+compress_tmp/*
 

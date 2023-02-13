@@ -18,11 +18,46 @@ prep_lake_locations <- function(data_file, lakes_in_release, repo_path = '../../
 }
 
 # Load crosswalk between NLDAS driver meteo files and site ids. Filter to only those covering lakes in the data release
-# Use this in lake_metadata.csv and also to prep for the zip of all the files.
-prep_nldas_driver_info <- function(data_file, lakes_in_release) {
-  read_csv(data_file) %>% 
+# Use this in lake_metadata.csv and also to prep for the zip of all the files by grouping sort of based on x/y included 
+# in the NLDAS file grid. Returns a data.frame with three columns: `site_id`, `meteo_fl`, and `meteo_grp`
+prep_nldas_driver_info <- function(data_file, lakes_in_release, n_zips) {
+  extract_val <- function(str, x_or_y = c('x', 'y')) {
+    x_regex <- 'NLDAS_time\\[0.379366]_x\\[|\\]_y\\[([0-9]{,3})\\].csv'
+    y_regex <- 'NLDAS_time\\[0.379366]_x\\[([0-9]{,3})\\]_y\\[|\\].csv'
+  
+    regex <- switch(x_or_y,
+                    x = x_regex,
+                    y = y_regex)
+  
+    split_list <- strsplit(str, regex)
+    vals <- purrr::map(split_list, pluck, 2) %>% reduce(c) %>% as.numeric()
+    return(vals)
+  }
+
+  nldas_driver_info <- read_csv(data_file) %>% 
     filter(site_id %in% lakes_in_release)
+  
+  # Need to setup groups based on unique files and then rejoin that info
+  # back with the row per site information
+  meteo_fl_grps <- nldas_driver_info %>%
+    select(-site_id) %>%
+    distinct() %>%
+    # Attempt to arrange the filepaths by x/y values
+    # to somewhat organize the zip file groups
+    mutate(xval = extract_val(meteo_fl, 'x'),
+           yval = extract_val(meteo_fl, 'y')) %>%
+    unite(xyval, xval, yval) %>%  
+    arrange(xyval) %>% 
+    # Actually create group numbers based on the desired number of zips
+    mutate(meteo_grp = cut(seq_along(xyval), n_zips, labels = FALSE)) %>%
+    select(-xyval)
+
+  nldas_driver_info_grps <- nldas_driver_info %>%
+    left_join(meteo_fl_grps, by = "meteo_fl")
+  
+  return(nldas_driver_info_grps)
 }
+
 # Load crosswalk between GCM driver meteo NetCDF files and site ids. Filter to only those covering lakes in the data release
 # Use this in lake_metadata.csv. Each NetCDF has a columns of values per cell number, so people will need to know which cell
 # a particular site is in to extract the data.
@@ -34,7 +69,7 @@ prep_gcm_driver_info <- function(data_file, lakes_in_release) {
 
 prep_lake_metadata <- function(out_file, lake_centroids_sf, lstm_metadata_file, glm_nldas_sites, glm_gcm_sites,
                                lake_gnis_names_file, lake_depths_file, lake_clarity_file, nldas_driver_info, gcm_driver_info,
-                               repo_path = '../../lake-temp/lake-temperature-model-prep/') {
+                               nldas_zipfile_pattern, repo_path = '../../lake-temp/lake-temperature-model-prep/') {
   
   scipiper_freshen_files(data_files = c(lake_gnis_names_file, lake_depths_file, lake_clarity_file), repo_path = repo_path)
   
@@ -55,6 +90,7 @@ prep_lake_metadata <- function(out_file, lake_centroids_sf, lstm_metadata_file, 
            model_preds_glm_gcm = site_id %in% glm_gcm_sites) %>% 
     # Add driver data mapping info:
     left_join(nldas_driver_info, by = "site_id") %>% 
+    mutate(meteo_zip = basename(sprintf(nldas_zipfile_pattern, meteo_grp))) %>%
     left_join(gcm_driver_info, by = "site_id") %>% 
     # Rename and organize final columns
     select(site_id, 
@@ -66,6 +102,7 @@ prep_lake_metadata <- function(out_file, lake_centroids_sf, lstm_metadata_file, 
            area,
            elevation,
            clarity = Kw,
+           driver_nldas_zipfile = meteo_zip,
            driver_nldas_filepath = meteo_fl,
            driver_gcm_cell_no = cell_no,
            model_preds_ealstm_nldas,
@@ -179,24 +216,43 @@ prep_lake_temp_obs <- function(out_file, data_file, lakes_in_release, earliest_p
   zip::zip(out_file, files = obs_csv)
 }
 
-# Zip up NLDAS csvs
-prep_NLDAS_drivers <- function(out_file, nldas_driver_info, driver_file_dir, tmp_dir) {
+# Zip up NLDAS csvs into multiple zips using the `meteo_grp` and `meteo_fl` columns created 
+# in `prep_nldas_driver_info()`. Returns a vector of zip filepaths.
+prep_NLDAS_drivers <- function(ind_file, nldas_driver_info, driver_file_dir, tmp_dir, zip_fn_pattern) {
   # The NLDAS drivers are coming from a targets repo, not scipiper so no need for `scipiper_freshen_files()`
   # This will need to be run on Tallgrass in order to have the most up-to-date data, though.
-  files_to_zip <- file.path(driver_file_dir, nldas_driver_info$meteo_fl)
+  nldas_driver_info_cp <- nldas_driver_info %>%
+    # Only get unique meteo files
+    select(-site_id) %>%
+    distinct() %>%
+    # Add in the full filepath + create a filepath for the new location in this directory
+    mutate(meteo_fl_full = file.path(driver_file_dir, meteo_fl),
+           meteo_fl_cp = file.path(tmp_dir, meteo_fl))
   
   # Before zipping, move the files to the current directory (I got scared by a warning when I was testing
   # this on Tallgrass that said `Some paths reference parent directory, creating non-portable zip file`,
   # so I created this solution, which definitely costs more time but gets rid of that warning).
   if(!dir.exists(tmp_dir)) dir.create(tmp_dir)
-  files_moved <- file.path(tmp_dir, basename(files_to_zip))
-  file.copy(from = files_to_zip, to = files_moved)
+  file.copy(from = unique(nldas_driver_info_cp$meteo_fl_full), to = unique(nldas_driver_info_cp$meteo_fl_cp))
   
   # Zip the files!
-  zip::zip(out_file, files = files_moved)
+  zip_files <- function(nldas_info_grp, zip_fn_pattern) {
+    zip_fn <- sprintf(zip_fn_pattern, unique(nldas_info_grp$meteo_grp))
+    files_to_zip <- nldas_info_grp %>% pull(meteo_fl_cp)
+    message(sprintf('Zipping %s files into %s', length(files_to_zip), zip_fn))
+    zip::zip(zip_fn, files = files_to_zip)
+    return(zip_fn)
+  }
   
-  # Delete the recently moved files since they are now in a zip file
-  file.remove(files_moved) 
+  zips_out <- nldas_driver_info_cp %>%
+    split(.$meteo_grp) %>% 
+    purrr::map(~zip_files(., zip_fn_pattern = zip_fn_pattern)) %>%
+    reduce(c)
+
+  # Combine the files that were created into a single ind file
+  combine_to_ind(ind_file, zips_out)
+
+  return(ind_file)
 }
 
 # Zip up GCM NetCDFs
