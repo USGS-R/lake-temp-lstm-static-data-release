@@ -730,12 +730,13 @@ entities:
     - 
       attr-label: WindSpeed	
       attr-def: >- 
-        Speed of the wind above the lake, calculated to a daily number using the methods 
-        described in Winslow et al., 2017. 
-        TODO: IS THE ABOVE DEFINITION CORRECT??
-        The GCM windspeeds were abnormally low compared to the NLDAS windspeed for the same date and location. As windspeed is an important factor in 
-        lake temperature modeling due to its impact on mixing, the GCM windspeeds between 1980-1999 were statistically transformed, such that they 
-        aligned with the distribution of windspeed from NLDAS. The same statistical transform was applied to the GCM windspeeds for future dates. 
+        Speed of the wind above the lake, as a daily value. These daily windspeeds were abnormally 
+        low compared to the NLDAS windspeed for the same date and location. We suspected that it 
+        was due to the GCM daily windspeeds being a daily average compared with the Winslow et al., 2017
+        methods to determine daily windspeed (cubed root of the mean of cubed windspeeds). As windspeed
+        is an important factor in lake temperature modeling due to its impact on mixing, the GCM windspeeds 
+        between 1980-1999 were statistically transformed, such that they aligned with the distribution of 
+        windspeed from NLDAS. The same statistical transform was applied to the GCM windspeeds for future dates.         
       attr-defs: Notaro et al., 2018
       data-min: NA
       data-max: NA
@@ -745,7 +746,6 @@ entities:
       attr-def: >-
         Daily rate of rain reaching the lake surface in a day as described in 
         Winslow et al. 2017; rate as determined by Hipsey et al. 2019. 
-        TODO: IS THIS DEFINITION CORRECT??
       attr-defs: Notaro et al., 2018
       data-min: NA
       data-max: NA
@@ -755,7 +755,6 @@ entities:
       attr-def: >-
         Daily rate of snow reaching the lake surface in a day as described in 
         Winslow et al. 2017. 
-        TODO: IS THIS DEFINITION CORRECT?
       attr-defs: Notaro et al., 2018
       data-min: NA
       data-max: NA
