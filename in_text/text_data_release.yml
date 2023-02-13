@@ -279,10 +279,20 @@ entities:
       data-max: 112.4285
       data-units: meters^-1
     -
+      attr-label: driver_nldas_zipfile
+      attr-def: >- 
+        A filepath corresponding to a ZIP file containing the NLDAS meteorological CSVs. Values match
+        the pattern "meteorological_inputs_NLDAS_{GROUP}.zip", where {GROUP} is a number 1 through 8.
+      attr-defs: NA
+      data-min: NA
+      data-max: NA
+      data-units: NA
+    -
       attr-label: driver_nldas_filepath
       attr-def: >- 
-        A filepath corresponding to the CSV file stored in "meteorological_inputs_NLDAS.zip", which  
-        contains the appropriate NLDAS meteorological data used for modeling each lake.
+        A filepath corresponding to the CSV file stored in "meteorological_inputs_NLDAS_{GROUP}.zip", which  
+        contains the appropriate NLDAS meteorological data used for modeling each lake. You can identify the
+        zip that contains this file by looking at the previous column, `driver_nldas_zipfile`.
       attr-defs: NA
       data-min: NA
       data-max: NA
