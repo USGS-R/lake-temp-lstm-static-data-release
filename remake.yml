@@ -8,6 +8,7 @@ packages:
   - arrow
   - purrr
   - targets
+  - yaml
 
 sources:
   - src/sb_utils.R
