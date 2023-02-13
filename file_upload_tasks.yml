@@ -1,0 +1,148 @@
+# Do not edit - automatically generated
+# from the task_makefile.mustache template
+# by create_task_makefile() via do_item_replace_tasks()
+
+target_default: file_upload_tasks
+
+packages:
+  - sbtools
+  - scipiper
+  - dplyr
+  - remake
+
+sources:
+  - src/sb_utils.R
+
+file_extensions:
+  - "ind"
+
+targets:
+  file_upload_tasks:
+    depends:
+      - upload_6206d3c2d34ec05caca53071_timestamps
+
+  # --- sb_6206d3c2d34ec05caca53071_lake_locations.zip_file --- #
+  
+  sb_6206d3c2d34ec05caca53071_lake_locations.zip_file:
+    command: upload_and_record(I('6206d3c2d34ec05caca53071'), 'out_data/lake_locations.zip')
+
+  # --- sb_6206d3c2d34ec05caca53071_lake_metadata.csv_file --- #
+  
+  sb_6206d3c2d34ec05caca53071_lake_metadata.csv_file:
+    command: upload_and_record(I('6206d3c2d34ec05caca53071'), 'out_data/lake_metadata.csv')
+
+  # --- sb_6206d3c2d34ec05caca53071_lake_id_crosswalk.csv_file --- #
+  
+  sb_6206d3c2d34ec05caca53071_lake_id_crosswalk.csv_file:
+    command: upload_and_record(I('6206d3c2d34ec05caca53071'), 'out_data/lake_id_crosswalk.csv')
+
+  # --- sb_6206d3c2d34ec05caca53071_lake_hypsography.csv_file --- #
+  
+  sb_6206d3c2d34ec05caca53071_lake_hypsography.csv_file:
+    command: upload_and_record(I('6206d3c2d34ec05caca53071'), 'out_data/lake_hypsography.csv')
+
+  # --- sb_6206d3c2d34ec05caca53071_lake_temperature_observations.zip_file --- #
+  
+  sb_6206d3c2d34ec05caca53071_lake_temperature_observations.zip_file:
+    command: upload_and_record(I('6206d3c2d34ec05caca53071'), 'out_data/lake_temperature_observations.zip')
+
+  # --- sb_6206d3c2d34ec05caca53071_meteorological_inputs_GCM.zip_file --- #
+  
+  sb_6206d3c2d34ec05caca53071_meteorological_inputs_GCM.zip_file:
+    command: upload_and_record(I('6206d3c2d34ec05caca53071'), 'out_data/meteorological_inputs_GCM.zip')
+
+  # --- sb_6206d3c2d34ec05caca53071_lake_temp_preds_EALSTM_NLDAS_AR-MN.zip_file --- #
+  
+  sb_6206d3c2d34ec05caca53071_lake_temp_preds_EALSTM_NLDAS_AR-MN.zip_file:
+    command: upload_and_record(I('6206d3c2d34ec05caca53071'), 'out_data/lake_temp_preds_EALSTM_NLDAS_AR-MN.zip')
+
+  # --- sb_6206d3c2d34ec05caca53071_lake_temp_preds_EALSTM_NLDAS_MO-WY.zip_file --- #
+  
+  sb_6206d3c2d34ec05caca53071_lake_temp_preds_EALSTM_NLDAS_MO-WY.zip_file:
+    command: upload_and_record(I('6206d3c2d34ec05caca53071'), 'out_data/lake_temp_preds_EALSTM_NLDAS_MO-WY.zip')
+
+  # --- sb_6206d3c2d34ec05caca53071_lake_temp_preds_GLM_NLDAS.zip_file --- #
+  
+  sb_6206d3c2d34ec05caca53071_lake_temp_preds_GLM_NLDAS.zip_file:
+    command: upload_and_record(I('6206d3c2d34ec05caca53071'), 'out_data/lake_temp_preds_GLM_NLDAS.zip')
+
+  # --- sb_6206d3c2d34ec05caca53071_lake_temp_preds_GLM_GCM_ACCESS.zip_file --- #
+  
+  sb_6206d3c2d34ec05caca53071_lake_temp_preds_GLM_GCM_ACCESS.zip_file:
+    command: upload_and_record(I('6206d3c2d34ec05caca53071'), 'out_data/lake_temp_preds_GLM_GCM_ACCESS.zip')
+
+  # --- sb_6206d3c2d34ec05caca53071_lake_temp_preds_GLM_GCM_CNRM.zip_file --- #
+  
+  sb_6206d3c2d34ec05caca53071_lake_temp_preds_GLM_GCM_CNRM.zip_file:
+    command: upload_and_record(I('6206d3c2d34ec05caca53071'), 'out_data/lake_temp_preds_GLM_GCM_CNRM.zip')
+
+  # --- sb_6206d3c2d34ec05caca53071_lake_temp_preds_GLM_GCM_GFDL.zip_file --- #
+  
+  sb_6206d3c2d34ec05caca53071_lake_temp_preds_GLM_GCM_GFDL.zip_file:
+    command: upload_and_record(I('6206d3c2d34ec05caca53071'), 'out_data/lake_temp_preds_GLM_GCM_GFDL.zip')
+
+  # --- sb_6206d3c2d34ec05caca53071_lake_temp_preds_GLM_GCM_IPSL.zip_file --- #
+  
+  sb_6206d3c2d34ec05caca53071_lake_temp_preds_GLM_GCM_IPSL.zip_file:
+    command: upload_and_record(I('6206d3c2d34ec05caca53071'), 'out_data/lake_temp_preds_GLM_GCM_IPSL.zip')
+
+  # --- sb_6206d3c2d34ec05caca53071_lake_temp_preds_GLM_GCM_MIROC5.zip_file --- #
+  
+  sb_6206d3c2d34ec05caca53071_lake_temp_preds_GLM_GCM_MIROC5.zip_file:
+    command: upload_and_record(I('6206d3c2d34ec05caca53071'), 'out_data/lake_temp_preds_GLM_GCM_MIROC5.zip')
+
+  # --- sb_6206d3c2d34ec05caca53071_lake_temp_preds_GLM_GCM_MRI.zip_file --- #
+  
+  sb_6206d3c2d34ec05caca53071_lake_temp_preds_GLM_GCM_MRI.zip_file:
+    command: upload_and_record(I('6206d3c2d34ec05caca53071'), 'out_data/lake_temp_preds_GLM_GCM_MRI.zip')
+
+  # --- sb_6206d3c2d34ec05caca53071_lake_temperature_metrics_GLM_NLDAS.csv_file --- #
+  
+  sb_6206d3c2d34ec05caca53071_lake_temperature_metrics_GLM_NLDAS.csv_file:
+    command: upload_and_record(I('6206d3c2d34ec05caca53071'), 'out_data/lake_temperature_metrics_GLM_NLDAS.csv')
+
+  # --- sb_6206d3c2d34ec05caca53071_lake_temperature_metrics_GLM_GCM.csv_file --- #
+  
+  sb_6206d3c2d34ec05caca53071_lake_temperature_metrics_GLM_GCM.csv_file:
+    command: upload_and_record(I('6206d3c2d34ec05caca53071'), 'out_data/lake_temperature_metrics_GLM_GCM.csv')
+
+  # --- sb_6206d3c2d34ec05caca53071_netCDF_extract_utils.R_file --- #
+  
+  sb_6206d3c2d34ec05caca53071_netCDF_extract_utils.R_file:
+    command: upload_and_record(I('6206d3c2d34ec05caca53071'), 'out_data/netCDF_extract_utils.R')
+
+  # --- sb_6206d3c2d34ec05caca53071_extract_output_from_netCDFs.R_file --- #
+  
+  sb_6206d3c2d34ec05caca53071_extract_output_from_netCDFs.R_file:
+    command: upload_and_record(I('6206d3c2d34ec05caca53071'), 'out_data/extract_output_from_netCDFs.R')
+
+  # --- sb_6206d3c2d34ec05caca53071_fgdc_metadata.xml_file --- #
+  
+  sb_6206d3c2d34ec05caca53071_fgdc_metadata.xml_file:
+    command: upload_and_record(I('6206d3c2d34ec05caca53071'), 'out_xml/fgdc_metadata.xml')
+
+  # --- Overall job --- #
+
+  upload_6206d3c2d34ec05caca53071_timestamps:
+    command: bind_rows(
+      `sb_6206d3c2d34ec05caca53071_lake_locations.zip_file`,
+      `sb_6206d3c2d34ec05caca53071_lake_metadata.csv_file`,
+      `sb_6206d3c2d34ec05caca53071_lake_id_crosswalk.csv_file`,
+      `sb_6206d3c2d34ec05caca53071_lake_hypsography.csv_file`,
+      `sb_6206d3c2d34ec05caca53071_lake_temperature_observations.zip_file`,
+      `sb_6206d3c2d34ec05caca53071_meteorological_inputs_GCM.zip_file`,
+      `sb_6206d3c2d34ec05caca53071_lake_temp_preds_EALSTM_NLDAS_AR-MN.zip_file`,
+      `sb_6206d3c2d34ec05caca53071_lake_temp_preds_EALSTM_NLDAS_MO-WY.zip_file`,
+      `sb_6206d3c2d34ec05caca53071_lake_temp_preds_GLM_NLDAS.zip_file`,
+      `sb_6206d3c2d34ec05caca53071_lake_temp_preds_GLM_GCM_ACCESS.zip_file`,
+      `sb_6206d3c2d34ec05caca53071_lake_temp_preds_GLM_GCM_CNRM.zip_file`,
+      `sb_6206d3c2d34ec05caca53071_lake_temp_preds_GLM_GCM_GFDL.zip_file`,
+      `sb_6206d3c2d34ec05caca53071_lake_temp_preds_GLM_GCM_IPSL.zip_file`,
+      `sb_6206d3c2d34ec05caca53071_lake_temp_preds_GLM_GCM_MIROC5.zip_file`,
+      `sb_6206d3c2d34ec05caca53071_lake_temp_preds_GLM_GCM_MRI.zip_file`,
+      `sb_6206d3c2d34ec05caca53071_lake_temperature_metrics_GLM_NLDAS.csv_file`,
+      `sb_6206d3c2d34ec05caca53071_lake_temperature_metrics_GLM_GCM.csv_file`,
+      `sb_6206d3c2d34ec05caca53071_netCDF_extract_utils.R_file`,
+      `sb_6206d3c2d34ec05caca53071_extract_output_from_netCDFs.R_file`,
+      `sb_6206d3c2d34ec05caca53071_fgdc_metadata.xml_file`)
+    
