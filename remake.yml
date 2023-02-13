@@ -144,18 +144,27 @@ targets:
       to = target_name,
       from = '../../lake-temp/lake-temperature-out/3_summarize/out/annual_metrics_glm3_pb0gcm.csv',
       overwrite = TRUE)
-  
-  # TODO: lake_temp_preds_extraction_example.R
-  # TODO: lake_temp_preds_extraction_example.py
+        
+  out_data/netCDF_extract_utils.R:
+    command: file.copy(
+      to = target_name,
+      from = 'src/netCDF_extract_utils.R',
+      overwrite = TRUE)
 
+  out_data/extract_output_from_netCDFs.R:
+    command: file.copy(
+      to = target_name,
+      from = 'src/extract_output_from_netCDFs.R',
+      overwrite = TRUE)
+  
   out_xml/fgdc_metadata.xml:
     command: render(filename = target_name,
       "in_text/text_data_release.yml",
       lake_locations_metadata)
     
   log/sb_posted_files.csv:
-    command: sb_replace_files_log(filename = target_name, 
-      sb_id = I('5faaac68d34eb413d5df1f22'),
+    command: sb_replace_files(filename = target_name, 
+      sb_id = I('6206d3c2d34ec05caca53071'),
       "out_data/lake_locations.zip",
       "out_data/lake_metadata.csv",
       "out_data/lake_id_crosswalk.csv",
@@ -174,7 +183,7 @@ targets:
       "out_data/lake_temp_preds_GLM_GCM_MRI.zip",
       "out_data/lake_temperature_metrics_GLM_NLDAS.csv",
       "out_data/lake_temperature_metrics_GLM_GCM.csv",
-      #"out_data/lake_temp_preds_extraction_example.R",
-      #"out_data/lake_temp_preds_extraction_example.py",
+      "out_data/netCDF_extract_utils.R",
+      "out_data/extract_output_from_netCDFs.R",
       "out_xml/fgdc_metadata.xml",
       sources = "src/sb_utils.R")
