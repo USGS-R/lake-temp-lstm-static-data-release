@@ -835,7 +835,9 @@ entities:
       data-units: decimal-degrees
     -
       attr-label: depth
-      attr-def: Depth of the temperature prediction
+      attr-def: >- 
+        Depth of the temperature prediction. The interval between depths starts at half meters, but increases at
+        deeper depths. 
       attr-defs: NA
       data-min: NA
       data-max: NA
