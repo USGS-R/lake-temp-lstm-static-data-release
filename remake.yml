@@ -5,45 +5,199 @@ packages:
   - readr
   - sbtools
   - sf
+  - arrow
+  - purrr
+  - targets
+  - yaml
 
 sources:
   - src/sb_utils.R
   - src/file_utils.R
+  - src/prep_helpers.R
+  - src/prep_netcdfs.R
 
 targets:
   all:
     depends:
       - log/sb_posted_files.csv
     
+  lstm_site_ids:
+    command: prep_site_ids('../../lake-temp/lake-temperature-lstm-static/lake_metadata_lstm.csv', is_lstm = I(TRUE))
+  glm_nldas_site_ids:
+    command: prep_site_ids('out_data/lake_temperature_metrics_GLM_NLDAS.csv')
+  glm_gcm_site_ids:
+    command: prep_site_ids('out_data/lake_temperature_metrics_GLM_GCM.csv')
+  
+  nldas_zipfile_pattern:
+    command: c(I('out_data/meteorological_inputs_NLDAS_%s.zip'))
+  nldas_files_to_site_xwalk:
+    command: prep_nldas_driver_info(
+      data_file = '../../lake-temp/lake-temperature-lstm-static/6_predict/out/all_meteo_fl_values.csv', 
+      lakes_in_release = lstm_site_ids,
+      n_zips = 8)
+  gcm_cell_to_site_xwalk:
+    command: prep_gcm_driver_info(
+      data_file = '../../lake-temp/lake-temperature-model-prep/7_drivers_munge/out/lake_cell_tile_xwalk.csv', 
+      lakes_in_release = lstm_site_ids)
+  
+  lake_locations_sf:
+    command: prep_lake_locations(
+      data_file = I('../../lake-temp/lake-temperature-model-prep/2_crosswalk_munge/out/centroid_lakes_sf.rds'),
+      lakes_in_release = lstm_site_ids)
+  
+  out_data/lake_locations.png:
+    command: create_lake_centroid_map(
+      out_file = target_name, 
+      lake_centroids = lake_locations_sf,
+      state_poly_file = 'in_data/states_poly.rds')
 
-  sf_spatial_data:
-    command: st_read('example_data/example_shapefile/example_shapefile.shp')
-    depends:
-      - example_data/example_shapefile/example_shapefile.dbf
-      - example_data/example_shapefile/example_shapefile.prj
-      - example_data/example_shapefile/example_shapefile.shx
+  lake_locations_metadata:
+    command: extract_feature(lake_locations_sf)
   
-  spatial_metadata:
-    command: extract_feature(sf_spatial_data)
-    
-  out_data/cars.csv:
-    command: file.copy(from = "example_data/example_cars.csv", 
-      to = target_name, overwrite = TRUE)
-  
-  out_data/spatial.zip:
+  out_data/lake_locations.zip:
     command: sf_to_zip(zip_filename = target_name, 
-      sf_object = sf_spatial_data, layer_name = I('spatial_data'))
+      sf_object = lake_locations_sf, layer_name = I('lake_centroids'))
 
+  out_data/lake_metadata.csv:
+    command: prep_lake_metadata(
+      out_file = target_name,
+      lake_centroids_sf = lake_locations_sf,
+      lstm_metadata_file = '../../lake-temp/lake-temperature-lstm-static/lake_metadata_lstm.csv',
+      glm_nldas_sites = glm_nldas_site_ids,
+      glm_gcm_sites = glm_gcm_site_ids,
+      lake_gnis_names_file = I('../../lake-temp/lake-temperature-model-prep/2_crosswalk_munge/out/gnisname_nhdhr_xwalk.rds'),
+      lake_depths_file = I('../../lake-temp/lake-temperature-model-prep/7_config_merge/out/nml_lake_depth_values.rds'),
+      lake_clarity_file = I('../../lake-temp/lake-temperature-model-prep/7_config_merge/out/nml_Kw_values.rds'),
+      nldas_driver_info = nldas_files_to_site_xwalk,
+      gcm_driver_info = gcm_cell_to_site_xwalk,
+      nldas_zipfile_pattern = nldas_zipfile_pattern)
+  
+  crosswalk_files:
+    command: list.files(I('../../lake-temp/lake-temperature-model-prep/2_crosswalk_munge/out'), pattern = I("xwalk|crosswalk"), full.names = TRUE)
+  out_data/lake_id_crosswalk.csv:
+    command: prep_lake_id_crosswalk(
+      out_file = target_name,
+      all_crosswalk_files = crosswalk_files,
+      lakes_in_release = lstm_site_ids)
+  
+  out_data/lake_hypsography.csv:
+    command: prep_lake_hypsography(
+      out_file = target_name,
+      data_file = I('../../lake-temp/lake-temperature-model-prep/7_config_merge/out/nml_H_A_values.rds'),
+      lakes_in_release = lstm_site_ids)
+  
+  # Note that there are 8,670 lakes with at least one observation
+  out_data/lake_temperature_observations.zip:
+    command: prep_lake_temp_obs(
+      out_file = target_name,
+      data_file = I('../../lake-temp/lake-temperature-model-prep/7b_temp_merge/out/temp_data_with_sources.feather'),
+      lakes_in_release = lstm_site_ids,
+      earliest_prediction = I('1979-01-02'))
+  
+  # TODO: This needs to be split into multiple files! Too big for just one.
+  out_data/meteorological_inputs_NLDAS_zips.ind:
+    command: prep_NLDAS_drivers(
+      ind_file = target_name,
+      nldas_driver_info = nldas_files_to_site_xwalk,
+      driver_file_dir = I('../../lake-temp/lake-temperature-process-models/1_prep/in/NLDAS_GLM_csvs'),
+      tmp_dir = I('tmp_data/NLDAS'),
+      zip_fn_pattern = nldas_zipfile_pattern)
+  
+  out_data/meteorological_inputs_GCM.zip:
+    command: prep_GCM_drivers(
+      out_file = target_name,
+      driver_file_dir = I('../../lake-temp/lake-temperature-model-prep/7_drivers_munge/out'),
+      tmp_dir = I('tmp_data/GCM'),
+      gcm_driver_regex = I('GCM_(ACCESS|CNRM|GFDL|IPSL|MIROC5|MRI).nc'))
+  
+  # Split the EALSTM NLDAS predictions into two zips so that we can fit under the SB 10GB limit
+  out_data/lake_temp_preds_EALSTM_NLDAS_AR-MN.zip:
+    command: file.copy(
+      to = target_name, 
+      from = '../../lake-temp/lake-temperature-lstm-static/netcdf/midwest/lake_temp_preds_ealstm_NLDAS_AR-MN.zip', 
+      overwrite = TRUE)
+  out_data/lake_temp_preds_EALSTM_NLDAS_MO-WY.zip:
+    command: file.copy(
+      to = target_name, 
+      from = '../../lake-temp/lake-temperature-lstm-static/netcdf/midwest/lake_temp_preds_ealstm_NLDAS_MO-WY.zip', 
+      overwrite = TRUE)
+  
+  # Small enough to fit into one file
+  out_data/lake_temp_preds_GLM_NLDAS.zip:
+    command: prep_netcdfs(
+      out_file = target_name, 
+      tar_dir = I('../../lake-temp/lake-temperature-process-models/3_extract/out/lake_temp_preds_glm_NLDAS'),
+      group_regex = I('lake_temp_preds_glm_NLDAS_([A-Z]{2})_uncompressed.nc'))
+  
+  # The GCM files were too big to include in one zip (~30 GB) & due to how big MN is on its own, we
+  # could not take the approach that EALSTM_NLDAS did with splitting into just two zips.
+  # Note: there is a way to do this where I don't copy/paste/edit each of these targets
+  # but I don't remember exactly how to implement and there are only 6, so this is faster!
+  out_data/lake_temp_preds_GLM_GCM_ACCESS.zip:
+    command: prep_netcdfs(out_file = target_name, group_regex = I('lake_temp_preds_glm_gcm_ACCESS_([A-Z]{2})_uncompressed.nc'))
+  out_data/lake_temp_preds_GLM_GCM_CNRM.zip:
+    command: prep_netcdfs(out_file = target_name, group_regex = I('lake_temp_preds_glm_gcm_CNRM_([A-Z]{2})_uncompressed.nc'))
+  out_data/lake_temp_preds_GLM_GCM_GFDL.zip:
+    command: prep_netcdfs(out_file = target_name, group_regex = I('lake_temp_preds_glm_gcm_GFDL_([A-Z]{2})_uncompressed.nc'))
+  out_data/lake_temp_preds_GLM_GCM_IPSL.zip:
+    command: prep_netcdfs(out_file = target_name, group_regex = I('lake_temp_preds_glm_gcm_IPSL_([A-Z]{2})_uncompressed.nc'))
+  out_data/lake_temp_preds_GLM_GCM_MIROC5.zip:
+    command: prep_netcdfs(out_file = target_name, group_regex = I('lake_temp_preds_glm_gcm_MIROC5_([A-Z]{2})_uncompressed.nc'))
+  out_data/lake_temp_preds_GLM_GCM_MRI.zip:
+    command: prep_netcdfs(out_file = target_name, group_regex = I('lake_temp_preds_glm_gcm_MRI_([A-Z]{2})_uncompressed.nc'))
+  
+  out_data/lake_temperature_metrics_GLM_NLDAS.csv:
+    command: file.copy(
+      to = target_name,
+      from = '../../lake-temp/lake-temperature-out/3_summarize/out/annual_metrics_glm3_pb0nldas.csv',
+      overwrite = TRUE)
+      
+  out_data/lake_temperature_metrics_GLM_GCM.csv:
+    command: file.copy(
+      to = target_name,
+      from = '../../lake-temp/lake-temperature-out/3_summarize/out/annual_metrics_glm3_pb0gcm.csv',
+      overwrite = TRUE)
+        
+  out_data/netCDF_extract_utils.R:
+    command: file.copy(
+      to = target_name,
+      from = 'src/netCDF_extract_utils.R',
+      overwrite = TRUE)
+
+  out_data/extract_output_from_netCDFs.R:
+    command: file.copy(
+      to = target_name,
+      from = 'src/extract_output_from_netCDFs.R',
+      overwrite = TRUE)
+  
   out_xml/fgdc_metadata.xml:
     command: render(filename = target_name,
       "in_text/text_data_release.yml",
-      spatial_metadata)
+      lake_locations_metadata)
     
   log/sb_posted_files.csv:
-    command: sb_replace_files_log(filename = target_name, 
-      sb_id = I('5faaac68d34eb413d5df1f22'),
-      "out_data/spatial.zip",
-      "out_data/cars.csv",
+    command: sb_replace_files(filename = target_name, 
+      sb_id = I('6206d3c2d34ec05caca53071'),
+      "out_data/lake_locations.zip",
+      "out_data/lake_metadata.csv",
+      "out_data/lake_id_crosswalk.csv",
+      "out_data/lake_hypsography.csv",
+      "out_data/lake_temperature_observations.zip",
+      "out_data/meteorological_inputs_GCM.zip",
+      "out_data/lake_temp_preds_EALSTM_NLDAS_AR-MN.zip",
+      "out_data/lake_temp_preds_EALSTM_NLDAS_MO-WY.zip",
+      "out_data/lake_temp_preds_GLM_NLDAS.zip",
+      "out_data/lake_temp_preds_GLM_GCM_ACCESS.zip",
+      "out_data/lake_temp_preds_GLM_GCM_CNRM.zip",
+      "out_data/lake_temp_preds_GLM_GCM_GFDL.zip",
+      "out_data/lake_temp_preds_GLM_GCM_IPSL.zip",
+      "out_data/lake_temp_preds_GLM_GCM_MIROC5.zip",
+      "out_data/lake_temp_preds_GLM_GCM_MRI.zip",
+      "out_data/lake_temperature_metrics_GLM_NLDAS.csv",
+      "out_data/lake_temperature_metrics_GLM_GCM.csv",
+      "out_data/netCDF_extract_utils.R",
+      "out_data/extract_output_from_netCDFs.R",
+      "out_data/lake_locations.png",
       "out_xml/fgdc_metadata.xml",
+      file_hash = "out_data/meteorological_inputs_NLDAS_zips.ind",
       sources = "src/sb_utils.R")
-      
