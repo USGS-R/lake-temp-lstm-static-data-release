@@ -45,6 +45,12 @@ targets:
       data_file = I('../../lake-temp/lake-temperature-model-prep/2_crosswalk_munge/out/centroid_lakes_sf.rds'),
       lakes_in_release = lstm_site_ids)
   
+  out_data/lake_locations.png:
+    command: create_lake_centroid_map(
+      out_file = target_name, 
+      lake_centroids = lake_locations_sf,
+      state_poly_file = 'in_data/states_poly.rds')
+
   lake_locations_metadata:
     command: extract_feature(lake_locations_sf)
   
@@ -191,6 +197,7 @@ targets:
       "out_data/lake_temperature_metrics_GLM_GCM.csv",
       "out_data/netCDF_extract_utils.R",
       "out_data/extract_output_from_netCDFs.R",
+      "out_data/lake_locations.png",
       "out_xml/fgdc_metadata.xml",
       file_hash = "out_data/meteorological_inputs_NLDAS_zips.ind",
       sources = "src/sb_utils.R")

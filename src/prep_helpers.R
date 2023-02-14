@@ -17,6 +17,37 @@ prep_lake_locations <- function(data_file, lakes_in_release, repo_path = '../../
     filter(site_id %in% lakes_in_release) 
 }
 
+create_lake_centroid_map <- function(out_file, lake_centroids, state_poly_file) {
+  
+  # # I did the following steps locally so that I didn't need to install `spData`
+  # # to the Singularity container. I saved the RDS into the `in_data/` folder
+  # # and then uploaded to Caldera.
+  # library(spData)
+  # library(tidyverse)
+  # lake_states <- c("MN", "MT", "SD", "ND", "WY", "NE", "IA", "MO", "WI", "IL", 
+  #                  "KS", "MI", "IN", "OH", "KY", "TN", "MS", "AR", "OK", "TX", "LA")
+  # state_info <- tibble(state_name = state.name, state_abbr = state.abb)
+  # states_poly <- us_states %>%
+  #   left_join(state_info, by = c('NAME' = 'state_name')) %>%
+  #   filter(state_abbr %in% lake_states)
+  # saveRDS(states_poly, 'in_data/states_poly.rds')
+  
+  CASC_proj <- '+proj=aea +lat_0=25.5 +lon_0=-97.8 +lat_1=33.6 +lat_2=41.5 +x_0=0 +y_0=0 +ellps=GRS80 +towgs84=0,0,0,0,0,0,0 +units=m +no_defs +type=crs'
+  
+  lake_centroids_transf <- lake_centroids %>%
+    st_transform(crs = CASC_proj)
+  
+  states_poly_transf <- readRDS(state_poly_file) %>%
+    st_transform(sf::st_crs(CASC_proj))
+  
+  lakes_plot <- ggplot() +
+  geom_sf(data = lake_centroids_transf, fill = 'dodgerblue2', color='dodgerblue3', alpha=0.2, size=1, shape=16) +
+  geom_sf(data = states_poly_transf, fill=NA, color='black', size=1) +
+  theme(axis.title.y=element_blank(),
+        axis.title.x=element_blank())  
+  ggsave(out_file, lakes_plot, height = 10, width = 10, units = 'in')
+}
+
 # Load crosswalk between NLDAS driver meteo files and site ids. Filter to only those covering lakes in the data release
 # Use this in lake_metadata.csv and also to prep for the zip of all the files by grouping sort of based on x/y included 
 # in the NLDAS file grid. Returns a data.frame with three columns: `site_id`, `meteo_fl`, and `meteo_grp`
