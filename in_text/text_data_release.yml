@@ -43,9 +43,9 @@ abstract: >-
   multi-scale, integrated modeling capabilities to address water resource issues. Access to computing facilities 
   was provided by USGS Advanced Research Computing, USGS Tallgrass Supercomputer (https://doi.org/10.5066/F7D798MJ).
   
-authors: ["Lindsay Platt", "Hayley Corson-Dosch", "Wallace (Andy) Mcaliley", "Julie A Padilla", "Jordan S Read"]
-pubdate: 2022-01-31
-doi: https://doi.org/YY.XXXXX/XXXXXX # replace with actual DOI
+authors: ["Hayley Corson-Dosch", "Wallace (Andy) Mcaliley", "Lindsay Platt", "Julie A Padilla", "Jordan S Read"]
+pubdate: 2022-02-28
+doi: https://doi.org/10.5066/P9EQQER7
 
 build-environment: Multiple computer systems were used to generate these data, including linux, OSX. The open source languages R and Python were used on all systems.
 
@@ -1938,7 +1938,7 @@ entities:
 
 
 purpose: Fisheries biology, limnological research, and climate science.
-start-date: 19800101
+start-date: 19790412
 end-date: 20991231
 
 update: none planned
