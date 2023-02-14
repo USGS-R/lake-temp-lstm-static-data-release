@@ -26,6 +26,24 @@ sb_replace_files <- function(filename, sb_id, ..., file_hash, sources = c()){
     files <- c(files, names(yaml.load_file(file_hash))) %>% sort() 
   }
 
+  # Define a custom order (and then reverse so that the last to upload appears at the top as the "most recent")
+  files_order <- c(
+    grep('_locations.zip', files),
+    grep('_metadata', files),
+    grep('_id_crosswalk', files),
+    grep('_hypsography', files),
+    grep('_temperature_observations', files),
+    grep('meteorological', files),
+    grep('_temp_preds_EALSTM', files),
+    grep('_temp_preds_GLM_NLDAS', files),
+    grep('_temp_preds_GLM_GCM', files),
+    grep('_metrics_GLM_NLDAS', files),
+    grep('_metrics_GLM_GCM', files),
+    grep('R', tools::file_ext(files)),
+    grep('_locations.png', files)
+  )
+  files <- files[rev(files_order)]
+
   # Throw error if there are no files given to push
   stopifnot(length(files) > 0)
 
