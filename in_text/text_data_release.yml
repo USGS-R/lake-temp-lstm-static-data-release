@@ -1,5 +1,5 @@
 title: >-
-  Daily water column temperature predictions for thousands of Midwest U.S. lakes between 1980-2000 and under future climate scenarios
+  Daily water column temperature predictions for thousands of Midwest U.S. lakes between 1979-2022 and under future climate scenarios
 
 abstract: >-
   Lake temperature is an important environmental metric for understanding habitat suitability for many 
@@ -10,10 +10,12 @@ abstract: >-
   This data release includes predictions generated from two modeling frameworks: a machine learning model 
   (specifically an entity-aware long short-term memory or EA-LSTM model; Kratzert et al., 2019) and a 
   process-based model (specifically the General Lake Model or GLM; Hipsey et al., 2019). Both the EA-LSTM 
-  and GLM frameworks were used to generate lake temperature predictions in the contemporary period (1981-2000) 
-  using the North American Land Data Assimilation System (NLDAS; Mitchell et al., 2004) as meteorological 
-  drivers. In addition, GLM was used to generate lake temperature predictions under future climate scenarios 
-  (covering 1980-1999, 2040-2059, and 2080-2099) using six dynamically downscaled Global Climate Models 
+  and GLM frameworks were used to generate lake temperature predictions in the contemporary period using 
+  the North American Land Data Assimilation System (NLDAS; Mitchell et al., 2004) as meteorological drivers.
+  Due to different spin-up/spin-down periods for the models, contemporary EA-LSTM predictions cover April 12,
+  1979 to April 11, 2022, while contemporary GLM predictions cover January 1, 1980 to December 31, 2021.
+  In addition, GLM was used to generate lake temperature predictions under future climate scenarios 
+  (covering 1981-2000, 2040-2059, and 2080-2099) using six dynamically downscaled Global Climate Models 
   (GCM; Notaro et al., 2018) as meteorological drivers. The modeling frameworks and driver datasets have 
   slightly different footprints and input data requirements. This means that some of the lakes do not meet 
   the criteria to be included in all three modeling approaches, which results in different numbers of lakes 
@@ -698,8 +700,9 @@ entities:
     - 
       attr-label: time
       attr-def: >-
-        Date of this weather estimate. The min and max dates for this attribute 
-        are greater than the modeled time period to accomodate a model warm-up period.
+        Date of this weather estimate. The min and max dates for this attribute are greater than the 
+        modeled time period to accomodate a model warm-up period. The dates cover three time periods 
+        of 20 years each: 1981-01-01 to 2000-12-31, 2040-01-01 to 2059-12-31, and 2080-01-01 to 2099-12-31.
       attr-defs: NA
       data-min: 1981-01-01
       data-max: 2099-12-31
@@ -804,7 +807,12 @@ entities:
       data-units: NA
     -
       attr-label: time
-      attr-def: Date of the temperature prediction, formatted as `YYYY-MM-DD`
+      attr-def: >- 
+        Date of the temperature prediction, formatted as `YYYY-MM-DD`. Predictions from the EA-LSTM model
+        start on 1979-04-12 and end on 2022-04-11; predictions from the GLM model using NLDAS drivers start
+        on 1980-01-01 and end on 2021-12-31; and predictions from the GLM model using GCM drivers fall into
+        three time periods covering 20 years each: 1981-01-01 to 2000-12-31, 2040-01-01 to 2059-12-31, and
+        2080-01-01 to 2099-12-31.
       attr-defs: NA
       data-min: 1979-04-12
       data-max: 2099-12-31
@@ -852,7 +860,7 @@ entities:
       {DRIVER} in the filepath pattern above is either "NLDAS" for annual summaries of the daily model predictions 
       made with GLM using the North American Land Data Assimilation System (Mitchell et al., 2004) as the meteorological 
       drivers or "GCM" for those made with GLM using six dynamically downscaled Global Climate Models (Notaro et 
-      al., 2018) as the meteorological drivers.
+      al., 2018) as the meteorological drivers. These metrics are not available for the EA-LSTM predictions.
     attributes:
       -
         attr-label: site_id
@@ -874,7 +882,10 @@ entities:
         data-units: NA
       -
         attr-label: year
-        attr-def: Year of the summarized temperature predictions
+        attr-def: >- 
+          Year of the summarized temperature predictions. Predictions from the GLM model using NLDAS drivers 
+          are from 1980-2022, and predictions from the GLM model using GCM drivers fall into three time periods 
+          covering 20 years each: 1981-2000, 2040-2059, and 2080-2099.
         attr-defs: NA
         data-min: 1980
         data-max: 2099
@@ -1974,11 +1985,12 @@ process-description: >-
   This dataset was generated using two modeling frameworks: 1) a lake hydrodynamic model that uses inputs of lake-specific properties and local 
   meteorology to estimate water temperature, and 2)  an entity-aware long short-term memory network trained using lake temperature observations 
   and four lake-specific properties. Lake-specific properties and temperature obvservations were 
-  aggregated from a variety of sources and cooperators for lakes across the US Midwest. Meteorological inputs for the contemporary period (1981-
-  2000) used by both modeling frameworks were downloaded from the North American Land Data Assimilation System (NLDAS, Mitchell et al., 2004). Meteorological inputs for 
+  aggregated from a variety of sources and cooperators for lakes across the US Midwest. Meteorological inputs for the contemporary period (1979-
+  2022) used by both modeling frameworks were downloaded from the North American Land Data Assimilation System (NLDAS, Mitchell et al., 2004). Differences
+  in model spin-up and spin-down periods between the two modeling frameworks result in different prediction dates for the contemporary period. Meteorological inputs for 
   future climate scenarios used only by the hydrodynamic model were downloaded from the USGS Geo Data Portal dataset "Dynamical Downscaling for   
   the Midwest and Great Lakes Basin" (https://www.sciencebase.gov/catalog/item/5b2d6121e4b040769c124c0c). This input data covers three different 
-  time periods (1980-1999, 2040-2059, and 2080-2099) and is referred to as "GCM" throughout this data release. 
+  time periods (1981-2000, 2040-2059, and 2080-2099) and is referred to as "GCM" throughout this data release. 
   
   The GCM windspeeds were abnormally low compared to the NLDAS windspeed for the same date and location. As windspeed is an important factor in 
   lake temperature modeling due to its impact on mixing, the GCM windspeeds between 1980-1999 were statistically transformed, such that they 
