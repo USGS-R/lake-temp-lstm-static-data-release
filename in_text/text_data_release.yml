@@ -7,19 +7,20 @@ abstract: >-
   column (known as temperature profiles). In this data release, multiple modeling approaches were used
   to generate predictions of daily temperature profiles for thousands of lakes in the Midwest.
   <br/>
-  This data release includes predictions generated from two modeling frameworks: a machine learning model 
+  <br/>
+  Predictions were generated using two modeling frameworks: a machine learning model 
   (specifically an entity-aware long short-term memory or EA-LSTM model; Kratzert et al., 2019) and a 
-  process-based model (specifically the General Lake Model or GLM; Hipsey et al., 2019). Both the EA-LSTM 
-  and GLM frameworks were used to generate lake temperature predictions in the contemporary period using 
-  the North American Land Data Assimilation System (NLDAS; Mitchell et al., 2004) as meteorological drivers.
-  Due to different spin-up/spin-down periods for the models, contemporary EA-LSTM predictions cover April 12,
-  1979 to April 11, 2022, while contemporary GLM predictions cover January 1, 1980 to December 31, 2021.
-  In addition, GLM was used to generate lake temperature predictions under future climate scenarios 
+  process-based model (specifically the General Lake Model or GLM; Hipsey et al., 2019). Both the EA-LSTM and 
+  GLM frameworks were used to generate lake temperature predictions in the contemporary period (1979-04-12 to 
+  2022-04-11 for EA-LSTM and 1980-01-01 to 2021-12-31 for GLM; times differ due to modeling spin-up/spin-down 
+  configurations) using the North American Land Data Assimilation System (NLDAS; Mitchell et al., 2004) as meteorological 
+  drivers. In addition, GLM was used to generate lake temperature predictions under future climate scenarios 
   (covering 1981-2000, 2040-2059, and 2080-2099) using six dynamically downscaled Global Climate Models 
   (GCM; Notaro et al., 2018) as meteorological drivers. The modeling frameworks and driver datasets have 
   slightly different footprints and input data requirements. This means that some of the lakes do not meet 
   the criteria to be included in all three modeling approaches, which results in different numbers of lakes 
   in the output (noted in the file descriptions below).
+  <br/>
   <br/>
   This data release includes the following files:</p>
   <ol>
@@ -39,13 +40,13 @@ abstract: >-
   <li><b>extract_output_from_netCDFs.R</b>: an R script showing examples for how to pull lake temperature predictions and meteorological data from the NetCDF files</li>
   <li><b>netCDF_extract_utils.R</b>: an R script containing functions used "extract_output_from_netCDFs.R"</li>
   <li><b>lake_locations.png</b>: a figure showing the centroids for all 62,966 lakes included in this data release</li>
-  <ol>
+  </ol>
   <p>This work was completed with funding support from the Midwest Climate Adaptation Science Center (MW CASC) 
   and as part of the USGS project on Predictive Understanding of Multiscale Processes (PUMP), an element of the 
   Integrated Water Prediction Program, supported by the Water Availability and Use Science Program to advance 
   multi-scale, integrated modeling capabilities to address water resource issues. Access to computing facilities 
-  was provided by USGS Advanced Research Computing, USGS Tallgrass Supercomputer (https://doi.org/10.5066/F7D798MJ).</p>
-  
+  was provided by USGS Advanced Research Computing, USGS Tallgrass Supercomputer (<a href="https://doi.org/10.5066/F7D798MJ">doi.org/10.5066/F7D798MJ</a>).</p>
+
 authors: ["Hayley Corson-Dosch", "Wallace (Andy) Mcaliley", "Lindsay Platt", "Julie A Padilla", "Jordan S Read"]
 pubdate: 2022-02-28
 doi: https://doi.org/10.5066/P9EQQER7
@@ -1967,11 +1968,11 @@ contact-city: Madison
 contact-state: WI
 contact-zip: 53726
 
-metadata-person: Julie A Padilla
-metadata-position: Physical Scientist (Data Scientist)
+metadata-person: Lindsay R.C. Platt
+metadata-position: Civil Engineer (Data Scientist)
 metadata-phone: 608-821-9901
 metadata-fax: 608-821-3817
-metadata-email: jpadilla@usgs.gov
+metadata-email: lplatt@usgs.gov
 metadata-address: "1 Gifford Pinchot Dr"
 metadata-city: Madison
 metadata-state: WI
