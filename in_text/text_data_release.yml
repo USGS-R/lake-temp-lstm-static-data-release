@@ -897,6 +897,7 @@ entities:
       attr-defs: NA
       data-min: 0
       data-max: 1
+      data-units: NA
   -
     data-name: lake_temp_metrics_GLM_{DRIVER}.csv
     data-description: >-
