@@ -604,7 +604,7 @@ entities:
       attr-def: >-
         Date of this weather estimate. The min and max dates for this attribute 
         are greater than the modeled time period to accomodate a model warm-up period.
-      attr-defs: Read et al., 2021
+      attr-defs: NA
       data-min: 1979-01-02
       data-max: 2022-04-11
       data-units: Date  
@@ -749,7 +749,7 @@ entities:
         is an important factor in lake temperature modeling due to its impact on mixing, the GCM windspeeds 
         between 1980-1999 were statistically transformed, such that they aligned with the distribution of 
         windspeed from NLDAS. The same statistical transform was applied to the GCM windspeeds for future dates.         
-      attr-defs: Notaro et al., 2018
+      attr-defs: NA
       data-min: NA
       data-max: NA
       data-units: m s^-1 	
@@ -757,8 +757,8 @@ entities:
       attr-label: Rain	
       attr-def: >-
         Daily rate of rain reaching the lake surface in a day as described in 
-        Winslow et al. 2017; rate as determined by Hipsey et al. 2019. 
-      attr-defs: Notaro et al., 2018
+        Winslow et al. 2017. 
+      attr-defs: Read et al., 2021
       data-min: NA
       data-max: NA
       data-units: m day^-1 	
@@ -767,7 +767,7 @@ entities:
       attr-def: >-
         Daily rate of snow reaching the lake surface in a day as described in 
         Winslow et al. 2017. 
-      attr-defs: Notaro et al., 2018
+      attr-defs: Read et al., 2021
       data-min: NA
       data-max: NA
       data-units: m day^-1
@@ -894,14 +894,14 @@ entities:
       -
         attr-label: peak_temp
         attr-def: Maximum observed surface temperature
-        attr-defs: Winslow et al. 2017
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: degrees C
       -
         attr-label: peak_temp_dt
         attr-def: Date of maximum observed surface temperature
-        attr-defs: NA
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: NA
@@ -913,7 +913,7 @@ entities:
           in December of 2016). This definition of ice-on is consistent with the Wisconsin
           State Climatology Office's use of ice-on and ice-off dates by winter season. If
           this value is `NA`, it means that no ice formed during that winter season.
-        attr-defs: NA
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: NA
@@ -922,7 +922,7 @@ entities:
         attr-def: >-
           Date of ice-off for the current year's winter season. If this
           value is `NA`, it means that no ice formed during that winter season.
-        attr-defs: NA
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: NA
@@ -931,49 +931,45 @@ entities:
         attr-def: >-
           Number of days, beginning October 30 of the previous year and running through June
           of the given year, that surface water is <4 degrees C
-        attr-defs: Winslow et al. 2017
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: days
       -
         attr-label: coef_var_31_60
         attr-def: Coefficient of Variation of surface temperature from 30-60 days post ice off
-        attr-defs: >-
-          This calculation is the same as Winslow et al. 2017, but that one wasn't named
-          intuitively (`coef_var_30_60` instead of `coef_var_31_60`)
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: unitless (CV)
       -
         attr-label: coef_var_1_30
         attr-def: Coefficient of Variation of surface temperature up to 30 days post ice-off
-        attr-defs: >-
-          This calculation is the same as Winslow et al. 2017, but that one wasn't named
-          intuitively (`coef_var_0_30` instead of `coef_var_1_30`)
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: unitless (CV)
       -
         attr-label: stratification_onset_yday
         attr-def: Julian date at which stratification sets up (longest stratified period)
-        attr-defs: Winslow et al. 2017
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: Julian day
       -
         attr-label: stratification_duration
         attr-def: Duration of stratified period
-        attr-defs: Winslow et al. 2017
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: days
       -
         attr-label: sthermo_depth_mean
-        attr-def: Average thermocline depth in stratified period that is >= 30 days
-        attr-defs: >-
-          This calculation is similar to the one from Winslow et al. 2017, except that it
+        attr-def: >- 
+          Average thermocline depth in stratified period that is >= 30 days. It
           uses the longest duration of stratified days as the stratified period and will
           return NA for any stratified period less than 30 days.
+        attr-defs: Read et al., 2021 
         data-min: NA
         data-max: NA
         data-units: depth (m)
@@ -981,10 +977,8 @@ entities:
         attr-label: bottom_temp_at_strat
         attr-def: >-
           Water temperature 0.1m from lake bottom on day of stratification (as defined
-          by "stratification_onset_yday")
-        attr-defs: >-
-          This calculation is similar to the one from Winslow et al. 2017, except that it
-          will return NA for any stratified period less than 30 days.
+          by "stratification_onset_yday"). Will be NA for any stratified period less than 30 days.
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: degrees C
@@ -993,14 +987,14 @@ entities:
         attr-def: >-
           Cumulative sum of degrees greater than {temp} for an entire
           year. {temp} is one of 0, 5, 10.
-        attr-defs: Winslow et al. 2017
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: degrees C * days
       -
         attr-label: schmidt_daily_annual_sum
         attr-def: Sum of daily Schmidt Stability values for calendar year.
-        attr-defs: Winslow et al. 2017
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: J/m^2 * days
@@ -1009,7 +1003,7 @@ entities:
         attr-def: >-
           Mean summer (July, August, September) temperature at {depth}. {depth} is
           either "surf" for surface or "bot" for bottom.
-        attr-defs: Winslow et al. 2017
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: degrees C
@@ -1018,7 +1012,7 @@ entities:
         attr-def: >-
           Maximum summer (July, August, September) temperature at {depth}. {depth} is
           either "surf" for surface or "bot" for bottom.
-        attr-defs: Winslow et al. 2017
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: degrees C
@@ -1028,7 +1022,7 @@ entities:
           Mean temperature at {depth} for {month}. {depth} is either "surf" for
           surface or "bot" for bottom. {month} is the 3 letter abbreviation for one
           of the 12 months, Jan through Dec.
-        attr-defs: Winslow et al. 2017
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: degrees C
@@ -1038,7 +1032,7 @@ entities:
           Maximum temperature at {depth} for {month}. {depth} is either "surf" for
           surface or "bot" for bottom. {month} is the 3 letter abbreviation for one
           of the 12 months, Jan (January) through Dec (December).
-        attr-defs: Winslow et al. 2017
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: degrees C
@@ -1895,21 +1889,21 @@ entities:
       -
         attr-label: mean_epi_vol
         attr-def: Mean epilmnion volume during longest stratified period
-        attr-defs: NA
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
       -
         attr-label: mean_hyp_vol
         attr-def: Mean hypolimnion volume during longest stratified period
-        attr-defs: NA
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
       -
         attr-label: mean_epi_hypo_ratio
         attr-def: Mean epilmnion volume divided by mean hypolimnion volume
-        attr-defs: NA
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: unitless (ratio)
@@ -1921,7 +1915,7 @@ entities:
           not be calculated because there was either not an ice-off date for this
           year's winter season or an ice-on date for the next year's winter season
           or both were missing.
-        attr-defs: NA
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: days
