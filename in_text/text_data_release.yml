@@ -1353,7 +1353,7 @@ entities:
         attr-def: >-
           Meters of water between 12 and 28 degrees C.
           This range is used to denote optimal age 0 thermal habitat
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1361,7 +1361,7 @@ entities:
         attr-label: vol_12_28
         attr-def: >-
           Volume of water between 12 and 28 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1370,7 +1370,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 12 and 28 degrees C.
           This range is used to denote optimal age 0 thermal habitat
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1379,7 +1379,7 @@ entities:
         attr-def: >-
           Meters of water between 10.6 and 11.2 degrees C.
           This range is used to denote optimal larval thermal habitat
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1387,7 +1387,7 @@ entities:
         attr-label: vol_10.6_11.2
         attr-def: >-
           Volume of water between 10.6 and 11.2 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1396,7 +1396,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 10.6 and 11.2 degrees C.
           This range is used to denote optimal larval thermal habitat
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1405,7 +1405,7 @@ entities:
         attr-def: >-
           Meters of water between 18.2 and 28.2 degrees C.
           This range is used to denote good growth habitat
-        attr-defs: Fang et al. 2004
+        attr-defs: Fang et al., 2004
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1413,7 +1413,7 @@ entities:
         attr-label: vol_18.2_28.2
         attr-def: >-
           Volume of water between 18.2 and 28.2 degrees C.
-        attr-defs: Fang et al. 2004
+        attr-defs: Fang et al., 2004
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1422,7 +1422,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 18.2 and 28.2 degrees C.
           This range is used to denote good growth habitat
-        attr-defs: Fang et al. 2004
+        attr-defs: Fang et al., 2004
         data-min: NA
         data-max: NA
         data-units: days
@@ -1431,7 +1431,7 @@ entities:
         attr-def: >-
           Meters of water between 18 and 22 degrees C.
           This range is used to denote optimal age 0 thermal habitat
-        attr-defs: Christie and Regier 1988
+        attr-defs: Christie and Regier, 1988
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1439,7 +1439,7 @@ entities:
         attr-label: vol_18_22
         attr-def: >-
           Volume of water between 18 and 22 degrees C.
-        attr-defs: Christie and Regier 1988
+        attr-defs: Christie and Regier, 1988
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1448,7 +1448,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 18 and 22 degrees C.
           This range is used to denote optimal age 0 thermal habitat
-        attr-defs: Christie and Regier 1988
+        attr-defs: Christie and Regier, 1988
         data-min: NA
         data-max: NA
         data-units: days
@@ -1457,7 +1457,7 @@ entities:
         attr-def: >-
           Meters of water between 19.3 and 23.3 degrees C.
           This range is used to denote YOY optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1465,7 +1465,7 @@ entities:
         attr-label: vol_19.3_23.3
         attr-def: >-
           Volume of water between 19.3 and 23.3 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1474,7 +1474,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 19.3 and 23.3 degrees C.
           This range is used to denote YOY optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1483,7 +1483,7 @@ entities:
         attr-def: >-
           Meters of water between 19 and 23 degrees C.
           This range is used to denote optimal thermal habitat
-        attr-defs: Cline et al. 2013
+        attr-defs: Cline et al., 2013
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1491,7 +1491,7 @@ entities:
         attr-label: vol_19_23
         attr-def: >-
           Volume of water between 19 and 23 degrees C.
-        attr-defs: Cline et al. 2013
+        attr-defs: Cline et al., 2013
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1500,7 +1500,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 19 and 23 degrees C.
           This range is used to denote optimal thermal habitat
-        attr-defs: Cline et al. 2013
+        attr-defs: Cline et al., 2013
         data-min: NA
         data-max: NA
         data-units: days
@@ -1509,7 +1509,7 @@ entities:
         attr-def: >-
           Meters of water between 20.6 and 23.2 degrees C.
           This range is used to denote optimal thermal habitat
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1517,7 +1517,7 @@ entities:
         attr-label: vol_20.6_23.2
         attr-def: >-
           Volume of water between 20.6 and 23.2 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1526,7 +1526,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 20.6 and 23.2 degrees C.
           This range is used to denote optimal thermal habitat
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1535,7 +1535,7 @@ entities:
         attr-def: >-
           Meters of water between 20 and 30 degrees C.
           This range is used to denote larval optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1543,7 +1543,7 @@ entities:
         attr-label: vol_20_30
         attr-def: >-
           Volume of water between 20 and 30 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1552,7 +1552,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 20 and 30 degrees C.
           This range is used to denote larval optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1561,7 +1561,7 @@ entities:
         attr-def: >-
           Meters of water between 21 and 100 degrees C.
           This range is used to denote growing season for YOY
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1569,7 +1569,7 @@ entities:
         attr-label: vol_21_100
         attr-def: >-
           Volume of water between 21 and 100 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1578,7 +1578,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 21 and 100 degrees C.
           This range is used to denote growing season for YOY
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1587,7 +1587,7 @@ entities:
         attr-def: >-
           Meters of water between 22 and 23 degrees C.
           This range is used to denote optimal thermal habitat
-        attr-defs: Casselman 2002
+        attr-defs: Casselman, 2002
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1595,7 +1595,7 @@ entities:
         attr-label: vol_22_23
         attr-def: >-
           Volume of water between 22 and 23 degrees C.
-        attr-defs: Casselman 2002
+        attr-defs: Casselman, 2002
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1604,7 +1604,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 22 and 23 degrees C.
           This range is used to denote optimal thermal habitat
-        attr-defs: Casselman 2002
+        attr-defs: Casselman, 2002
         data-min: NA
         data-max: NA
         data-units: days
@@ -1613,7 +1613,7 @@ entities:
         attr-def: >-
           Meters of water between 23 and 31 degrees C.
           This range is used to denote juvenile optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1621,7 +1621,7 @@ entities:
         attr-label: vol_23_31
         attr-def: >-
           Volume of water between 23 and 31 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1630,7 +1630,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 23 and 31 degrees C.
           This range is used to denote juvenile optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1639,7 +1639,7 @@ entities:
         attr-def: >-
           Meters of water between 25 and 29 degrees C.
           This range is used to denote larval optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1647,7 +1647,7 @@ entities:
         attr-label: vol_25_29
         attr-def: >-
           Volume of water between 25 and 29 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1656,7 +1656,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 25 and 29 degrees C.
           This range is used to denote larval optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1665,7 +1665,7 @@ entities:
         attr-def: >-
           Meters of water between 26.2 and 32 degrees C.
           This range is used to denote good growth habitat
-        attr-defs: Countant 1977
+        attr-defs: Countant, 1977
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1673,7 +1673,7 @@ entities:
         attr-label: vol_26.2_32
         attr-def: >-
           Volume of water between 26.2 and 32 degrees C.
-        attr-defs: Countant 1977
+        attr-defs: Countant, 1977
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1682,7 +1682,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 26.2 and 32 degrees C.
           This range is used to denote good growth habitat
-        attr-defs: Countant 1977
+        attr-defs: Countant, 1977
         data-min: NA
         data-max: NA
         data-units: days
@@ -1691,7 +1691,7 @@ entities:
         attr-def: >-
           Meters of water between 26 and 28 degrees C.
           This range is used to denote subadult optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1699,7 +1699,7 @@ entities:
         attr-label: vol_26_28
         attr-def: >-
           Volume of water between 26 and 28 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1708,7 +1708,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 26 and 28 degrees C.
           This range is used to denote subadult optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1717,7 +1717,7 @@ entities:
         attr-def: >-
           Meters of water between 26 and 30 degrees C.
           This range is used to denote adult optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1725,7 +1725,7 @@ entities:
         attr-label: vol_26_30
         attr-def: >-
           Volume of water between 26 and 30 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1734,7 +1734,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 26 and 30 degrees C.
           This range is used to denote adult optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1743,7 +1743,7 @@ entities:
         attr-def: >-
           Meters of water between 28 and 29 degrees C.
           This range is used to denote juvenile optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1751,7 +1751,7 @@ entities:
         attr-label: vol_28_29
         attr-def: >-
           Volume of water between 28 and 29 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1760,7 +1760,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 28 and 29 degrees C.
           This range is used to denote juvenile optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1770,7 +1770,7 @@ entities:
         attr-def: >-
           Meters of water between 28 and 32 degrees C.
           This range is used to denote juvenile optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1778,7 +1778,7 @@ entities:
         attr-label: vol_28_32
         attr-def: >-
           Volume of water between 28 and 32 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1787,7 +1787,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 28 and 32 degrees C.
           This range is used to denote juvenile optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1797,7 +1797,7 @@ entities:
         attr-def: >-
           Meters of water between 29 and 100 degrees C.
           This range is used to denote lethal habitat
-        attr-defs: Fang et al. 2004
+        attr-defs: Fang et al., 2004
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1805,7 +1805,7 @@ entities:
         attr-label: vol_29_100
         attr-def: >-
           Volume of water between 29 and 100 degrees C.
-        attr-defs: Fang et al. 2004
+        attr-defs: Fang et al., 2004
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1814,7 +1814,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 29 and 100 degrees C.
           This range is used to denote lethal habitat
-        attr-defs: Fang et al. 2004
+        attr-defs: Fang et al., 2004
         data-min: NA
         data-max: NA
         data-units: days
@@ -1824,7 +1824,7 @@ entities:
         attr-def: >-
           Meters of water between 30 and 31 degrees C.
           This range is used to denote adult optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1832,7 +1832,7 @@ entities:
         attr-label: vol_30_31
         attr-def: >-
           Volume of water between 30 and 31 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1841,7 +1841,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 30 and 31 degrees C.
           This range is used to denote adult optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1850,7 +1850,7 @@ entities:
         attr-def: >-
           Duration of optimal incubation period where surface temperature
           is between 10.5-15.5 degrees C (Spring only)
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days before June 1
@@ -1858,7 +1858,7 @@ entities:
         attr-label: post_ice_warm_rate
         attr-def: >-
           Average change in surface temp (degrees C per day) 30 days post ice off
-        attr-defs: Busch et al. 1975; Madenijan et al. 1996
+        attr-defs: Busch et al., 1975; Madenijan et al., 1996
         data-min: NA
         data-max: NA
         data-units: degrees C per day
@@ -1868,21 +1868,21 @@ entities:
           Date where average surface temperature reaches {temp} degrees C. {temp} is
           one of 8.9 (date of spawning temp), 16.7 (hatch date), 18 (date of spawning
           temp for bass), or 21 (date of spawning temp for bass).
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: Julian day
       -
         attr-label: SmetaTopD_mean
         attr-def: Mean epilmnion meters during the longest stratified period
-        attr-defs: Read et al. 2011
+        attr-defs: Read et al., 2011
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
       -
         attr-label: SmetaBotD_mean
         attr-def: Mean hypolimnion meters during the longest stratified period
-        attr-defs: Read et al. 2011
+        attr-defs: Read et al., 2011
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
