@@ -213,6 +213,20 @@ cross-cites:
     pubdate: 2015
     form: R package
     link: https://doi.org/10.1111/ecog.01880
+  -
+    authors: ['David L. Blodgett', 'Nathaniel L. Booth', 'Thomas C. Kunicki', 'Jordan I. Walker', 'Roland J. Viger']
+    title: >-
+      Description and testing of the Geo Data Portal: Data integration framework and Web processing services for environmental science collaboration.
+    pubdate: 2011
+    form: publication
+    link: https://pubs.usgs.gov/of/2011/1157
+  -
+    authors: ['Michael Notaro', 'Val Bennington', 'Yafang Zhong']
+    title: >-
+      Dynamical Downscaling for the Midwest and Great Lakes Basin
+    pubdate: 2018
+    form: dataset
+    link: https://www.sciencebase.gov/catalog/item/5b2d6121e4b040769c124c0c
 
 process-date: !expr format(Sys.time(),'%Y%m%d')
 file-format: a single comma-delimited file and a single zipped shapefile
@@ -2012,7 +2026,7 @@ process-description: >-
   aggregated from a variety of sources and cooperators for lakes across the US Midwest. Meteorological inputs for the contemporary period (1979-
   2022) used by both modeling frameworks were downloaded from the North American Land Data Assimilation System (NLDAS, Mitchell et al., 2004). Differences
   in model spin-up and spin-down periods between the two modeling frameworks result in different prediction dates for the contemporary period. Meteorological inputs for 
-  future climate scenarios used only by the hydrodynamic model were downloaded from the USGS Geo Data Portal (https://usgs.gov/tools/geo-data-portal) using the R package 
+  future climate scenarios used only by the hydrodynamic model were downloaded from the USGS Geo Data Portal (Blodgett et al., 2011) using the R package 
   "geoknife" (Read et al., 2015). The data downloaded was a debiased version of the dataset "Dynamical Downscaling for the Midwest and Great Lakes Basin' (Notaro et al., 2018). 
   This input data covers three different time periods (1981-2000, 2040-2059, and 2080-2099) and is referred to as "GCM" throughout this data release. 
   
