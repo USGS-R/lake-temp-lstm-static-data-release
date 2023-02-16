@@ -55,11 +55,6 @@ build-environment: Multiple computer systems were used to generate these data, i
 
 # ----associated publication----
 larger-cites:
-  -
-    authors: ["Jordan S. Read", "Xiaowei Jia", "Jared Willard", "Alison P. Appling", "Jacob A. Zwart","Samantha K. Oliver","Anuj Karpatne","Gretchen J.A. Hansen", "Paul C. Hanson", "William Watkins", "Michael Steinbach","Vipin Kumar"]
-    title: >-
-      Process-guided deep learning predictions of lake water temperature
-    pubdate: 2019
 
 # ----supporting publications----    
 cross-cites:
@@ -202,7 +197,7 @@ entities:
     -
       attr-label: site_id
       attr-def: >-
-        Lake identification number for this study. It is the Prmnn_I from NHD high-res prefixed
+        Lake identification number for this study. It is the Prmnn_I from NHD high-res (NHDPlus HR; USGS, 2017) prefixed
         with source, as "nhdhr_{Prmnn_I}". The ids have a mix of characters and some can include
         special characters, such as "{" and "}".
       attr-defs: >-
@@ -217,7 +212,7 @@ entities:
     -
       attr-label: site_id
       attr-def: >-
-        Lake identification number for this study. It is the Prmnn_I from NHD high-res prefixed
+        Lake identification number for this study. It is the Prmnn_I from NHD high-res (NHDPlus HR; USGS, 2017) prefixed
         with source, as "nhdhr_{Prmnn_I}". The ids have a mix of characters and some can include
         special characters, such as "{" and "}".
       attr-defs: >-
@@ -372,7 +367,7 @@ entities:
     -
       attr-label: site_id
       attr-def: >-
-        Lake identification number for this study. It is the Prmnn_I from NHD high-res prefixed
+        Lake identification number for this study. It is the Prmnn_I from NHD high-res (NHDPlus HR; USGS, 2017) prefixed
         with source, as "nhdhr_{Prmnn_I}". The ids have a mix of characters and some can include
         special characters, such as "{" and "}".
       attr-defs: >-
@@ -522,7 +517,7 @@ entities:
     -
       attr-label: site_id
       attr-def: >-
-        Lake identification number for this study. It is the Prmnn_I from NHD high-res prefixed
+        Lake identification number for this study. It is the Prmnn_I from NHD high-res (NHDPlus HR; USGS, 2017) prefixed
         with source, as "nhdhr_{Prmnn_I}". The ids have a mix of characters and some can include
         special characters, such as "{" and "}". These values will be repeated for each known 
         depth-area value available for a given lake.
@@ -556,7 +551,7 @@ entities:
     -
       attr-label: site_id
       attr-def: >-
-        Lake identification number for this study. It is the Prmnn_I from NHD high-res prefixed
+        Lake identification number for this study. It is the Prmnn_I from NHD high-res (NHDPlus HR; USGS, 2017) prefixed
         with source, as "nhdhr_{Prmnn_I}". The ids have a mix of characters and some can include
         special characters, such as "{" and "}".
       attr-defs: >-
@@ -871,7 +866,7 @@ entities:
       -
         attr-label: site_id
         attr-def: >-
-          Lake identification number for this study. It is the Prmnn_I from NHD high-res prefixed
+          Lake identification number for this study. It is the Prmnn_I from NHD high-res (NHDPlus HR; USGS, 2017) prefixed
           with source, as "nhdhr_{Prmnn_I}". The ids have a mix of characters and some can include
           special characters, such as "{" and "}".
         attr-defs: >-
