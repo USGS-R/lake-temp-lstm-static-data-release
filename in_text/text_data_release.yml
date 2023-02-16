@@ -48,7 +48,7 @@ abstract: >-
   was provided by USGS Advanced Research Computing, USGS Tallgrass Supercomputer (<a href="https://doi.org/10.5066/F7D798MJ">doi.org/10.5066/F7D798MJ</a>).</p>
 
 authors: ["Hayley Corson-Dosch", "Wallace (Andy) Mcaliley", "Lindsay Platt", "Julie A Padilla", "Jordan S Read"]
-pubdate: 2022-02-28
+pubdate: 20220228
 doi: https://doi.org/10.5066/P9EQQER7
 
 build-environment: Multiple computer systems were used to generate these data, including linux, OSX. The open source languages R and Python were used on all systems.
