@@ -185,6 +185,34 @@ cross-cites:
     pubdate: 2019
     form: R package
     link: https://code.usgs.gov/water/ncdfgeom
+  -
+    authors: ['Matthew R. Hipsey', 'Louise C. Bruce', 'Casper Boon', 'Brendan Busch', 'Cayelan C. Carey', 'David P. Hamilton', 'Paul C. Hanson', 'Jordan S. Read', 'Eduardo de Sousa', 'Michael Weber', 'Luke A. Winslow']
+    title: >-
+      A General Lake Model (GLM 3.0) for linking with high-frequency sensor data from the Global Lake Ecological Observatory Network (GLEON).
+    pubdate: 2019
+    form: publication
+    link: https://doi.org/10.5194/gmd-12-473-2019
+  -
+    authors: ['Patricia A. Soranno', 'Kendra S. Cheruvelil']
+    title: >-
+      A module for LAGOS-NE, a multi-scaled geospatial and temporal database of lake ecological context and water quality for thousands of U.S. Lakes: 1925-2013
+    pubdate: 2017
+    form: publication
+    link: https://doi.org/10.6073/pasta/56cc5f1f753d48edfea170a5401dd6df
+  -
+    authors: ['Jordan S. Read', 'Alison A. Appling', 'Samantha K. Oliver', 'Lindsay R.C. Platt', 'Jacob A. Zwart', 'Kelsey Vitense', 'Gretchen J.A. Hansen', 'Hayley Corson-Dosch', 'Holly Kundel']
+    title: >-
+      Data release: Process-based predictions of lake water temperature in the Midwest US
+    pubdate: 2021
+    form: publication
+    link: http://dx.doi.org/10.5066/P9CA6XP8
+  -
+    authors: ['Jordan S. Read', 'Jordan I. Walker', 'Alison A. Appling', 'David L. Blodgett', 'Emily K. Read', 'Luke A. Winslow']
+    title: >-
+      geoknife: Reproducible web-processing of large gridded datasets
+    pubdate: 2015
+    form: R package
+    link: https://doi.org/10.1111/ecog.01880
 
 process-date: !expr format(Sys.time(),'%Y%m%d')
 file-format: a single comma-delimited file and a single zipped shapefile
