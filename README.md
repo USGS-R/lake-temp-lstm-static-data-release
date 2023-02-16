@@ -1,24 +1,21 @@
-# slim-data-release-template
+# Daily water column temperature predictions for thousands of Midwest U.S. lakes between 1979-2022 and under future climate scenarios
 
+This data release pipeline contains the recipes used to combine data from a variety of repositories and ultimately produce the data release, _"Daily water column temperature predictions for thousands of Midwest U.S. lakes between 1979-2022 and under future climate scenarios"_ ([doi:10.5066/P9EQQER7](https://doi.org/10.5066/P9EQQER7)). The data prep and modeling repositories that support this release are:
 
-## code
+1. [`lake-temperature-model-prep`](https://github.com/USGS-R/lake-temperature-model-prep)
+2. [`lake-temperature-process-models`](https://github.com/USGS-R/lake-temperature-process-models)
+3. [`lake-temperature-lstm-static`](https://github.com/USGS-R/lake-temperature-lstm-static)
+4. [`lake-temperature-out`](https://github.com/USGS-R/lake-temperature-out)
 
-Need to have non-CRAN packages`dssecrets`, `meddle`, and `scipiper` installed, among other packages. 
-Need to have CRAN package `sbtools` installed
+## Building this pipeline
 
-- Create a data release or create a child item on sciencebase to experiment on
-- Add "write" permissions on the release item for `cidamanager` (this is the `dssecrets` service account)
-- Change the files and the functions in `src/` to what you need
-- Edit data release information in `in_text/text_data_release.yml` to fit your data release and your file names and contents
-- modify the sciencebase indentifier to your parent data release identifier (should be a string that is something like "5faaac68d34eb413d5df1f22")
-- run `scmake()` (see `building this pipeline` section below for details)
-- validate your `out_xml/fgdc_metadata.xml` file with the [validator tool](https://mrdata.usgs.gov/validation/)
-- fix any validation errors (usually this requires filling in metadata information in the `in_text/text_data_release.yml` and perhaps looking a the [metadata template](https://raw.githubusercontent.com/USGS-R/meddle/master/inst/extdata/FGDC_template.mustache))
-- win
+This pipeline is being built on the USGS Tallgrass HPC system in order to facilitate the necessary connections to 4 other repositories with data built on Tallgrass and available through Caldera. Follow instructions in the DSP manual in order to start an R session on Tallgrass. If you are building this full pipeline, you will probably need to also connect to the Google Drive folder to ensure that files are updated (see `Setting up GD` below).
 
-## building this pipeline
+Note that building this full pipeline is lengthy because of the size of the various files and munging that takes place. It will take hours, so it might be best to let it go overnight. 
 
-For this pipeline specifically, it is being built on the USGS Tallgrass HPC system. Follow instructions in the DSP manual in order to start an R session on Tallgrass. Since the code uses `scipiper::gd_get()` along with `lake-temperature-model-prep`, you will likely need to setup authorization to the Google Drive folder if you are to build targets the call `scipiper_freshen_files()`. To do so, follow these instructions.
+## Setting up GD
+
+Since the code uses `scipiper::gd_get()` along with `lake-temperature-model-prep`, you will likely need to setup authorization to the Google Drive folder if you are to build targets the call `scipiper_freshen_files()`. To do so, follow these instructions.
 
 To allow `gd_get()` to actually download files, you need to prep your credentials to avoid the browser-mediated authorization (does not work on the HPC systems). I used the "Project-level OAuth cache" section of [this vignette](https://cran.r-project.org/web/packages/gargle/vignettes/non-interactive-auth.html) to develop this workflow. You should only need to follow steps 1-3 one time:
 
