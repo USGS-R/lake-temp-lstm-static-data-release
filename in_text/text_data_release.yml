@@ -48,60 +48,30 @@ abstract: >-
   was provided by USGS Advanced Research Computing, USGS Tallgrass Supercomputer (<a href="https://doi.org/10.5066/F7D798MJ">doi.org/10.5066/F7D798MJ</a>).</p>
 
 authors: ["Hayley Corson-Dosch", "Wallace (Andy) Mcaliley", "Lindsay Platt", "Julie A Padilla", "Jordan S Read"]
-pubdate: 2022-02-28
+pubdate: 20220228
 doi: https://doi.org/10.5066/P9EQQER7
 
 build-environment: Multiple computer systems were used to generate these data, including linux, OSX. The open source languages R and Python were used on all systems.
 
 # ----associated publication----
-larger-cites:
-  -
-    authors: ["Jordan S. Read", "Xiaowei Jia", "Jared Willard", "Alison P. Appling", "Jacob A. Zwart","Samantha K. Oliver","Anuj Karpatne","Gretchen J.A. Hansen", "Paul C. Hanson", "William Watkins", "Michael Steinbach","Vipin Kumar"]
-    title: >-
-      Process-guided deep learning predictions of lake water temperature
-    pubdate: 2019
+# larger-cites:
 
 # ----supporting publications----    
 cross-cites:
   -
-    authors: ['Kenneth E. Mitchell','Dag Lohmann','Paul R. Houser','Eric F. Wood','John C. Schaake','Alan Robock','Brian A. Cosgrove','Justin Sheffield','Qingyun Duan','Lifeng Luo','R. Wayne Higgins','Rachel T. Pinker','J. Dan Tarpley','Dennis P. Lettenmaier','Curtis H. Marshall','Jared K. Entin','Ming Pan','Wei Shi','Victor Koren','Jesse Meng','Bruce H. Ramsay','Andrew A. Bailey']
+    authors: ['David L. Blodgett', 'Nathaniel L. Booth', 'Thomas C. Kunicki', 'Jordan I. Walker', 'Roland J. Viger']
     title: >-
-      The multi-institution North American Land Data Assimilation System (NLDAS): Utilizing multiple GCIP products and partners in a continental distributed hydrological modeling system
-    pubdate: 2004
+      Description and testing of the Geo Data Portal: Data integration framework and Web processing services for environmental science collaboration.
+    pubdate: 2011
     form: publication
-    link: http://dx.doi.org/10.1029/2003JD003823
+    link: https://pubs.usgs.gov/of/2011/1157
   -
-    authors: ['Luke A. Winslow','Gretchen J.A. Hansen','Jordan S. Read','Michael Notaro']
+    authors: ['David Blodgett']
     title: >-
-      Large-scale modeled contemporary and future water temperature estimates for 10,774 Midwestern U.S. Lakes
-    pubdate: 2017
-    link: http://dx.doi.org/10.1038/sdata.2017.53
-  -
-    authors: ["Frederik Kratzert","Daniel Klotz","Guy Shalev", "Günter Klambauer", "Sepp Hochreiter", "Grey Nearing"]
-    title: >-
-      Towards learning universal, regional, and local hydrological behaviors via machine learning applied to large-sample datasets
+      ncdfgeom: 'NetCDF' Geometry and Time Series
     pubdate: 2019
-    form: publication
-    doi: 10.5194/hess-23-5089-2019
-  -
-    authors: ["Diederik P. Kingma", "Jimmy Ba"]
-    title: >-
-      Adam: A Method for Stochastic Optimization,
-    pubdate: 2014
-    link: https://doi.org/10.48550/arXiv.1412.6980
-  -
-    authors: ['Jared D. Willard', 'Jordan S. Read', 'Simon S. Topp', 'Gretchen J.A. Hansen', 'Vipin Kumar']
-    title: >-
-      Daily surface temperature predictions for 185,549 U.S. lakes with associated observations and meteorological conditions (1980-2020)
-    pubdate: 2022
-    link: https://doi.org/10.1002/lol2.10249
-  -
-    authors: ['Donald A. Wismer', 'Alan E. Christie']
-    title: >-
-      Temperature Relationships of Great Lakes Fishes: A Data Compilation
-    pubdate: 1987
-    form: publication
-    link: http://www.glfc.org/pubs/SpecialPubs/Sp87_3.pdf
+    form: R package
+    link: https://code.usgs.gov/water/ncdfgeom
   -
     authors: ['Wolf-Dieter N. Busch', 'Russell L. Scholl', 'Wilbur L. Hartman']
     title: >-
@@ -111,20 +81,14 @@ cross-cites:
     form: publication
     link: https://doi.org/10.1139/f75-207
   -
-    authors: ['Charles P. Madenjian', 'Jeffrey T. Tyson', 'Roger L. Knight', 'Mark W. Kershner', 'Michael J. Hansen']
+    authors: ['J.M. Casselman']
     title: >-
-      First-year growth, recruitment, and maturity of walleyes in western Lake Erie
-    pubdate: 1996
+      Effects of temperature, global extremes, and climate change on year-class production
+      of warmwater, coolwater, and coldwater fishes in the Great Lakes Basin
+    pubdate: 2002
     form: publication
-    link: https://doi.org/10.1577/1548-8659(1996)125<0821:FYGRAM>2.3.CO;2
-  -
-    authors: ['Xing Fang', 'Heinz G, Stefan', 'John G. Eaton', 'J. Howard McCormick', 'Shoeb R. Alam']
-    title: >-
-      Simulation of thermal/dissolved oxygen habitat for fishes in lakes under different
-      climate scenarios: Part 1. Cool-water fish in the contiguous US
-    pubdate: 2004
-    form: publication
-    link: https://doi.org/10.1016/S0304-3800(03)00282-5
+    # Behind paywall in symposium proceedings, so not including in final metadata
+    # link: https://fisheries.org/bookstore/all-titles/afs-symposia/x54032xm/
   -
     authors: ['Gavin C. Christie', 'Henry A. Regier']
     title: >-
@@ -140,15 +104,6 @@ cross-cites:
     form: publication
     link: https://doi.org/10.1371/journal.pone.0062279
   -
-    authors: ['J.M. Casselman']
-    title: >-
-      Effects of temperature, global extremes, and climate change on year-class production
-      of warmwater, coolwater, and coldwater fishes in the Great Lakes Basin
-    pubdate: 2002
-    form: publication
-    # Behind paywall in symposium proceedings, so not including in final metadata
-    # link: https://fisheries.org/bookstore/all-titles/afs-symposia/x54032xm/
-  -
     authors: ['Charles C. Coutant']
     title: >-
       Compilation of temperature preference data
@@ -163,12 +118,20 @@ cross-cites:
     form: publication
     link: https://doi.org/10.1577/1548-8446(1995)020<0010:AFISFE>2.0.CO;2
   -
-    authors: ['Jordan S. Read', 'David P. Hamilton', 'Ian D. Jones', 'Kohji Muraoka', 'Luke A. Winslow', 'Ryan Kroiss', 'Chin H. Wu', 'Evelyn Gaiser']
+    authors: ['Xing Fang', 'Heinz G, Stefan', 'John G. Eaton', 'J. Howard McCormick', 'Shoeb R. Alam']
     title: >-
-      Derivation of lake mixing and stratification indices from high-resolution lake buoy data
-    pubdate: 2011
+      Simulation of thermal/dissolved oxygen habitat for fishes in lakes under different
+      climate scenarios: Part 1. Cool-water fish in the contiguous US
+    pubdate: 2004
     form: publication
-    link: https://doi.org/10.1016/j.envsoft.2011.05.006
+    link: https://doi.org/10.1016/S0304-3800(03)00282-5
+  -
+    authors: ['Matthew R. Hipsey', 'Louise C. Bruce', 'Casper Boon', 'Brendan Busch', 'Cayelan C. Carey', 'David P. Hamilton', 'Paul C. Hanson', 'Jordan S. Read', 'Eduardo de Sousa', 'Michael Weber', 'Luke A. Winslow']
+    title: >-
+      A General Lake Model (GLM 3.0) for linking with high-frequency sensor data from the Global Lake Ecological Observatory Network (GLEON).
+    pubdate: 2019
+    form: publication
+    link: https://doi.org/10.5194/gmd-12-473-2019
   -
     authors: ['Jeffrey Hollister', 'Tarak Shah', 'Alec L. Robitaille', 'Marcus W. Beck', 'Mike Johnson']
     title: >-
@@ -177,6 +140,68 @@ cross-cites:
     form: R package
     link: https://doi.org/10.5281/zenodo.5809645
   -
+    authors: ["Diederik P. Kingma", "Jimmy Ba"]
+    title: >-
+      Adam: A Method for Stochastic Optimization,
+    pubdate: 2014
+    link: https://doi.org/10.48550/arXiv.1412.6980
+  -
+    authors: ["Frederik Kratzert","Daniel Klotz","Guy Shalev", "Günter Klambauer", "Sepp Hochreiter", "Grey Nearing"]
+    title: >-
+      Towards learning universal, regional, and local hydrological behaviors via machine learning applied to large-sample datasets
+    pubdate: 2019
+    form: publication
+    doi: 10.5194/hess-23-5089-2019
+  -
+    authors: ['Charles P. Madenjian', 'Jeffrey T. Tyson', 'Roger L. Knight', 'Mark W. Kershner', 'Michael J. Hansen']
+    title: >-
+      First-year growth, recruitment, and maturity of walleyes in western Lake Erie
+    pubdate: 1996
+    form: publication
+    link: https://doi.org/10.1577/1548-8659(1996)125<0821:FYGRAM>2.3.CO;2
+  -
+    authors: ['Kenneth E. Mitchell','Dag Lohmann','Paul R. Houser','Eric F. Wood','John C. Schaake','Alan Robock','Brian A. Cosgrove','Justin Sheffield','Qingyun Duan','Lifeng Luo','R. Wayne Higgins','Rachel T. Pinker','J. Dan Tarpley','Dennis P. Lettenmaier','Curtis H. Marshall','Jared K. Entin','Ming Pan','Wei Shi','Victor Koren','Jesse Meng','Bruce H. Ramsay','Andrew A. Bailey']
+    title: >-
+      The multi-institution North American Land Data Assimilation System (NLDAS): Utilizing multiple GCIP products and partners in a continental distributed hydrological modeling system
+    pubdate: 2004
+    form: publication
+    link: http://dx.doi.org/10.1029/2003JD003823
+  -
+    authors: ['Michael Notaro', 'Val Bennington', 'Yafang Zhong']
+    title: >-
+      Dynamical Downscaling for the Midwest and Great Lakes Basin
+    pubdate: 2018
+    form: dataset
+    link: https://www.sciencebase.gov/catalog/item/5b2d6121e4b040769c124c0c
+  -
+    authors: ['Jordan S. Read', 'David P. Hamilton', 'Ian D. Jones', 'Kohji Muraoka', 'Luke A. Winslow', 'Ryan Kroiss', 'Chin H. Wu', 'Evelyn Gaiser']
+    title: >-
+      Derivation of lake mixing and stratification indices from high-resolution lake buoy data
+    pubdate: 2011
+    form: publication
+    link: https://doi.org/10.1016/j.envsoft.2011.05.006
+  -
+    authors: ['Jordan S. Read', 'Jordan I. Walker', 'Alison A. Appling', 'David L. Blodgett', 'Emily K. Read', 'Luke A. Winslow']
+    title: >-
+      geoknife: Reproducible web-processing of large gridded datasets
+    pubdate: 2015
+    form: R package
+    link: https://doi.org/10.1111/ecog.01880
+  -
+    authors: ['Jordan S. Read', 'Alison A. Appling', 'Samantha K. Oliver', 'Lindsay R.C. Platt', 'Jacob A. Zwart', 'Kelsey Vitense', 'Gretchen J.A. Hansen', 'Hayley Corson-Dosch', 'Holly Kundel']
+    title: >-
+      Data release: Process-based predictions of lake water temperature in the Midwest US
+    pubdate: 2021
+    form: publication
+    link: http://dx.doi.org/10.5066/P9CA6XP8
+  -
+    authors: ['Patricia A. Soranno', 'Kendra S. Cheruvelil']
+    title: >-
+      A module for LAGOS-NE, a multi-scaled geospatial and temporal database of lake ecological context and water quality for thousands of U.S. Lakes: 1925-2013
+    pubdate: 2017
+    form: publication
+    link: https://doi.org/10.6073/pasta/56cc5f1f753d48edfea170a5401dd6df
+  -
     authors: ['U.S. Geological Survey']
     title: >-
       National Hydrography Dataset Plus High Resolution (NHDPlus HR) - USGS National Map Downloadable Data Collection
@@ -184,12 +209,24 @@ cross-cites:
     form: data release
     link: https://www.sciencebase.gov/catalog/item/57645ff2e4b07657d19ba8e8
   -
-    authors: ['David Blodgett']
+    authors: ['Jared D. Willard', 'Jordan S. Read', 'Simon S. Topp', 'Gretchen J.A. Hansen', 'Vipin Kumar']
     title: >-
-      ncdfgeom: 'NetCDF' Geometry and Time Series
-    pubdate: 2019
-    form: R package
-    link: https://code.usgs.gov/water/ncdfgeom
+      Daily surface temperature predictions for 185,549 U.S. lakes with associated observations and meteorological conditions (1980-2020)
+    pubdate: 2022
+    link: https://doi.org/10.1002/lol2.10249
+  -
+    authors: ['Luke A. Winslow','Gretchen J.A. Hansen','Jordan S. Read','Michael Notaro']
+    title: >-
+      Large-scale modeled contemporary and future water temperature estimates for 10,774 Midwestern U.S. Lakes
+    pubdate: 2017
+    link: http://dx.doi.org/10.1038/sdata.2017.53
+  -
+    authors: ['Donald A. Wismer', 'Alan E. Christie']
+    title: >-
+      Temperature Relationships of Great Lakes Fishes: A Data Compilation
+    pubdate: 1987
+    form: publication
+    link: http://www.glfc.org/pubs/SpecialPubs/Sp87_3.pdf
 
 process-date: !expr format(Sys.time(),'%Y%m%d')
 file-format: a single comma-delimited file and a single zipped shapefile
@@ -202,7 +239,7 @@ entities:
     -
       attr-label: site_id
       attr-def: >-
-        Lake identification number for this study. It is the Prmnn_I from NHD high-res prefixed
+        Lake identification number for this study. It is the Prmnn_I from NHD high-res (NHDPlus HR; USGS, 2017) prefixed
         with source, as "nhdhr_{Prmnn_I}". The ids have a mix of characters and some can include
         special characters, such as "{" and "}".
       attr-defs: >-
@@ -217,7 +254,7 @@ entities:
     -
       attr-label: site_id
       attr-def: >-
-        Lake identification number for this study. It is the Prmnn_I from NHD high-res prefixed
+        Lake identification number for this study. It is the Prmnn_I from NHD high-res (NHDPlus HR; USGS, 2017) prefixed
         with source, as "nhdhr_{Prmnn_I}". The ids have a mix of characters and some can include
         special characters, such as "{" and "}".
       attr-defs: >-
@@ -289,8 +326,9 @@ entities:
         available. Since the EA-LSTM model used in this study did not use clarity as an input, 
         this `Inf` clarity value was deemed inconsequential for the modeling results.
       attr-defs: >-
-        Variety of secchi depths and k values were synthesized in this data release, including from LAGOS, 
-        Landsat, and the Water Quality Portal.
+        Variety of secchi depths and k values were synthesized in this data release, including from 
+        LAGOS-NE (Soranno and Cheruvelil, 2017), the Water Quality Portal (www.waterqualitydata.us),
+        and others (see Winslow et al., 2017).
       data-min: 0.1574074
       data-max: 112.4285
       data-units: meters^-1
@@ -372,7 +410,7 @@ entities:
     -
       attr-label: site_id
       attr-def: >-
-        Lake identification number for this study. It is the Prmnn_I from NHD high-res prefixed
+        Lake identification number for this study. It is the Prmnn_I from NHD high-res (NHDPlus HR; USGS, 2017) prefixed
         with source, as "nhdhr_{Prmnn_I}". The ids have a mix of characters and some can include
         special characters, such as "{" and "}".
       attr-defs: >-
@@ -522,7 +560,7 @@ entities:
     -
       attr-label: site_id
       attr-def: >-
-        Lake identification number for this study. It is the Prmnn_I from NHD high-res prefixed
+        Lake identification number for this study. It is the Prmnn_I from NHD high-res (NHDPlus HR; USGS, 2017) prefixed
         with source, as "nhdhr_{Prmnn_I}". The ids have a mix of characters and some can include
         special characters, such as "{" and "}". These values will be repeated for each known 
         depth-area value available for a given lake.
@@ -556,7 +594,7 @@ entities:
     -
       attr-label: site_id
       attr-def: >-
-        Lake identification number for this study. It is the Prmnn_I from NHD high-res prefixed
+        Lake identification number for this study. It is the Prmnn_I from NHD high-res (NHDPlus HR; USGS, 2017) prefixed
         with source, as "nhdhr_{Prmnn_I}". The ids have a mix of characters and some can include
         special characters, such as "{" and "}".
       attr-defs: >-
@@ -609,7 +647,7 @@ entities:
       attr-def: >-
         Date of this weather estimate. The min and max dates for this attribute 
         are greater than the modeled time period to accomodate a model warm-up period.
-      attr-defs: Read et al., 2021
+      attr-defs: NA
       data-min: 1979-01-02
       data-max: 2022-04-11
       data-units: Date  
@@ -754,7 +792,7 @@ entities:
         is an important factor in lake temperature modeling due to its impact on mixing, the GCM windspeeds 
         between 1980-1999 were statistically transformed, such that they aligned with the distribution of 
         windspeed from NLDAS. The same statistical transform was applied to the GCM windspeeds for future dates.         
-      attr-defs: Notaro et al., 2018
+      attr-defs: NA
       data-min: NA
       data-max: NA
       data-units: m s^-1 	
@@ -762,8 +800,8 @@ entities:
       attr-label: Rain	
       attr-def: >-
         Daily rate of rain reaching the lake surface in a day as described in 
-        Winslow et al. 2017; rate as determined by Hipsey et al. 2019. 
-      attr-defs: Notaro et al., 2018
+        Winslow et al. 2017. 
+      attr-defs: Read et al., 2021
       data-min: NA
       data-max: NA
       data-units: m day^-1 	
@@ -772,7 +810,7 @@ entities:
       attr-def: >-
         Daily rate of snow reaching the lake surface in a day as described in 
         Winslow et al. 2017. 
-      attr-defs: Notaro et al., 2018
+      attr-defs: Read et al., 2021
       data-min: NA
       data-max: NA
       data-units: m day^-1
@@ -859,6 +897,7 @@ entities:
       attr-defs: NA
       data-min: 0
       data-max: 1
+      data-units: NA
   -
     data-name: lake_temp_metrics_GLM_{DRIVER}.csv
     data-description: >-
@@ -871,7 +910,7 @@ entities:
       -
         attr-label: site_id
         attr-def: >-
-          Lake identification number for this study. It is the Prmnn_I from NHD high-res prefixed
+          Lake identification number for this study. It is the Prmnn_I from NHD high-res (NHDPlus HR; USGS, 2017) prefixed
           with source, as "nhdhr_{Prmnn_I}". The ids have a mix of characters and some can include
           special characters, such as "{" and "}".
         attr-defs: >-
@@ -899,14 +938,14 @@ entities:
       -
         attr-label: peak_temp
         attr-def: Maximum observed surface temperature
-        attr-defs: Winslow et al. 2017
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: degrees C
       -
         attr-label: peak_temp_dt
         attr-def: Date of maximum observed surface temperature
-        attr-defs: NA
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: NA
@@ -918,7 +957,7 @@ entities:
           in December of 2016). This definition of ice-on is consistent with the Wisconsin
           State Climatology Office's use of ice-on and ice-off dates by winter season. If
           this value is `NA`, it means that no ice formed during that winter season.
-        attr-defs: NA
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: NA
@@ -927,7 +966,7 @@ entities:
         attr-def: >-
           Date of ice-off for the current year's winter season. If this
           value is `NA`, it means that no ice formed during that winter season.
-        attr-defs: NA
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: NA
@@ -936,49 +975,45 @@ entities:
         attr-def: >-
           Number of days, beginning October 30 of the previous year and running through June
           of the given year, that surface water is <4 degrees C
-        attr-defs: Winslow et al. 2017
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: days
       -
         attr-label: coef_var_31_60
         attr-def: Coefficient of Variation of surface temperature from 30-60 days post ice off
-        attr-defs: >-
-          This calculation is the same as Winslow et al. 2017, but that one wasn't named
-          intuitively (`coef_var_30_60` instead of `coef_var_31_60`)
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: unitless (CV)
       -
         attr-label: coef_var_1_30
         attr-def: Coefficient of Variation of surface temperature up to 30 days post ice-off
-        attr-defs: >-
-          This calculation is the same as Winslow et al. 2017, but that one wasn't named
-          intuitively (`coef_var_0_30` instead of `coef_var_1_30`)
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: unitless (CV)
       -
         attr-label: stratification_onset_yday
         attr-def: Julian date at which stratification sets up (longest stratified period)
-        attr-defs: Winslow et al. 2017
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: Julian day
       -
         attr-label: stratification_duration
         attr-def: Duration of stratified period
-        attr-defs: Winslow et al. 2017
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: days
       -
         attr-label: sthermo_depth_mean
-        attr-def: Average thermocline depth in stratified period that is >= 30 days
-        attr-defs: >-
-          This calculation is similar to the one from Winslow et al. 2017, except that it
+        attr-def: >- 
+          Average thermocline depth in stratified period that is >= 30 days. It
           uses the longest duration of stratified days as the stratified period and will
           return NA for any stratified period less than 30 days.
+        attr-defs: Read et al., 2021 
         data-min: NA
         data-max: NA
         data-units: depth (m)
@@ -986,10 +1021,8 @@ entities:
         attr-label: bottom_temp_at_strat
         attr-def: >-
           Water temperature 0.1m from lake bottom on day of stratification (as defined
-          by "stratification_onset_yday")
-        attr-defs: >-
-          This calculation is similar to the one from Winslow et al. 2017, except that it
-          will return NA for any stratified period less than 30 days.
+          by "stratification_onset_yday"). Will be NA for any stratified period less than 30 days.
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: degrees C
@@ -998,14 +1031,14 @@ entities:
         attr-def: >-
           Cumulative sum of degrees greater than {temp} for an entire
           year. {temp} is one of 0, 5, 10.
-        attr-defs: Winslow et al. 2017
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: degrees C * days
       -
         attr-label: schmidt_daily_annual_sum
         attr-def: Sum of daily Schmidt Stability values for calendar year.
-        attr-defs: Winslow et al. 2017
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: J/m^2 * days
@@ -1014,7 +1047,7 @@ entities:
         attr-def: >-
           Mean summer (July, August, September) temperature at {depth}. {depth} is
           either "surf" for surface or "bot" for bottom.
-        attr-defs: Winslow et al. 2017
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: degrees C
@@ -1023,7 +1056,7 @@ entities:
         attr-def: >-
           Maximum summer (July, August, September) temperature at {depth}. {depth} is
           either "surf" for surface or "bot" for bottom.
-        attr-defs: Winslow et al. 2017
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: degrees C
@@ -1033,7 +1066,7 @@ entities:
           Mean temperature at {depth} for {month}. {depth} is either "surf" for
           surface or "bot" for bottom. {month} is the 3 letter abbreviation for one
           of the 12 months, Jan through Dec.
-        attr-defs: Winslow et al. 2017
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: degrees C
@@ -1043,7 +1076,7 @@ entities:
           Maximum temperature at {depth} for {month}. {depth} is either "surf" for
           surface or "bot" for bottom. {month} is the 3 letter abbreviation for one
           of the 12 months, Jan (January) through Dec (December).
-        attr-defs: Winslow et al. 2017
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: degrees C
@@ -1364,7 +1397,7 @@ entities:
         attr-def: >-
           Meters of water between 12 and 28 degrees C.
           This range is used to denote optimal age 0 thermal habitat
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1372,7 +1405,7 @@ entities:
         attr-label: vol_12_28
         attr-def: >-
           Volume of water between 12 and 28 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1381,7 +1414,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 12 and 28 degrees C.
           This range is used to denote optimal age 0 thermal habitat
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1390,7 +1423,7 @@ entities:
         attr-def: >-
           Meters of water between 10.6 and 11.2 degrees C.
           This range is used to denote optimal larval thermal habitat
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1398,7 +1431,7 @@ entities:
         attr-label: vol_10.6_11.2
         attr-def: >-
           Volume of water between 10.6 and 11.2 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1407,7 +1440,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 10.6 and 11.2 degrees C.
           This range is used to denote optimal larval thermal habitat
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1416,7 +1449,7 @@ entities:
         attr-def: >-
           Meters of water between 18.2 and 28.2 degrees C.
           This range is used to denote good growth habitat
-        attr-defs: Fang et al. 2004
+        attr-defs: Fang et al., 2004
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1424,7 +1457,7 @@ entities:
         attr-label: vol_18.2_28.2
         attr-def: >-
           Volume of water between 18.2 and 28.2 degrees C.
-        attr-defs: Fang et al. 2004
+        attr-defs: Fang et al., 2004
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1433,7 +1466,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 18.2 and 28.2 degrees C.
           This range is used to denote good growth habitat
-        attr-defs: Fang et al. 2004
+        attr-defs: Fang et al., 2004
         data-min: NA
         data-max: NA
         data-units: days
@@ -1442,7 +1475,7 @@ entities:
         attr-def: >-
           Meters of water between 18 and 22 degrees C.
           This range is used to denote optimal age 0 thermal habitat
-        attr-defs: Christie and Regier 1988
+        attr-defs: Christie and Regier, 1988
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1450,7 +1483,7 @@ entities:
         attr-label: vol_18_22
         attr-def: >-
           Volume of water between 18 and 22 degrees C.
-        attr-defs: Christie and Regier 1988
+        attr-defs: Christie and Regier, 1988
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1459,7 +1492,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 18 and 22 degrees C.
           This range is used to denote optimal age 0 thermal habitat
-        attr-defs: Christie and Regier 1988
+        attr-defs: Christie and Regier, 1988
         data-min: NA
         data-max: NA
         data-units: days
@@ -1468,7 +1501,7 @@ entities:
         attr-def: >-
           Meters of water between 19.3 and 23.3 degrees C.
           This range is used to denote YOY optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1476,7 +1509,7 @@ entities:
         attr-label: vol_19.3_23.3
         attr-def: >-
           Volume of water between 19.3 and 23.3 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1485,7 +1518,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 19.3 and 23.3 degrees C.
           This range is used to denote YOY optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1494,7 +1527,7 @@ entities:
         attr-def: >-
           Meters of water between 19 and 23 degrees C.
           This range is used to denote optimal thermal habitat
-        attr-defs: Cline et al. 2013
+        attr-defs: Cline et al., 2013
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1502,7 +1535,7 @@ entities:
         attr-label: vol_19_23
         attr-def: >-
           Volume of water between 19 and 23 degrees C.
-        attr-defs: Cline et al. 2013
+        attr-defs: Cline et al., 2013
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1511,7 +1544,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 19 and 23 degrees C.
           This range is used to denote optimal thermal habitat
-        attr-defs: Cline et al. 2013
+        attr-defs: Cline et al., 2013
         data-min: NA
         data-max: NA
         data-units: days
@@ -1520,7 +1553,7 @@ entities:
         attr-def: >-
           Meters of water between 20.6 and 23.2 degrees C.
           This range is used to denote optimal thermal habitat
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1528,7 +1561,7 @@ entities:
         attr-label: vol_20.6_23.2
         attr-def: >-
           Volume of water between 20.6 and 23.2 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1537,7 +1570,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 20.6 and 23.2 degrees C.
           This range is used to denote optimal thermal habitat
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1546,7 +1579,7 @@ entities:
         attr-def: >-
           Meters of water between 20 and 30 degrees C.
           This range is used to denote larval optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1554,7 +1587,7 @@ entities:
         attr-label: vol_20_30
         attr-def: >-
           Volume of water between 20 and 30 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1563,7 +1596,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 20 and 30 degrees C.
           This range is used to denote larval optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1572,7 +1605,7 @@ entities:
         attr-def: >-
           Meters of water between 21 and 100 degrees C.
           This range is used to denote growing season for YOY
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1580,7 +1613,7 @@ entities:
         attr-label: vol_21_100
         attr-def: >-
           Volume of water between 21 and 100 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1589,7 +1622,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 21 and 100 degrees C.
           This range is used to denote growing season for YOY
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1598,7 +1631,7 @@ entities:
         attr-def: >-
           Meters of water between 22 and 23 degrees C.
           This range is used to denote optimal thermal habitat
-        attr-defs: Casselman 2002
+        attr-defs: Casselman, 2002
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1606,7 +1639,7 @@ entities:
         attr-label: vol_22_23
         attr-def: >-
           Volume of water between 22 and 23 degrees C.
-        attr-defs: Casselman 2002
+        attr-defs: Casselman, 2002
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1615,7 +1648,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 22 and 23 degrees C.
           This range is used to denote optimal thermal habitat
-        attr-defs: Casselman 2002
+        attr-defs: Casselman, 2002
         data-min: NA
         data-max: NA
         data-units: days
@@ -1624,7 +1657,7 @@ entities:
         attr-def: >-
           Meters of water between 23 and 31 degrees C.
           This range is used to denote juvenile optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1632,7 +1665,7 @@ entities:
         attr-label: vol_23_31
         attr-def: >-
           Volume of water between 23 and 31 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1641,7 +1674,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 23 and 31 degrees C.
           This range is used to denote juvenile optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1650,7 +1683,7 @@ entities:
         attr-def: >-
           Meters of water between 25 and 29 degrees C.
           This range is used to denote larval optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1658,7 +1691,7 @@ entities:
         attr-label: vol_25_29
         attr-def: >-
           Volume of water between 25 and 29 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1667,7 +1700,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 25 and 29 degrees C.
           This range is used to denote larval optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1676,7 +1709,7 @@ entities:
         attr-def: >-
           Meters of water between 26.2 and 32 degrees C.
           This range is used to denote good growth habitat
-        attr-defs: Countant 1977
+        attr-defs: Countant, 1977
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1684,7 +1717,7 @@ entities:
         attr-label: vol_26.2_32
         attr-def: >-
           Volume of water between 26.2 and 32 degrees C.
-        attr-defs: Countant 1977
+        attr-defs: Countant, 1977
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1693,7 +1726,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 26.2 and 32 degrees C.
           This range is used to denote good growth habitat
-        attr-defs: Countant 1977
+        attr-defs: Countant, 1977
         data-min: NA
         data-max: NA
         data-units: days
@@ -1702,7 +1735,7 @@ entities:
         attr-def: >-
           Meters of water between 26 and 28 degrees C.
           This range is used to denote subadult optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1710,7 +1743,7 @@ entities:
         attr-label: vol_26_28
         attr-def: >-
           Volume of water between 26 and 28 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1719,7 +1752,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 26 and 28 degrees C.
           This range is used to denote subadult optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1728,7 +1761,7 @@ entities:
         attr-def: >-
           Meters of water between 26 and 30 degrees C.
           This range is used to denote adult optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1736,7 +1769,7 @@ entities:
         attr-label: vol_26_30
         attr-def: >-
           Volume of water between 26 and 30 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1745,7 +1778,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 26 and 30 degrees C.
           This range is used to denote adult optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1754,7 +1787,7 @@ entities:
         attr-def: >-
           Meters of water between 28 and 29 degrees C.
           This range is used to denote juvenile optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1762,7 +1795,7 @@ entities:
         attr-label: vol_28_29
         attr-def: >-
           Volume of water between 28 and 29 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1771,7 +1804,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 28 and 29 degrees C.
           This range is used to denote juvenile optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1781,7 +1814,7 @@ entities:
         attr-def: >-
           Meters of water between 28 and 32 degrees C.
           This range is used to denote juvenile optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1789,7 +1822,7 @@ entities:
         attr-label: vol_28_32
         attr-def: >-
           Volume of water between 28 and 32 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1798,7 +1831,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 28 and 32 degrees C.
           This range is used to denote juvenile optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1808,7 +1841,7 @@ entities:
         attr-def: >-
           Meters of water between 29 and 100 degrees C.
           This range is used to denote lethal habitat
-        attr-defs: Fang et al. 2004
+        attr-defs: Fang et al., 2004
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1816,7 +1849,7 @@ entities:
         attr-label: vol_29_100
         attr-def: >-
           Volume of water between 29 and 100 degrees C.
-        attr-defs: Fang et al. 2004
+        attr-defs: Fang et al., 2004
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1825,7 +1858,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 29 and 100 degrees C.
           This range is used to denote lethal habitat
-        attr-defs: Fang et al. 2004
+        attr-defs: Fang et al., 2004
         data-min: NA
         data-max: NA
         data-units: days
@@ -1835,7 +1868,7 @@ entities:
         attr-def: >-
           Meters of water between 30 and 31 degrees C.
           This range is used to denote adult optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
@@ -1843,7 +1876,7 @@ entities:
         attr-label: vol_30_31
         attr-def: >-
           Volume of water between 30 and 31 degrees C.
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
@@ -1852,7 +1885,7 @@ entities:
         attr-def: >-
           Days in which there is any part of water column between 30 and 31 degrees C.
           This range is used to denote adult optimum
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days
@@ -1861,7 +1894,7 @@ entities:
         attr-def: >-
           Duration of optimal incubation period where surface temperature
           is between 10.5-15.5 degrees C (Spring only)
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: days before June 1
@@ -1869,7 +1902,7 @@ entities:
         attr-label: post_ice_warm_rate
         attr-def: >-
           Average change in surface temp (degrees C per day) 30 days post ice off
-        attr-defs: Busch et al. 1975; Madenijan et al. 1996
+        attr-defs: Busch et al., 1975; Madenijan et al., 1996
         data-min: NA
         data-max: NA
         data-units: degrees C per day
@@ -1879,42 +1912,42 @@ entities:
           Date where average surface temperature reaches {temp} degrees C. {temp} is
           one of 8.9 (date of spawning temp), 16.7 (hatch date), 18 (date of spawning
           temp for bass), or 21 (date of spawning temp for bass).
-        attr-defs: Wismer and Christie 1987
+        attr-defs: Wismer and Christie, 1987
         data-min: NA
         data-max: NA
         data-units: Julian day
       -
         attr-label: SmetaTopD_mean
         attr-def: Mean epilmnion meters during the longest stratified period
-        attr-defs: Read et al. 2011
+        attr-defs: Read et al., 2011
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
       -
         attr-label: SmetaBotD_mean
         attr-def: Mean hypolimnion meters during the longest stratified period
-        attr-defs: Read et al. 2011
+        attr-defs: Read et al., 2011
         data-min: NA
         data-max: NA
         data-units: linear distance (m)
       -
         attr-label: mean_epi_vol
         attr-def: Mean epilmnion volume during longest stratified period
-        attr-defs: NA
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
       -
         attr-label: mean_hyp_vol
         attr-def: Mean hypolimnion volume during longest stratified period
-        attr-defs: NA
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: volume (m^3*1000)
       -
         attr-label: mean_epi_hypo_ratio
         attr-def: Mean epilmnion volume divided by mean hypolimnion volume
-        attr-defs: NA
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: unitless (ratio)
@@ -1926,7 +1959,7 @@ entities:
           not be calculated because there was either not an ice-off date for this
           year's winter season or an ice-on date for the next year's winter season
           or both were missing.
-        attr-defs: NA
+        attr-defs: Read et al., 2021
         data-min: NA
         data-max: NA
         data-units: days
@@ -1994,9 +2027,9 @@ process-description: >-
   aggregated from a variety of sources and cooperators for lakes across the US Midwest. Meteorological inputs for the contemporary period (1979-
   2022) used by both modeling frameworks were downloaded from the North American Land Data Assimilation System (NLDAS, Mitchell et al., 2004). Differences
   in model spin-up and spin-down periods between the two modeling frameworks result in different prediction dates for the contemporary period. Meteorological inputs for 
-  future climate scenarios used only by the hydrodynamic model were downloaded from the USGS Geo Data Portal dataset "Dynamical Downscaling for   
-  the Midwest and Great Lakes Basin" (https://www.sciencebase.gov/catalog/item/5b2d6121e4b040769c124c0c). This input data covers three different 
-  time periods (1981-2000, 2040-2059, and 2080-2099) and is referred to as "GCM" throughout this data release. 
+  future climate scenarios used only by the hydrodynamic model were downloaded from the USGS Geo Data Portal (Blodgett et al., 2011) using the R package 
+  "geoknife" (Read et al., 2015). The data downloaded was a debiased version of the dataset "Dynamical Downscaling for the Midwest and Great Lakes Basin' (Notaro et al., 2018). 
+  This input data covers three different time periods (1981-2000, 2040-2059, and 2080-2099) and is referred to as "GCM" throughout this data release. 
   
   The GCM windspeeds were abnormally low compared to the NLDAS windspeed for the same date and location. As windspeed is an important factor in 
   lake temperature modeling due to its impact on mixing, the GCM windspeeds between 1980-1999 were statistically transformed, such that they 
