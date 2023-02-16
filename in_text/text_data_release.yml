@@ -1983,9 +1983,9 @@ process-description: >-
   aggregated from a variety of sources and cooperators for lakes across the US Midwest. Meteorological inputs for the contemporary period (1979-
   2022) used by both modeling frameworks were downloaded from the North American Land Data Assimilation System (NLDAS, Mitchell et al., 2004). Differences
   in model spin-up and spin-down periods between the two modeling frameworks result in different prediction dates for the contemporary period. Meteorological inputs for 
-  future climate scenarios used only by the hydrodynamic model were downloaded from the USGS Geo Data Portal dataset "Dynamical Downscaling for   
-  the Midwest and Great Lakes Basin" (https://www.sciencebase.gov/catalog/item/5b2d6121e4b040769c124c0c). This input data covers three different 
-  time periods (1981-2000, 2040-2059, and 2080-2099) and is referred to as "GCM" throughout this data release. 
+  future climate scenarios used only by the hydrodynamic model were downloaded from the USGS Geo Data Portal (https://usgs.gov/tools/geo-data-portal) using the R package 
+  "geoknife" (Read et al., 2015). The data downloaded was a debiased version of the dataset "Dynamical Downscaling for the Midwest and Great Lakes Basin' (Notaro et al., 2018). 
+  This input data covers three different time periods (1981-2000, 2040-2059, and 2080-2099) and is referred to as "GCM" throughout this data release. 
   
   The GCM windspeeds were abnormally low compared to the NLDAS windspeed for the same date and location. As windspeed is an important factor in 
   lake temperature modeling due to its impact on mixing, the GCM windspeeds between 1980-1999 were statistically transformed, such that they 
