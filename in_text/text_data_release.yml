@@ -2034,7 +2034,7 @@ process-description: >-
   lake temperature modeling due to its impact on mixing, the GCM windspeeds between 1980-1999 were statistically transformed, such that they 
   aligned with the distribution of windspeed from NLDAS. The same statistical transform was applied to the GCM windspeeds for future dates. 
   
-  Our chosen hydrodynamic model is the open source, General Lake Model (GLM) version 3 (Hipsey et al, 2019). GLM is a one-dimensional dynamical model which simplifies 
+  Our chosen hydrodynamic model is the open source, General Lake Model (GLM) version 3.2.0a8 (Hipsey et al, 2019). GLM is a one-dimensional dynamical model which simplifies 
   lakes using a vertical approximation, where horizontal variability is ignored. GLM uses a Lagrangian approach to layer structure where layers can 
   split and combine based on changing vertical gradients. GLM is a modern implementation of other one-dimensional models. We used GLM to run individual 
   lake simulations according to the processes described in Winslow et al. 2017 for both the contemporary period (using NLDAS as the meteorological
