@@ -2022,12 +2022,12 @@ funding-credits: >-
 process-description: >-
   This dataset was generated using two modeling frameworks: 1) a lake hydrodynamic model that uses inputs of lake-specific properties and local 
   meteorology to estimate water temperature, and 2)  an entity-aware long short-term memory network trained using lake temperature observations 
-  and four lake-specific properties. Lake-specific properties and temperature obvservations were 
+  and four lake-specific properties. Lake-specific properties and temperature observations were 
   aggregated from a variety of sources and cooperators for lakes across the US Midwest. Meteorological inputs for the contemporary period (1979-
   2022) used by both modeling frameworks were downloaded from the North American Land Data Assimilation System (NLDAS, Mitchell et al., 2004). Differences
   in model spin-up and spin-down periods between the two modeling frameworks result in different prediction dates for the contemporary period. Meteorological inputs for 
   future climate scenarios used only by the hydrodynamic model were downloaded from the USGS Geo Data Portal (Blodgett et al., 2011) using the R package 
-  "geoknife" (Read et al., 2015). The data downloaded was a debiased version of the dataset "Dynamical Downscaling for the Midwest and Great Lakes Basin' (Notaro et al., 2018). 
+  "geoknife" (Read et al., 2015). The data downloaded was a debiased version of the dataset "Dynamical Downscaling for the Midwest and Great Lakes Basin" (Notaro et al., 2018). 
   This input data covers three different time periods (1981-2000, 2040-2059, and 2080-2099) and is referred to as "GCM" throughout this data release. 
   
   The GCM windspeeds were abnormally low compared to the NLDAS windspeed for the same date and location. As windspeed is an important factor in 
@@ -2043,14 +2043,14 @@ process-description: >-
   of interest were derived from the daily temperature outputs for each lake.
   
   Lake temperature estimates were generated using an Entity-Aware Long Short-Term Memory network (EA-LSTM), as described by Kratzert et al., 2019.
-  Temperature profiles were predicted for 82128 lakes in the North American continent from 1979 to 2022. The EA-LSTM network used daily
+  Temperature profiles were predicted for 62966 lakes in the North American continent from 1979 to 2022. The EA-LSTM network used daily
   temperature observations from 7556 lakes. Inputs to the model were seven meteorological drivers derived from NLDAS (Mitchell et al., 2004) for the time period 1979-2022,
   and four static lake attributes: latitude, longitude, surface area, and lake elevation above sea level. The data aggregation methods used to 
   assemble the temperature profile data and the lake attributes are described in Willard et al. 2022. This data release used these methods to
   aggregate additional cooperator data. This data release also used full temperature profiles for each sampling date rather than only using surface
   temperatures.
   
-  To train the EA-LSTM, temperature observations were organized into 400 day long sequences. Successive sequences overlapped by 200 days. The mean
+  To train the EA-LSTM, temperature observations were organized into 400-day sequences. Successive sequences overlapped by 200 days. The mean
   squared error of the temperature predictions was used as a loss function. Predictions made during the first 100 days were not included in the loss
   function to allow time for the LSTM cell state to accurately represent the thermal state of the lake. Sixty percent of the available observational
   data were used to train the EA-LSTM, twenty percent were used for validation during training and hyperparameter selection, and twenty percent were
